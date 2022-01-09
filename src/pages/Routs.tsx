@@ -12,6 +12,7 @@ export const Routs = () => {
   return (
     <div>
       <Routes>
+        <Route path='/' element={<Login />} />
         <Route path={PATH.LOGIN} element={<Login />} />
         <Route path={PATH.REGISTRATION} element={<Registration />} />
       </Routes>
