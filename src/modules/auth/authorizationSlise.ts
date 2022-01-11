@@ -15,8 +15,12 @@ const slice = createSlice({
     setUserData(state, action: PayloadAction<LoginResponseType>) {
       return { ...action.payload, isLoggedIn: true };
     },
+    signOut(state, action: PayloadAction<LoginResponseType>) {
+      return { ...action.payload, isLoggedIn: false };
+    },
   },
 });
 
 export const authReducer = slice.reducer;
 export const { setUserData } = slice.actions;
+export const { signOut } = slice.actions;

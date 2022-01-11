@@ -1,0 +1,20 @@
+.sidebar {
+  background: #ffffff;
+  position: fixed;
+  top: 10vh;
+  width: 11%;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebarContainer {
+  width: 90%;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+}

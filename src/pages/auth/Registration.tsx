@@ -3,14 +3,14 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from "react-redux";
-import { AppRootStateType } from "../core/redux/store";
-import { registerTC } from "../modules/auth/authorizationThunk";
+import { AppRootStateType } from "../../core/redux/store";
+import { registerTC } from "../../modules/auth/authorizationThunk";
 import s from './Login.module.css'
 import { NavLink } from "react-router-dom";
-import { PATH } from "./Routs";
-import eyeRoundedIcon from '../assets/icon/eyeRounded.svg'
-import closeEyeRoundedIcon from '../assets/icon/closeEyeRounded.svg'
-import iconFont from '../assets/icon/Group1.svg'
+import { PATH } from "../Routs";
+import eyeRoundedIcon from '../../assets/icon/eyeRounded.svg'
+import closeEyeRoundedIcon from '../../assets/icon/closeEyeRounded.svg'
+import iconFont from '../../assets/icon/Group1.svg'
 
 interface IFormInputs {
   userName: string

@@ -3,14 +3,15 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from "react-redux";
-import { AppRootStateType } from "../core/redux/store";
-import { authTC } from "../modules/auth/authorizationThunk";
+import { AppRootStateType } from "../../core/redux/store";
+import { authTC } from "../../modules/auth/authorizationThunk";
 import s from './Login.module.css'
-import eyeRoundedIcon from '../assets/icon/eyeRounded.svg'
-import closeEyeRoundedIcon from '../assets/icon/closeEyeRounded.svg'
-import iconFont from '../assets/icon/Group.svg'
-import { NavLink } from "react-router-dom";
-import { PATH } from "./Routs";
+import eyeRoundedIcon from '../../assets/icon/eyeRounded.svg'
+import closeEyeRoundedIcon from '../../assets/icon/closeEyeRounded.svg'
+import iconFont from '../../assets/icon/Group.svg'
+import { Navigate, NavLink } from "react-router-dom";
+import { PATH } from "../Routs";
+
 
 interface IFormInputs {
   login: string
@@ -19,6 +20,7 @@ interface IFormInputs {
 
 export const Login = () => {
   const dispatch = useDispatch()
+  const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.auth.isLoggedIn)
   const isLoading = useSelector<AppRootStateType, boolean>(state => state.app.status)
   const [showPassword, setShowPassword] = useState(false)
 
@@ -43,6 +45,10 @@ export const Login = () => {
       password: data.password
     }))
   };
+
+  if (isLoggedIn) {
+    return <Navigate replace to={PATH.TEAM} />
+  }
 
   return (
     <div className={s.wrapper}>
