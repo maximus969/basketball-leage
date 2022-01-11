@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppRootStateType } from "../../core/redux/store";
 import { registerTC } from "../../modules/auth/authorizationThunk";
 import s from './Login.module.css'
-import { NavLink } from "react-router-dom";
+import { Navigate, NavLink } from "react-router-dom";
 import { PATH } from "../Routs";
 import eyeRoundedIcon from '../../assets/icon/eyeRounded.svg'
 import closeEyeRoundedIcon from '../../assets/icon/closeEyeRounded.svg'
@@ -22,6 +22,7 @@ interface IFormInputs {
 
 export const Registration = () => {
   const dispatch = useDispatch()
+  const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.auth.isLoggedIn)
   const isLoading = useSelector<AppRootStateType, boolean>(state => state.app.status)
   const [showPassword, setShowPassword] = useState(false)
   const [showRepeatPassword, setShowRepeatPassword] = useState(false)
@@ -46,14 +47,16 @@ export const Registration = () => {
     formState: { errors },
   } = useForm<IFormInputs>(formOptions);
   const onSubmit = (data: IFormInputs) => {
-    if (data.password === data.confirmPassword) {
-      dispatch(registerTC({
-        userName: data.userName,
-        login: data.login,
-        password: data.password
-      }))
-    }
+    dispatch(registerTC({
+      userName: data.userName,
+      login: data.login,
+      password: data.password
+    }))
   };
+
+  if (isLoggedIn) {
+    return <Navigate replace to={PATH.TEAM} />
+  }
 
   return (
     <div className={s.wrapper}>
