@@ -18,8 +18,21 @@
 }
 
 .profileData {
-  width: 100px;
+  width: 120px;
+  height: 50%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.logoBlock {
+  height: 60%;
+}
+
+.logo {
+  height: 100%;
+}
+
+.profileIcon {
+  height: 100%;
 }

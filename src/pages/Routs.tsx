@@ -2,7 +2,7 @@ import React from "react";
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { Login } from "./auth/Login";
 import { Registration } from "./auth/Registration";
-import { Team } from "./main/content/Team";
+import { Team } from "./main/content/Team/Team";
 import { useSelector } from 'react-redux';
 import { AppRootStateType } from "../core/redux/store";
 
