@@ -3,20 +3,20 @@ import { useSelector } from 'react-redux';
 import { AppRootStateType } from '../../../core/redux/store';
 import logo from '../../../assets/icon/logo.png'
 import profileIcon from '../../../assets/icon/profileIcon.svg'
-import s from './Header.module.css'
+import styles from './Header.module.css'
 
 export const Header = () => {
   const name = useSelector<AppRootStateType, string>(state => state.auth.name)
 
   return (
-    <div className={s.header}>
-      <div className={s.headerContainer}>
-        <div className={s.logoBlock}>
-          <img className={s.logo} src={logo} alt='logo' />
+    <div className={styles.header}>
+      <div className={styles.headerContainer}>
+        <div className={styles.logoBlock}>
+          <img className={styles.logo} src={logo} alt='logo' />
         </div>
-        <div className={s.profileData}>
-          <span>{name}</span>
-          <img className={s.profileIcon} src={profileIcon} alt='profileIcon' />
+        <div className={styles.profileData}>
+          <span className={styles.name}>{name}</span>
+          <img className={styles.profileIcon} src={profileIcon} alt='profileIcon' />
         </div>
       </div>
     </div>

@@ -3,7 +3,7 @@ import { signOut } from '../../../modules/auth/authorizationSlise'
 import logout from '../../../assets/icon/logout.svg'
 import teams from '../../../assets/icon/teams.svg'
 import players from '../../../assets/icon/players.svg'
-import s from './Sidebar.module.css'
+import styles from './Sidebar.module.css'
 
 export const Sidebar = () => {
   const dispatch = useDispatch()
@@ -14,24 +14,25 @@ export const Sidebar = () => {
       avatarUrl: "",
       token: "",
     }));
+    localStorage.removeItem("token");
   }
 
   return (
-    <div className={s.sidebar}>
-      <div className={s.sidebarContainer}>
-        <div className={s.navBlock}>
-          <div className={s.itemsBlock}>
-            <img className={s.icon} src={teams} alt='teams' />
-            <span className={s.text}>Teams</span>
+    <div className={styles.sidebar}>
+      <div className={styles.sidebarContainer}>
+        <div className={styles.navBlock}>
+          <div className={styles.itemsBlock}>
+            <img className={styles.icon} src={teams} alt='teams' />
+            <span className={styles.text}>Teams</span>
           </div>
-          <div className={s.itemsBlock}>
-            <img className={s.icon} src={players} alt='players' />
-            <span className={s.text}>Players</span>
+          <div className={styles.itemsBlock}>
+            <img className={styles.icon} src={players} alt='players' />
+            <span className={styles.text}>Players</span>
           </div>
         </div>
-        <div className={s.itemsBlock} onClick={signOutHandler}>
-          <img className={s.icon} src={logout} alt='logout' />
-          <span className={s.text}>Sign out</span>
+        <div className={styles.itemsBlock} onClick={signOutHandler}>
+          <img className={styles.icon} src={logout} alt='logout' />
+          <span className={styles.text}>Sign out</span>
         </div>
       </div>
     </div>

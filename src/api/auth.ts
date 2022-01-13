@@ -1,23 +1,11 @@
-import axios from "axios";
-
-const instance = axios.create({
-  baseURL: "http://dev.trainee.dex-it.ru/api/",
-});
+import { fetchAPI } from "./baseRequest";
 
 export const authAPI = {
   regUser(data: RegistrationRequestData) {
-    return instance.post<LoginResponseType>(`Auth/SignUp`, data, {
-      headers: {
-        "content-type": "text/json",
-      },
-    });
+    return fetchAPI().post<LoginResponseType>(`Auth/SignUp`, data);
   },
   login(data: LoginRequestData) {
-    return instance.post<LoginResponseType>(`Auth/SignIn`, data, {
-      headers: {
-        "content-type": "text/json",
-      },
-    });
+    return fetchAPI().post<LoginResponseType>(`Auth/SignIn`, data);
   },
 };
 

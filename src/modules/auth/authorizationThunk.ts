@@ -12,9 +12,9 @@ export const authTC = (data: LoginRequestData) => (dispatch: Dispatch) => {
   authAPI
     .login(data)
     .then((res) => {
-      console.log(res);
       if (res.request.status === 200) {
         dispatch(setUserData(res.data));
+        localStorage.setItem("token", res.data.token);
       }
     })
     .catch((error) => {

@@ -1,10 +1,11 @@
-import s from '../Content.module.css'
+import styles from '../Content.module.css'
 
 export const Team = () => {
+
   return (
-    <div className={s.mainContent}>
-      <div className={s.mainBlock}>
-        <div className={s.searchBlock}>
+    <div className={styles.mainContent}>
+      <div className={styles.mainBlock}>
+        <div className={styles.searchBlock}>
           <input />
           <button>button</button>
         </div>

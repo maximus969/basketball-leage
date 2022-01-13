@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import { useDispatch, useSelector } from "react-redux";
 import { AppRootStateType } from "../../core/redux/store";
 import { registerTC } from "../../modules/auth/authorizationThunk";
-import s from './Login.module.css'
+import styles from './Login.module.css'
 import { Navigate, NavLink } from "react-router-dom";
 import { PATH } from "../Routs";
 import eyeRoundedIcon from '../../assets/icon/eyeRounded.svg'
@@ -59,58 +59,58 @@ export const Registration = () => {
   }
 
   return (
-    <div className={s.wrapper}>
-      <div className={s.container}>
-        <h2 className={s.title}>Sign Up</h2>
-        <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
-          <div className={s.inputContainer}>
-            <label className={s.label}>Name</label>
-            <input className={s.input} {...register('userName')} />
-            {errors?.userName && <span className={s.error}>{errors.userName.message}</span>}
+    <div className={styles.wrapper}>
+      <div className={styles.container}>
+        <h2 className={styles.title}>Sign Up</h2>
+        <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+          <div className={styles.inputContainer}>
+            <label className={styles.label}>Name</label>
+            <input className={styles.input} {...register('userName')} />
+            {errors?.userName && <span className={styles.error}>{errors.userName.message}</span>}
           </div>
-          <div className={s.inputContainer}>
-            <label className={s.label}>Login</label>
-            <input className={s.input} {...register('login')} />
-            {errors?.login && <span className={s.error}>{errors.login.message}</span>}
+          <div className={styles.inputContainer}>
+            <label className={styles.label}>Login</label>
+            <input className={styles.input} {...register('login')} />
+            {errors?.login && <span className={styles.error}>{errors.login.message}</span>}
           </div>
 
-          <div className={s.inputContainer}>
-            <label className={s.label}>Password</label>
-            <div className={s.inputStyles}>
-              <input className={s.input} type={showPassword ? 'text' : 'password'} {...register('password')} />
-              <div className={s.passwordIcon} onClick={() => setShowPassword(!showPassword)}>
+          <div className={styles.inputContainer}>
+            <label className={styles.label}>Password</label>
+            <div className={styles.inputStyles}>
+              <input className={styles.input} type={showPassword ? 'text' : 'password'} {...register('password')} />
+              <div className={styles.passwordIcon} onClick={() => setShowPassword(!showPassword)}>
                 <img src={showPassword ? eyeRoundedIcon : closeEyeRoundedIcon} alt="icon" />
               </div>
             </div>
-            {errors?.password && <span className={s.error}>{errors.password.message}</span>}
+            {errors?.password && <span className={styles.error}>{errors.password.message}</span>}
           </div>
 
-          <div className={s.inputContainer}>
-            <label className={s.label}>Enter your password again</label>
-            <div className={s.inputStyles}>
-              <input className={s.input} type={showRepeatPassword ? 'text' : 'password'} {...register('confirmPassword')} />
-              <div className={s.passwordIcon} onClick={() => setShowRepeatPassword(!showRepeatPassword)}>
+          <div className={styles.inputContainer}>
+            <label className={styles.label}>Enter your password again</label>
+            <div className={styles.inputStyles}>
+              <input className={styles.input} type={showRepeatPassword ? 'text' : 'password'} {...register('confirmPassword')} />
+              <div className={styles.passwordIcon} onClick={() => setShowRepeatPassword(!showRepeatPassword)}>
                 <img src={showRepeatPassword ? eyeRoundedIcon : closeEyeRoundedIcon} alt="icon" />
               </div>
             </div>
-            {errors?.confirmPassword && <span className={s.error}>{errors.confirmPassword.message}</span>}
+            {errors?.confirmPassword && <span className={styles.error}>{errors.confirmPassword.message}</span>}
           </div>
 
           <div>
             <input type='checkbox' {...register('acceptTerms')} />
             <span>I accept the agreement</span>
-            {errors?.acceptTerms && <span className={s.error}>{errors.acceptTerms.message}</span>}
+            {errors?.acceptTerms && <span className={styles.error}>{errors.acceptTerms.message}</span>}
           </div>
-          <input className={s.input} disabled={isLoading} type="submit" value="Sign Up" />
+          <input className={styles.input} disabled={isLoading} type="submit" value="Sign Up" />
 
-          <div className={s.authSign}>
-            <span className={s.spanMember}>Already a member?</span>
-            <NavLink to={PATH.LOGIN} className={s.pathLink}>Sign In</NavLink>
+          <div className={styles.authSign}>
+            <span className={styles.spanMember}>Already a member?</span>
+            <NavLink to={PATH.LOGIN} className={styles.pathLink}>Sign In</NavLink>
           </div>
         </form>
       </div>
 
-      <div className={s.fonts}>
+      <div className={styles.fonts}>
         <img src={iconFont} alt="icon" />
       </div>
     </div>

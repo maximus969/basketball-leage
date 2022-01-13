@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import { useDispatch, useSelector } from "react-redux";
 import { AppRootStateType } from "../../core/redux/store";
 import { authTC } from "../../modules/auth/authorizationThunk";
-import s from './Login.module.css'
+import styles from './Login.module.css'
 import eyeRoundedIcon from '../../assets/icon/eyeRounded.svg'
 import closeEyeRoundedIcon from '../../assets/icon/closeEyeRounded.svg'
 import iconFont from '../../assets/icon/Group.svg'
@@ -51,39 +51,39 @@ export const Login = () => {
   }
 
   return (
-    <div className={s.wrapper}>
-      <div className={s.container}>
-        <h2 className={s.title}>Sign In</h2>
-        <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
+    <div className={styles.wrapper}>
+      <div className={styles.container}>
+        <h2 className={styles.title}>Sign In</h2>
+        <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
 
-          <div className={s.inputContainer}>
-            <label className={s.label}>Login</label>
-            <input className={s.input} {...register('login')} />
-            {errors?.login && <span className={s.error}>{errors.login.message}</span>}
+          <div className={styles.inputContainer}>
+            <label className={styles.label}>Login</label>
+            <input className={styles.input} {...register('login')} />
+            {errors?.login && <span className={styles.error}>{errors.login.message}</span>}
           </div>
 
-          <div className={s.inputContainer}>
-            <label className={s.label}>Password</label>
-            <div className={s.inputStyles}>
-              <input className={s.input} type={showPassword ? 'text' : 'password'} {...register('password')} />
-              <div className={s.passwordIcon} onClick={() => setShowPassword(!showPassword)}>
+          <div className={styles.inputContainer}>
+            <label className={styles.label}>Password</label>
+            <div className={styles.inputStyles}>
+              <input className={styles.input} type={showPassword ? 'text' : 'password'} {...register('password')} />
+              <div className={styles.passwordIcon} onClick={() => setShowPassword(!showPassword)}>
                 <img src={showPassword ? eyeRoundedIcon : closeEyeRoundedIcon} alt="icon" />
               </div>
             </div>
-            {errors?.password && <span className={s.error}>{errors.password.message}</span>}
+            {errors?.password && <span className={styles.error}>{errors.password.message}</span>}
           </div>
 
-          <input className={s.input} disabled={isLoading} type="submit" value="Sign In" />
-          <div className={s.authSign}>
-            <span className={s.spanMember}>Not a member yet?</span>
-            <NavLink to={PATH.REGISTRATION} className={s.pathLink}>Sign Up</NavLink>
+          <input className={styles.input} disabled={isLoading} type="submit" value="Sign In" />
+          <div className={styles.authSign}>
+            <span className={styles.spanMember}>Not a member yet?</span>
+            <NavLink to={PATH.REGISTRATION} className={styles.pathLink}>Sign Up</NavLink>
           </div>
 
         </form>
       </div>
 
-      <div className={s.fonts}>
-        <img src={iconFont} className={s.imageBlock} alt="icon" />
+      <div className={styles.fonts}>
+        <img src={iconFont} className={styles.imageBlock} alt="icon" />
       </div>
     </div>
   );
