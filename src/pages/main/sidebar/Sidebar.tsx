@@ -1,11 +1,11 @@
 import { useDispatch } from 'react-redux'
-import { signOut } from '../../../modules/auth/authorizationSlise'
+import { signOut } from '../../../modules/auth/authorizationSlice'
 import logout from '../../../assets/icon/logout.svg'
 import teams from '../../../assets/icon/teams.svg'
 import players from '../../../assets/icon/players.svg'
 import styles from './Sidebar.module.css'
 
-export const Sidebar = () => {
+export const Sidebar: React.FC = () => {
   const dispatch = useDispatch()
 
   const signOutHandler = () => {

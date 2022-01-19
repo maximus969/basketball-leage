@@ -1,15 +1,15 @@
 import { fetchAPI } from "./baseRequest";
 
 export const teamsAPI = {
-  getTeams({ page, pageSize }: GetTeamsRequestData) {
+  getTeams(name: string, page: number, pageSize: number) {
     return fetchAPI().get<TeamDtoPageResult>(
-      `Team/GetTeams?Page=${page}&PageSize=${pageSize}`
+      `Team/GetTeams?Name=${name}&Page=${page}&PageSize=${pageSize}`
     );
   },
   addTeam(data: NewTeamDto) {
     return fetchAPI().post<TeamDto>(`Team/Add`, data);
   },
-  getTeam(id: number) {
+  getTeamInfo(id: number) {
     return fetchAPI().get<TeamDto>(`Team/Get?id=${id}`);
   },
   updateTeam(data: TeamDto) {
@@ -20,12 +20,13 @@ export const teamsAPI = {
   },
 };
 
-interface GetTeamsRequestData {
+export interface GetTeamsRequestData {
+  name: string;
   page: number;
   pageSize: number;
 }
 
-interface TeamDto {
+export interface TeamDto {
   name: string;
   foundationYear: number;
   division: string;
@@ -34,14 +35,14 @@ interface TeamDto {
   id: number;
 }
 
-interface TeamDtoPageResult {
+export interface TeamDtoPageResult {
   data: TeamDto[];
   count: number;
   page: number;
   size: number;
 }
 
-interface NewTeamDto {
+export interface NewTeamDto {
   name: string;
   foundationYear: number;
   division: string;

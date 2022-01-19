@@ -10,7 +10,7 @@ import eyeRoundedIcon from '../../assets/icon/eyeRounded.svg'
 import closeEyeRoundedIcon from '../../assets/icon/closeEyeRounded.svg'
 import iconFont from '../../assets/icon/Group.svg'
 import { Navigate, NavLink } from "react-router-dom";
-import { PATH } from "../Routs";
+import { PATH } from "../routes";
 
 
 interface IFormInputs {
@@ -18,7 +18,7 @@ interface IFormInputs {
   password: string
 }
 
-export const Login = () => {
+export const Login: React.FC = () => {
   const dispatch = useDispatch()
   const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.auth.isLoggedIn)
   const isLoading = useSelector<AppRootStateType, boolean>(state => state.app.status)
@@ -47,7 +47,7 @@ export const Login = () => {
   };
 
   if (isLoggedIn) {
-    return <Navigate replace to={PATH.TEAM} />
+    return <Navigate replace to={PATH.TEAMS} />
   }
 
   return (

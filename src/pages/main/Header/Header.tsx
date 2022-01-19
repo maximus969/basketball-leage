@@ -5,7 +5,7 @@ import logo from '../../../assets/icon/logo.png'
 import profileIcon from '../../../assets/icon/profileIcon.svg'
 import styles from './Header.module.css'
 
-export const Header = () => {
+export const Header: React.FC = () => {
   const name = useSelector<AppRootStateType, string>(state => state.auth.name)
 
   return (

@@ -4,8 +4,8 @@ import {
   LoginRequestData,
   RegistrationRequestData,
 } from "../../api/auth";
-import { setAppStatus } from "../app/appSlise";
-import { setUserData } from "./authorizationSlise";
+import { setAppStatus } from "../app/appSlice";
+import { setUserData } from "./authorizationSlice";
 
 export const authTC = (data: LoginRequestData) => (dispatch: Dispatch) => {
   dispatch(setAppStatus({ status: true }));

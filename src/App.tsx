@@ -5,7 +5,7 @@ import './App.css';
 import { AppRootStateType } from './core/redux/store';
 import { Header } from './pages/main/Header/Header';
 import { Sidebar } from './pages/main/sidebar/Sidebar';
-import { Routs } from './pages/Routs';
+import { ProjectRoutes } from './pages/routes';
 
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
       <BrowserRouter>
         {isLoggedIn && <Header />}
         {isLoggedIn && <Sidebar />}
-        <Routs />
+        <ProjectRoutes />
       </BrowserRouter>
     </div>
   );

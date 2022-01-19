@@ -7,7 +7,7 @@ import { AppRootStateType } from "../../core/redux/store";
 import { registerTC } from "../../modules/auth/authorizationThunk";
 import styles from './Login.module.css'
 import { Navigate, NavLink } from "react-router-dom";
-import { PATH } from "../Routs";
+import { PATH } from "../routes";
 import eyeRoundedIcon from '../../assets/icon/eyeRounded.svg'
 import closeEyeRoundedIcon from '../../assets/icon/closeEyeRounded.svg'
 import iconFont from '../../assets/icon/Group1.svg'
@@ -20,7 +20,7 @@ interface IFormInputs {
   acceptTerms: boolean
 }
 
-export const Registration = () => {
+export const Registration: React.FC = () => {
   const dispatch = useDispatch()
   const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.auth.isLoggedIn)
   const isLoading = useSelector<AppRootStateType, boolean>(state => state.app.status)
@@ -55,7 +55,7 @@ export const Registration = () => {
   };
 
   if (isLoggedIn) {
-    return <Navigate replace to={PATH.TEAM} />
+    return <Navigate replace to={PATH.TEAMS} />
   }
 
   return (
