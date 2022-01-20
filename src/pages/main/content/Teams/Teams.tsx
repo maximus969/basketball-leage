@@ -48,7 +48,6 @@ export const Teams: React.FC = () => {
           {
             teams.map(item => {
               const showTeamInfo = () => {
-                dispatch(getTeamInfoTC(item.id))
                 navigate(`${item.id}`)
               }
               return (

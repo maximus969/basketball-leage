@@ -14,7 +14,7 @@ export const Sidebar: React.FC = () => {
       avatarUrl: "",
       token: "",
     }));
-    localStorage.removeItem("token");
+    localStorage.removeItem("state");
   }
 
   return (
@@ -30,7 +30,7 @@ export const Sidebar: React.FC = () => {
             <span className={styles.text}>Players</span>
           </div>
         </div>
-        <div className={styles.itemsBlock} onClick={signOutHandler}>
+        <div className={`${styles.itemsBlock}`} onClick={signOutHandler}>
           <img className={styles.icon} src={logout} alt='logout' />
           <span className={styles.text}>Sign out</span>
         </div>

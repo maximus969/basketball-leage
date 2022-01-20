@@ -1,26 +1,27 @@
 import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import styles from './AddTeam.module.css'
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteTeamTC } from './../../../../modules/teams/teamsThunk';
+import { deleteTeamTC, getTeamInfoTC } from './../../../../modules/teams/teamsThunk';
 import { AppRootStateType } from '../../../../core/redux/store';
 import { PATH } from '../../../routes';
 
 export const TeamDescription = () => {
+  const { id } = useParams()
   const dispatch = useDispatch()
   const navigate = useNavigate();
-  const id = useSelector<AppRootStateType, number>(state => state.team.id)
   const name = useSelector<AppRootStateType, string>(state => state.team.name)
   const conference = useSelector<AppRootStateType, string>(state => state.team.conference)
   const division = useSelector<AppRootStateType, string>(state => state.team.division)
   const foundationYear = useSelector<AppRootStateType, number>(state => state.team.foundationYear)
 
   useEffect(() => {
-    if (!name) navigate(PATH.TEAMS)
-  }, [name])
+    dispatch(getTeamInfoTC(Number(id)))
+  }, [])
 
   const deleteTeam = () => {
-    dispatch(deleteTeamTC(id))
+    dispatch(deleteTeamTC(Number(id)))
+    navigate(-1)
   }
   const updateTeam = () => {
     navigate(`/teams/${id}/update-team`)

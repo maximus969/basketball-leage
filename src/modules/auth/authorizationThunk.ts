@@ -6,6 +6,7 @@ import {
 } from "../../api/auth";
 import { setAppStatus } from "../app/appSlice";
 import { setUserData } from "./authorizationSlice";
+import { saveState } from "./../../utils/localStorage";
 
 export const authTC = (data: LoginRequestData) => (dispatch: Dispatch) => {
   dispatch(setAppStatus({ status: true }));
@@ -14,7 +15,7 @@ export const authTC = (data: LoginRequestData) => (dispatch: Dispatch) => {
     .then((res) => {
       if (res.request.status === 200) {
         dispatch(setUserData(res.data));
-        localStorage.setItem("token", res.data.token);
+        saveState("state", res.data);
       }
     })
     .catch((error) => {
@@ -33,6 +34,7 @@ export const registerTC =
       .then((res) => {
         if (res.request.status === 200) {
           dispatch(setUserData(res.data));
+          saveState("state", res.data);
         }
       })
       .catch((error) => {
