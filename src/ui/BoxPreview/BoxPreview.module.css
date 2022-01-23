@@ -1,0 +1,52 @@
+.container {
+  width: 364px;
+  height: 380px;
+  background: linear-gradient(121.57deg, #707070 1.62%, #393939 81.02%);
+  border-radius: 4px;
+}
+
+.imgBlock {
+  height: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img {
+  width: 150px;
+  height: 150px;
+}
+
+.textBlock {
+  height: 100px;
+  background: #303030;
+  border-radius: 0px 0px 4px 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 25px;
+  color: #ffffff;
+  margin: 0 0 12px 0;
+}
+
+.info {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  text-align: center;
+  color: #9c9c9c;
+  margin: 0;
+}

@@ -1,12 +1,11 @@
 import { useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import styles from './AddTeam.module.css'
+import wrapper from '../Content.module.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteTeamTC, getTeamInfoTC } from './../../../../modules/teams/teamsThunk';
 import { AppRootStateType } from '../../../../core/redux/store';
-import { PATH } from '../../../routes';
 
-export const TeamDescription = () => {
+export const TeamDescription: React.FC = () => {
   const { id } = useParams()
   const dispatch = useDispatch()
   const navigate = useNavigate();
@@ -28,7 +27,7 @@ export const TeamDescription = () => {
   }
 
   return (
-    <div className={styles.mainContent}>
+    <div className={wrapper.mainContent}>
       <div>
         <button onClick={updateTeam}>update</button>
         <button onClick={deleteTeam}>delete</button>

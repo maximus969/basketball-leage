@@ -2,10 +2,10 @@ import React from "react";
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { Login } from "./auth/Login";
 import { Registration } from "./auth/Registration";
-import { Teams } from "./main/content/Teams/Teams";
+import { Teams } from "./main/content/Teams/GetTeams/GetTeams";
 import { useSelector } from 'react-redux';
 import { AppRootStateType } from "../core/redux/store";
-import { AddTeam } from './main/content/Teams/AddTeam';
+import { AddTeam } from './main/content/Teams/AddTeams/AddTeam';
 import { TeamDescription } from "./main/content/Teams/TeamDescription";
 import { UpdateTeam } from './main/content/Teams/UpdateTeam';
 

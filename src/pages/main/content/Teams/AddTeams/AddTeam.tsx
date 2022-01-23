@@ -1,11 +1,14 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { useForm } from 'react-hook-form';
-import wrapper from '../Content.module.css'
-import { updateTeamTC } from '../../../../modules/teams/teamsThunk';
-import { useDispatch, useSelector } from 'react-redux';
+import wrapper from '../../Content.module.css'
+import { addTeamTC } from '../../../../../modules/teams/teamsThunk';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { AppRootStateType } from '../../../../core/redux/store';
+import { PATH } from '../../../../routes';
+import { NewTeamDto } from './../../../../../api/teams';
+import { getBase64, newData } from './../../../../../utils/imgConverter';
+
 
 interface IFormInputs {
   name: string
@@ -15,14 +18,9 @@ interface IFormInputs {
   imageUrl: string
 }
 
-export const UpdateTeam: React.FC = () => {
+export const AddTeam: React.FC = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const id = useSelector<AppRootStateType, number>(state => state.team.id)
-  const name = useSelector<AppRootStateType, string>(state => state.team.name)
-  const conference = useSelector<AppRootStateType, string>(state => state.team.conference)
-  const division = useSelector<AppRootStateType, string>(state => state.team.division)
-  const foundationYear = useSelector<AppRootStateType, number>(state => state.team.foundationYear)
   const validationSchema = Yup.object().shape({
     name: Yup.string()
       .required('Name is required'),
@@ -42,12 +40,11 @@ export const UpdateTeam: React.FC = () => {
   } = useForm<IFormInputs>(formOptions);
 
   const onSubmit = (data: IFormInputs) => {
-    dispatch(updateTeamTC({ ...data, id }))
-    navigate(-1)
+    newData(data.imageUrl[0], data, dispatch, addTeamTC)
   };
 
   const cancelHandler = () => {
-    navigate(-1)
+    navigate(PATH.TEAMS)
   }
 
   return (
@@ -57,31 +54,31 @@ export const UpdateTeam: React.FC = () => {
 
           <div>
             <label>Name</label>
-            <input defaultValue={name} {...register('name')} />
+            <input {...register('name')} />
             {errors?.name && <span>{errors.name.message}</span>}
           </div>
 
           <div>
             <label>Division</label>
-            <input defaultValue={division} {...register('division')} />
+            <input {...register('division')} />
             {errors?.division && <span>{errors.division.message}</span>}
           </div>
 
           <div>
             <label>Conference</label>
-            <input defaultValue={conference} {...register('conference')} />
+            <input {...register('conference')} />
             {errors?.conference && <span>{errors.conference.message}</span>}
           </div>
 
           <div>
             <label>Year Of Foundation</label>
-            <input defaultValue={foundationYear} {...register('foundationYear')} />
+            <input {...register('foundationYear')} />
             {errors?.foundationYear && <span>{errors.foundationYear.message}</span>}
           </div>
 
           <div>
             <label>imgUrl</label>
-            <input {...register('imageUrl')} />
+            <input type='file' {...register('imageUrl')} />
           </div>
 
           <input type="submit" value="Save" />
