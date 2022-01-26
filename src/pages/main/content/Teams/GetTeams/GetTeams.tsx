@@ -13,6 +13,7 @@ import searchIcon from '../../../../../assets/icon/search_rounded.svg'
 import { BoxPreview } from '../../../../../ui/BoxPreview/BoxPreview';
 import ReactPaginate from 'react-paginate';
 import { ReactSelect } from '../../../../../ui/ReactSelect/ReactSelect';
+import paginatorStyles from '../../../../../ui/Paginator/Paginator.module.css'
 
 
 export const Teams: React.FC = () => {
@@ -42,7 +43,7 @@ export const Teams: React.FC = () => {
 
   // Paginator + Selector
   const handlePageClick = (event: any) => {
-    const newCurrentPage = event.selected
+    const newCurrentPage = event.selected + 1
     dispatch(getTeamsTC(searchTeam, newCurrentPage, pageSize))
   };
   const pageCount = Math.ceil(totalElementCount / pageSize)
@@ -74,7 +75,7 @@ export const Teams: React.FC = () => {
         <div className={styles.searchBlock}>
           <div className={styles.inputStyles}>
             <input className={styles.input} onChange={onSearchChange} />
-            <div className={styles.passwordIcon} onClick={startSearchingTeam}>
+            <div className={styles.searchIcon} onClick={startSearchingTeam}>
               <img src={searchIcon} alt="icon" />
             </div>
           </div>
@@ -82,16 +83,21 @@ export const Teams: React.FC = () => {
         </div>
 
         <Items currentItems={teams} />
-        <ReactPaginate
-          breakLabel="..."
-          nextLabel=">"
-          onPageChange={handlePageClick}
-          pageRangeDisplayed={4}
-          pageCount={pageCount}
-          previousLabel="<"
-          renderOnZeroPageCount={undefined}
-        />
-        <ReactSelect itemsPerPage={pageSize} onChangeOption={onChangeOption} />
+        <div className={styles.paginateBlock}>
+          <ReactPaginate
+            breakLabel="..."
+            nextLabel=">"
+            onPageChange={handlePageClick}
+            pageRangeDisplayed={4}
+            pageCount={pageCount}
+            previousLabel="<"
+            renderOnZeroPageCount={undefined}
+            className={paginatorStyles.container}
+            activeClassName={paginatorStyles.activePageStyles}
+            pageClassName={paginatorStyles.pageStyles}
+          />
+          <ReactSelect onChangeOption={onChangeOption} />
+        </div>
       </div>
     </div>
   )

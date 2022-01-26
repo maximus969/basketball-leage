@@ -2,11 +2,19 @@
   font-family: "Avenir";
   src: url("./assets/fonts/AvenirLTStd-Roman.otf") format("truetype");
   font-style: normal;
-  font-weight: normal;
+  font-weight: 500;
 }
 
 body {
   font-family: "Avenir";
   margin: 0;
   background: #ffffff;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+ul {
+  list-style: none;
 }

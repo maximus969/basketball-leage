@@ -1,1 +1,51 @@
+.container {
+  width: 90%;
+  height: 60%;
+  background-color: #ffffff;
+  margin-top: 2%;
+  border-radius: 10px 10px 10px 10px;
+}
 
+.heading {
+  height: 69px;
+}
+
+.inputFormContainer {
+  width: 35%;
+}
+
+.buttonsContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.saveButton {
+  height: 40px;
+  width: 171px;
+  background: #e4163a;
+  border: none;
+  border-radius: 4px;
+  font-size: 15px;
+  line-height: 24px;
+  color: #ffffff;
+}
+.saveButton:hover {
+  background: #ff5761;
+}
+
+.cancelButton {
+  height: 40px;
+  width: 171px;
+  background: #ffffff;
+  border: none;
+  border-radius: 4px;
+  font-size: 15px;
+  line-height: 24px;
+  color: #9c9c9c;
+}
+.cancelButton:hover {
+  background: #d1d1d1;
+  border: 1px solid #9c9c9c;
+  box-sizing: border-box;
+}

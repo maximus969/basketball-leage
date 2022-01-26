@@ -1,4 +1,5 @@
 import Select from 'react-select';
+import styles from './ReactSelect.module.css'
 
 const options = [
   { value: 1, label: '1' },
@@ -6,7 +7,7 @@ const options = [
   { value: 3, label: '3' }
 ]
 
-export const ReactSelect = ({ itemsPerPage, onChangeOption }: ReactSelectPropsType) => {
+export const ReactSelect = ({ onChangeOption }: ReactSelectPropsType) => {
 
   const onChangeCallback = (e: any) => {
     onChangeOption(e.value)
@@ -14,12 +15,15 @@ export const ReactSelect = ({ itemsPerPage, onChangeOption }: ReactSelectPropsTy
 
   return (
     <>
-      <Select options={options} defaultValue={options[0]} onChange={onChangeCallback} />
+      <Select options={options}
+        defaultValue={options[0]}
+        onChange={onChangeCallback}
+        className={styles.container}
+      />
     </>
   )
 }
 
 type ReactSelectPropsType = {
-  itemsPerPage: number
   onChangeOption: (option: number) => void
 }

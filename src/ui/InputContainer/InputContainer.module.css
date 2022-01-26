@@ -1,0 +1,22 @@
+.inputContainer {
+  height: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.label {
+  font-size: 14px;
+  line-height: 24px;
+  text-align: left;
+  display: inline;
+  margin-bottom: 0;
+  color: #707070;
+}
+
+.errorMessage {
+  color: #ff768e;
+  margin: 0;
+  font-size: 12px;
+  line-height: 24px;
+}

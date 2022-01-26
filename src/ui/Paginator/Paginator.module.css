@@ -1,0 +1,31 @@
+.container {
+  width: 200px;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  font-size: 14px;
+  line-height: 24px;
+  text-align: center;
+  color: #707070;
+}
+.activePageStyles {
+  width: 40px;
+  height: 40px;
+  background-color: #e4163a;
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 24px;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pageStyles {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

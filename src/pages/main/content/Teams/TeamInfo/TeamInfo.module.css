@@ -1,0 +1,68 @@
+.container {
+  width: 90%;
+  height: 40%;
+  margin-top: 2%;
+  border-radius: 10px 10px 10px 10px;
+  background: linear-gradient(276.45deg, #707070 0%, #393939 100.28%);
+}
+
+.heading {
+  height: 15%;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.iconsContainer {
+  width: 50px;
+  margin-right: 24px;
+  display: flex;
+  justify-content: space-between;
+}
+.teamInfoContainer {
+  display: flex;
+  height: 85%;
+}
+.imgBlock {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img {
+  width: 150px;
+  height: 150px;
+}
+
+.textInfoBlock {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  justify-content: center;
+}
+.textInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.title {
+  font-weight: 800;
+  font-size: 36px;
+  line-height: 49px;
+  color: #ffffff;
+  margin: 0;
+}
+.label {
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 33px;
+  color: #ffffff;
+}
+.text {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 25px;
+  color: #ffffff;
+  margin: 0;
+}
