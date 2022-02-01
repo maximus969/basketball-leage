@@ -1,28 +1,60 @@
+@import "../../../../../assets/theme/theme.css";
+
 .container {
   width: 90%;
   height: 60%;
-  background-color: #ffffff;
+  background-color: var(--primary-bg-color);
   margin-top: 2%;
   border-radius: 10px 10px 10px 10px;
 }
 
-.heading {
-  height: 69px;
+.formContainer {
+  display: flex;
+  width: 100%;
+  height: 70%;
+  background-color: var(--primary-bg-color);
+  margin-top: 8%;
+  border-radius: 10px 10px 10px 10px;
+}
+
+.addFileBlock {
+  width: 30%;
+  height: 50%;
+  margin-left: 6%;
+  background: var(--second-text-color);
+  border-radius: 10px;
+  opacity: 0.5;
+  background-image: url("../../../../../assets/icon/add_a_photo_24px_rounded.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20%;
+}
+
+.addFileInput {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  display: inline-block;
+  cursor: pointer;
+  opacity: 0;
 }
 
 .inputFormContainer {
   width: 35%;
+  height: 100%;
+  margin-left: 12%;
 }
 
 .buttonsContainer {
   width: 100%;
+  height: 11%;
   display: flex;
   justify-content: space-between;
 }
 
 .saveButton {
-  height: 40px;
-  width: 171px;
+  height: 100%;
+  width: 45%;
   background: #e4163a;
   border: none;
   border-radius: 4px;
@@ -35,10 +67,12 @@
 }
 
 .cancelButton {
-  height: 40px;
-  width: 171px;
+  height: 100%;
+  /* width: 171px; */
+  /* width: 100px; */
+  border: 1px solid grey;
+  width: 45%;
   background: #ffffff;
-  border: none;
   border-radius: 4px;
   font-size: 15px;
   line-height: 24px;

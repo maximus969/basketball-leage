@@ -5,12 +5,14 @@ import { authReducer } from "../../modules/auth/authorizationSlice";
 import { appReducer } from "../../modules/app/appSlice";
 import { teamsReducer } from "./../../modules/teams/teamsSlice";
 import { teamReducer } from "./../../modules/teams/teamSlice";
+import { playersReducer } from "./../../modules/players/playersSlice";
 
 const rootReducer = combineReducers({
   auth: authReducer,
   app: appReducer,
   teams: teamsReducer,
   team: teamReducer,
+  players: playersReducer,
 });
 
 export const store = configureStore({

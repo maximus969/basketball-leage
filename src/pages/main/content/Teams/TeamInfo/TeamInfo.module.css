@@ -1,14 +1,25 @@
+@import "../../../../../assets/theme/theme.css";
+
+.mainContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .container {
   width: 90%;
-  height: 40%;
+  height: 47%;
   margin-top: 2%;
-  border-radius: 10px 10px 10px 10px;
+  border-radius: 4px;
+  overflow: hidden;
   background: linear-gradient(276.45deg, #707070 0%, #393939 100.28%);
 }
 
 .heading {
   height: 15%;
-  background-color: #ffffff;
+  background-color: var(--primary-bg-color);
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -36,12 +47,14 @@
 }
 
 .textInfoBlock {
+  width: 60%;
   display: flex;
   flex-direction: column;
   align-content: flex-start;
   justify-content: center;
 }
 .textInfo {
+  height: 75%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -50,19 +63,119 @@
   font-weight: 800;
   font-size: 36px;
   line-height: 49px;
-  color: #ffffff;
+  color: var(--primary-text-color);
   margin: 0;
 }
+.description {
+  display: flex;
+  flex-wrap: wrap;
+}
+.descriptionBlock {
+  width: 46%;
+  margin-right: 2%;
+  margin-bottom: 2%;
+}
+
 .label {
   font-weight: 800;
-  font-size: 24px;
-  line-height: 33px;
-  color: #ffffff;
+  font-size: 22px;
+  line-height: 26px;
+  color: var(--primary-text-color);
 }
 .text {
   font-weight: 500;
+  font-size: 16px;
+  line-height: 25px;
+  color: var(--primary-text-color);
+  margin: 0;
+}
+
+.deleteIcon * {
+  fill: red;
+}
+
+.tableWrapper {
+  width: 90%;
+  margin-top: 1%;
+  margin-bottom: 2%;
+  height: 47%;
+  display: flex;
+  justify-content: center;
+  border: 1px solid #9c9c9c;
+  border-radius: 4px;
+  border-bottom: none;
+  overflow: hidden;
+}
+
+.table {
+  width: 100%;
+  height: 100%;
+  border-collapse: collapse;
+}
+
+.header {
+  height: 20%;
+}
+
+.headerName {
+  height: 100%;
+  color: var(--label-color);
   font-size: 18px;
   line-height: 25px;
-  color: #ffffff;
-  margin: 0;
+  font-weight: 500;
+  padding-left: 2%;
+}
+
+.headerAtributes {
+  border-bottom: 1px solid #9c9c9c;
+}
+
+.th1 {
+  text-align: left;
+  border-bottom: 1px solid #9c9c9c;
+  font-size: 14px;
+  line-height: 24px;
+  color: var(--label-color);
+  font-weight: 500;
+  padding-left: 2%;
+}
+
+.tableBody {
+  width: 100%;
+  height: 80%;
+}
+
+.bodyAtributes {
+  border-bottom: 1px solid #9c9c9c;
+  font-size: 14px;
+  line-height: 19px;
+  color: var(--label-color);
+}
+
+.bodyCell {
+  padding-left: 2%;
+}
+
+.playerInfoBlock {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.playerImg {
+  width: 30px;
+  margin-right: 2%;
+}
+.playerInfo {
+  display: flex;
+  flex-direction: column;
+}
+.playerInfoName {
+  font-size: 14px;
+  line-height: 15px;
+}
+.playerInfoPosition {
+  font-size: 13px;
+  line-height: 13px;
+  color: var(--second-text-color);
 }

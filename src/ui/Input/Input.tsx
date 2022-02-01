@@ -1,9 +1,9 @@
 import styles from './Input.module.css'
 
-export const Input = ({ register, name, ...rest }: InputPropsType) => {
+export const Input = ({ register, name, value, ...rest }: InputPropsType) => {
   return (
     <>
-      <input className={styles.input} {...register(name)} />
+      <input className={styles.input} {...register(name)} defaultValue={value} />
     </>
   )
 }
@@ -11,4 +11,5 @@ export const Input = ({ register, name, ...rest }: InputPropsType) => {
 type InputPropsType = {
   register: any
   name: string
+  value?: string | number
 }

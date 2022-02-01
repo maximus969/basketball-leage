@@ -1,25 +1,26 @@
+@import "../../assets/theme/theme.css";
+
 .container {
-  width: 364px;
-  height: 380px;
+  width: 32%;
+  height: 48%;
   background: linear-gradient(121.57deg, #707070 1.62%, #393939 81.02%);
   border-radius: 4px;
 }
 
 .imgBlock {
-  height: 280px;
+  height: 75%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .img {
-  width: 150px;
-  height: 150px;
+  width: 50%;
 }
 
 .textBlock {
-  height: 100px;
-  background: #303030;
+  height: 25%;
+  background: var(--navbar-login-name);
   border-radius: 0px 0px 4px 4px;
   display: flex;
   justify-content: center;
@@ -33,20 +34,16 @@
 }
 
 .title {
-  font-style: normal;
-  font-weight: 500;
   font-size: 18px;
   line-height: 25px;
-  color: #ffffff;
-  margin: 0 0 12px 0;
+  color: var(--primary-text-color);
+  margin: 0 0 1% 0;
 }
 
 .info {
-  font-style: normal;
-  font-weight: 500;
   font-size: 14px;
   line-height: 24px;
   text-align: center;
-  color: #9c9c9c;
+  color: var(--second-text-color);
   margin: 0;
 }

@@ -1,5 +1,7 @@
+@import "../../../assets/theme/theme.css";
+
 .mainContent {
-  background: #f6f6f6;
+  background: var(--second-bg-color);
   padding-left: 11%;
   padding-top: 10vh;
   width: 100%;
@@ -7,19 +9,4 @@
   display: flex;
   align-content: center;
   justify-content: center;
-  /* align-items: center;  */
 }
-
-/* .mainBlock {
-  width: 90%;
-  height: 90%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.searchBlock {
-  display: flex;
-  align-content: center;
-  justify-content: space-between;
-} */

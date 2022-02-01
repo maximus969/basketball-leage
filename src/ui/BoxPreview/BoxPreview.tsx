@@ -4,7 +4,7 @@ export const BoxPreview = ({ name, foundationYear, imageUrl, onClick }: BoxPrevi
   return (
     <div className={styles.container} onClick={onClick}>
       <div className={styles.imgBlock}>
-        <img className={styles.img} src={imageUrl} />
+        <img className={styles.img} src={imageUrl} alt='' />
       </div>
       <div className={styles.textBlock}>
         <div className={styles.textContainer}>

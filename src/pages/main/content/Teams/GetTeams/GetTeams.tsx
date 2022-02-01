@@ -14,13 +14,13 @@ import { BoxPreview } from '../../../../../ui/BoxPreview/BoxPreview';
 import ReactPaginate from 'react-paginate';
 import { ReactSelect } from '../../../../../ui/ReactSelect/ReactSelect';
 import paginatorStyles from '../../../../../ui/Paginator/Paginator.module.css'
+import { ItemsNotFound } from '../../../../../ui/ItemsNotFound/ItemsNotFound';
 
 
 export const Teams: React.FC = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate();
   const totalElementCount = useSelector<AppRootStateType, number>(state => state.teams.count)
-  const currentPage = useSelector<AppRootStateType, number>(state => state.teams.page)
   const pageSize = useSelector<AppRootStateType, number>(state => state.teams.size)
   const teams = useSelector<AppRootStateType, TeamDto[]>(state => state.teams.data)
   const [searchTeam, setSearchTeam] = useState<string>('')
@@ -72,31 +72,41 @@ export const Teams: React.FC = () => {
   return (
     <div className={wrapper.mainContent}>
       <div className={styles.mainBlock}>
-        <div className={styles.searchBlock}>
-          <div className={styles.inputStyles}>
-            <input className={styles.input} onChange={onSearchChange} />
-            <div className={styles.searchIcon} onClick={startSearchingTeam}>
-              <img src={searchIcon} alt="icon" />
+        <div className={styles.block}>
+          <div className={styles.searchBlock}>
+            <div className={styles.inputStyles}>
+              <input className={styles.input} onChange={onSearchChange} placeholder='Search...' />
+              <div className={styles.searchIcon} onClick={startSearchingTeam}>
+                <img src={searchIcon} alt="icon" />
+              </div>
             </div>
+            <button onClick={addTeamHandler} className={styles.addTeamButton}>add +</button>
           </div>
-          <button onClick={addTeamHandler}>add team</button>
-        </div>
 
-        <Items currentItems={teams} />
-        <div className={styles.paginateBlock}>
-          <ReactPaginate
-            breakLabel="..."
-            nextLabel=">"
-            onPageChange={handlePageClick}
-            pageRangeDisplayed={4}
-            pageCount={pageCount}
-            previousLabel="<"
-            renderOnZeroPageCount={undefined}
-            className={paginatorStyles.container}
-            activeClassName={paginatorStyles.activePageStyles}
-            pageClassName={paginatorStyles.pageStyles}
-          />
-          <ReactSelect onChangeOption={onChangeOption} />
+          {teams.length === 0 ?
+            <ItemsNotFound />
+            : <div className={styles.items}>
+              <Items currentItems={teams} />
+            </div>
+          }
+
+          <div className={styles.paginateBlock}>
+            <ReactPaginate
+              breakLabel="..."
+              nextLabel=">"
+              nextClassName={paginatorStyles.next}
+              onPageChange={handlePageClick}
+              pageRangeDisplayed={4}
+              pageCount={pageCount}
+              previousLabel="<"
+              previousClassName={paginatorStyles.previous}
+              renderOnZeroPageCount={undefined}
+              className={paginatorStyles.container}
+              activeClassName={paginatorStyles.activePageStyles}
+              pageClassName={paginatorStyles.pageStyles}
+            />
+            <ReactSelect onChangeOption={onChangeOption} pageSize={pageSize} />
+          </div>
         </div>
       </div>
     </div>

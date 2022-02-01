@@ -7,7 +7,9 @@ import { useSelector } from 'react-redux';
 import { AppRootStateType } from "../core/redux/store";
 import { AddTeam } from './main/content/Teams/AddTeams/AddTeam';
 import { TeamDescription } from "./main/content/Teams/TeamInfo/TeamDescription";
-import { UpdateTeam } from './main/content/Teams/UpdateTeam';
+import { UpdateTeam } from './main/content/Teams/AddTeams/UpdateTeam';
+import { Players } from "./main/content/Players/Players";
+
 
 
 export const PATH = {
@@ -17,6 +19,7 @@ export const PATH = {
   ADD_TEAMS: '/teams/add-new-team',
   TEAM_DESCRIPTION: '/teams/:id',
   UPDATE_TEAM: '/teams/:id/update-team',
+  PLAYERS: '/players',
 }
 
 export const ProjectRoutes = () => {
@@ -56,6 +59,14 @@ export const ProjectRoutes = () => {
           element={
             <RequireAuth isLoggedIn={isLoggedIn} >
               <UpdateTeam />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path={PATH.PLAYERS}
+          element={
+            <RequireAuth isLoggedIn={isLoggedIn} >
+              <Players />
             </RequireAuth>
           }
         />

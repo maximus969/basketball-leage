@@ -51,8 +51,13 @@ export const AddTeam: React.FC = () => {
   return (
     <div className={wrapper.mainContent}>
       <div className={styles.container}>
-        <div className={styles.heading}></div>
-        <form onSubmit={handleSubmit(onSubmit)}>
+
+        <form onSubmit={handleSubmit(onSubmit)} className={styles.formContainer}>
+
+          <div className={styles.addFileBlock}>
+            <input type='file' {...register('imageUrl')} className={styles.addFileInput} />
+          </div>
+
 
           <div className={styles.inputFormContainer}>
             <InputContainer name={'name'} register={register} label={'Name'} errors={errors} />
@@ -63,11 +68,7 @@ export const AddTeam: React.FC = () => {
               <input className={styles.cancelButton} onClick={cancelHandler} type="button" value="Cancel" />
               <input className={styles.saveButton} type="submit" value="Save" />
             </div>
-          </div>
 
-          <div>
-            <label>imgUrl</label>
-            <input type='file' {...register('imageUrl')} />
           </div>
 
         </form>

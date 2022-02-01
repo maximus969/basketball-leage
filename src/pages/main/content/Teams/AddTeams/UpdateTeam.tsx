@@ -1,11 +1,14 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { useForm } from 'react-hook-form';
-import wrapper from '../Content.module.css'
-import { updateTeamTC } from '../../../../modules/teams/teamsThunk';
+import wrapper from '../../Content.module.css'
+import styles from './AddTeam.module.css'
+import { updateTeamTC } from '../../../../../modules/teams/teamsThunk';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { AppRootStateType } from '../../../../core/redux/store';
+import { AppRootStateType } from '../../../../../core/redux/store';
+import { InputContainer } from '../../../../../ui/InputContainer/InputContainer';
+import { newData } from '../../../../../utils/imgConverter';
 
 interface IFormInputs {
   name: string
@@ -42,8 +45,8 @@ export const UpdateTeam: React.FC = () => {
   } = useForm<IFormInputs>(formOptions);
 
   const onSubmit = (data: IFormInputs) => {
-    dispatch(updateTeamTC({ ...data, id }))
-    navigate(-1)
+    newData(data.imageUrl[0], { ...data, id }, dispatch, updateTeamTC)
+
   };
 
   const cancelHandler = () => {
@@ -52,40 +55,26 @@ export const UpdateTeam: React.FC = () => {
 
   return (
     <div className={wrapper.mainContent}>
-      <div>
-        <form onSubmit={handleSubmit(onSubmit)}>
+      <div className={styles.container}>
 
-          <div>
-            <label>Name</label>
-            <input defaultValue={name} {...register('name')} />
-            {errors?.name && <span>{errors.name.message}</span>}
+        <form onSubmit={handleSubmit(onSubmit)} className={styles.formContainer}>
+
+          <div className={styles.addFileBlock}>
+            <input type='file' {...register('imageUrl')} className={styles.addFileInput} />
           </div>
 
-          <div>
-            <label>Division</label>
-            <input defaultValue={division} {...register('division')} />
-            {errors?.division && <span>{errors.division.message}</span>}
-          </div>
 
-          <div>
-            <label>Conference</label>
-            <input defaultValue={conference} {...register('conference')} />
-            {errors?.conference && <span>{errors.conference.message}</span>}
-          </div>
+          <div className={styles.inputFormContainer}>
+            <InputContainer value={name} name={'name'} register={register} label={'Name'} errors={errors} />
+            <InputContainer value={division} name={'division'} register={register} label={'Division'} errors={errors} />
+            <InputContainer value={conference} name={'conference'} register={register} label={'Conference'} errors={errors} />
+            <InputContainer value={foundationYear} name={'foundationYear'} register={register} label={'Year Of Foundation'} errors={errors} />
+            <div className={styles.buttonsContainer}>
+              <input className={styles.cancelButton} onClick={cancelHandler} type="button" value="Cancel" />
+              <input className={styles.saveButton} type="submit" value="Save" />
+            </div>
 
-          <div>
-            <label>Year Of Foundation</label>
-            <input defaultValue={foundationYear} {...register('foundationYear')} />
-            {errors?.foundationYear && <span>{errors.foundationYear.message}</span>}
           </div>
-
-          <div>
-            <label>imgUrl</label>
-            <input {...register('imageUrl')} />
-          </div>
-
-          <input type="submit" value="Save" />
-          <input onClick={cancelHandler} type="button" value="Cancel" />
 
         </form>
       </div>
