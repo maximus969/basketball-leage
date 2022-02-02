@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/hidden-project/static/css/main.a610e2bc.css",
+    "main.js": "/hidden-project/static/js/main.8e41d7b2.js",
+    "static/js/787.cfd8f164.chunk.js": "/hidden-project/static/js/787.cfd8f164.chunk.js",
+    "static/media/Group1.svg": "/hidden-project/static/media/Group1.7434e151d9e89b1a2e611f782deb6884.svg",
+    "static/media/Group.svg": "/hidden-project/static/media/Group.704f80a2123f8459e116dcf0ff2526c1.svg",
+    "static/media/AvenirLTStd-Roman.otf": "/hidden-project/static/media/AvenirLTStd-Roman.0bfb049d9455e81fd1da.otf",
+    "static/media/illustration.svg": "/hidden-project/static/media/illustration.9c73a79680ff3c977325d98bc8e8308c.svg",
+    "static/media/add_a_photo_24px_rounded.svg": "/hidden-project/static/media/add_a_photo_24px_rounded.275e5331476fc26ba89f.svg",
+    "static/media/closeEyeRounded.svg": "/hidden-project/static/media/closeEyeRounded.fbc9eb14d584b503e0f1b1721b48e5c7.svg",
+    "static/media/teams.svg": "/hidden-project/static/media/teams.24631c77667e84a922f6e3803358a702.svg",
+    "static/media/logout.svg": "/hidden-project/static/media/logout.3985f1086f5637537141db833d1d06a7.svg",
+    "static/media/search_rounded.svg": "/hidden-project/static/media/search_rounded.2f47879f913025df368cac819d4b165c.svg",
+    "static/media/profileIcon.svg": "/hidden-project/static/media/profileIcon.fd953c72109dbe946193b4b715cd1938.svg",
+    "static/media/eyeRounded.svg": "/hidden-project/static/media/eyeRounded.5114d1e1163388b816eed03f1b33378c.svg",
+    "static/media/delete_rounded.svg": "/hidden-project/static/media/delete_rounded.40be71456be8652b1fd1e36750ef3b11.svg",
+    "index.html": "/hidden-project/index.html",
+    "static/media/players.svg": "/hidden-project/static/media/players.46bbc5c5dc9c5861ce9aa753e6e9a37c.svg",
+    "static/media/create_rounded.svg": "/hidden-project/static/media/create_rounded.0224b70a85745d88e24406ea9b150417.svg",
+    "main.a610e2bc.css.map": "/hidden-project/static/css/main.a610e2bc.css.map",
+    "main.8e41d7b2.js.map": "/hidden-project/static/js/main.8e41d7b2.js.map",
+    "787.cfd8f164.chunk.js.map": "/hidden-project/static/js/787.cfd8f164.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a610e2bc.css",
+    "static/js/main.8e41d7b2.js"
+  ]
+}
