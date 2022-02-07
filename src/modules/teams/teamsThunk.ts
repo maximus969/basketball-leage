@@ -64,6 +64,7 @@ export const updateTeamTC = (data: TeamDto) => (dispatch: Dispatch) => {
     .then((res) => {
       if (res.request.status === 200) {
         dispatch(setTeamInfo(res.data));
+        alert("Success");
       }
     })
     .catch((error) => {

@@ -4,11 +4,13 @@ import { useForm } from 'react-hook-form';
 import wrapper from '../../Content.module.css'
 import styles from './AddTeam.module.css'
 import { addTeamTC } from '../../../../../modules/teams/teamsThunk';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { PATH } from '../../../../routes';
 import { newData } from './../../../../../utils/imgConverter';
 import { InputContainer } from '../../../../../ui/InputContainer/InputContainer';
+import { Button } from '../../../../../ui/Button/Button';
+import { AppRootStateType } from '../../../../../core/redux/store';
 
 
 interface IFormInputs {
@@ -22,6 +24,8 @@ interface IFormInputs {
 export const AddTeam: React.FC = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const isLoading = useSelector<AppRootStateType, boolean>(state => state.app.status)
+
   const validationSchema = Yup.object().shape({
     name: Yup.string()
       .required('Name is required'),
@@ -60,13 +64,13 @@ export const AddTeam: React.FC = () => {
 
 
           <div className={styles.inputFormContainer}>
-            <InputContainer name={'name'} register={register} label={'Name'} errors={errors} />
-            <InputContainer name={'division'} register={register} label={'Division'} errors={errors} />
-            <InputContainer name={'conference'} register={register} label={'Conference'} errors={errors} />
-            <InputContainer name={'foundationYear'} register={register} label={'Year Of Foundation'} errors={errors} />
+            <InputContainer name={'name'} register={register} label={'Name'} errors={errors.name?.message} />
+            <InputContainer name={'division'} register={register} label={'Division'} errors={errors.division?.message} />
+            <InputContainer name={'conference'} register={register} label={'Conference'} errors={errors.conference?.message} />
+            <InputContainer name={'foundationYear'} register={register} label={'Year Of Foundation'} errors={errors.foundationYear?.message} />
             <div className={styles.buttonsContainer}>
-              <input className={styles.cancelButton} onClick={cancelHandler} type="button" value="Cancel" />
-              <input className={styles.saveButton} type="submit" value="Save" />
+              <Button name={'Cancel'} onClickHandler={cancelHandler} width={'45%'} disabled={isLoading} />
+              <Button name={'Save'} width={'45%'} type={'submit'} disabled={isLoading} />
             </div>
 
           </div>

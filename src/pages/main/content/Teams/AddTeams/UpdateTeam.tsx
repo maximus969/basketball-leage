@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { AppRootStateType } from '../../../../../core/redux/store';
 import { InputContainer } from '../../../../../ui/InputContainer/InputContainer';
 import { newData } from '../../../../../utils/imgConverter';
+import { Button } from '../../../../../ui/Button/Button';
 
 interface IFormInputs {
   name: string
@@ -21,6 +22,7 @@ interface IFormInputs {
 export const UpdateTeam: React.FC = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const isLoading = useSelector<AppRootStateType, boolean>(state => state.app.status)
   const id = useSelector<AppRootStateType, number>(state => state.team.id)
   const name = useSelector<AppRootStateType, string>(state => state.team.name)
   const conference = useSelector<AppRootStateType, string>(state => state.team.conference)
@@ -65,13 +67,13 @@ export const UpdateTeam: React.FC = () => {
 
 
           <div className={styles.inputFormContainer}>
-            <InputContainer value={name} name={'name'} register={register} label={'Name'} errors={errors} />
-            <InputContainer value={division} name={'division'} register={register} label={'Division'} errors={errors} />
-            <InputContainer value={conference} name={'conference'} register={register} label={'Conference'} errors={errors} />
-            <InputContainer value={foundationYear} name={'foundationYear'} register={register} label={'Year Of Foundation'} errors={errors} />
+            <InputContainer value={name} name={'name'} register={register} label={'Name'} errors={errors.name?.message} />
+            <InputContainer value={division} name={'division'} register={register} label={'Division'} errors={errors.division?.message} />
+            <InputContainer value={conference} name={'conference'} register={register} label={'Conference'} errors={errors.conference?.message} />
+            <InputContainer value={foundationYear} name={'foundationYear'} register={register} label={'Year Of Foundation'} errors={errors.foundationYear?.message} />
             <div className={styles.buttonsContainer}>
-              <input className={styles.cancelButton} onClick={cancelHandler} type="button" value="Cancel" />
-              <input className={styles.saveButton} type="submit" value="Save" />
+              <Button name={'Cancel'} width={'45%'} onClickHandler={cancelHandler} disabled={isLoading} />
+              <Button name={'Save'} width={'45%'} type={'submit'} disabled={isLoading} />
             </div>
 
           </div>

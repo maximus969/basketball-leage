@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
@@ -8,9 +8,9 @@ import { registerTC } from "../../modules/auth/authorizationThunk";
 import styles from './Login.module.css'
 import { Navigate, NavLink } from "react-router-dom";
 import { PATH } from "../routes";
-import eyeRoundedIcon from '../../assets/icon/eyeRounded.svg'
-import closeEyeRoundedIcon from '../../assets/icon/closeEyeRounded.svg'
-import iconFont from '../../assets/icon/Group1.svg'
+import { ReactComponent as IconFont } from '../../assets/icon/Group1.svg'
+import { InputContainer } from "../../ui/InputContainer/InputContainer";
+import { Button } from "../../ui/Button/Button";
 
 interface IFormInputs {
   userName: string
@@ -24,8 +24,7 @@ export const Registration: React.FC = () => {
   const dispatch = useDispatch()
   const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.auth.isLoggedIn)
   const isLoading = useSelector<AppRootStateType, boolean>(state => state.app.status)
-  const [showPassword, setShowPassword] = useState(false)
-  const [showRepeatPassword, setShowRepeatPassword] = useState(false)
+
   const validationSchema = Yup.object().shape({
     userName: Yup.string()
       .required('Name is required'),
@@ -60,59 +59,40 @@ export const Registration: React.FC = () => {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.container}>
-        <h2 className={styles.title}>Sign Up</h2>
-        <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-          <div className={styles.inputContainer}>
-            <label className={styles.label}>Name</label>
-            <input className={styles.input} {...register('userName')} />
-            {errors?.userName && <span className={styles.error}>{errors.userName.message}</span>}
-          </div>
-          <div className={styles.inputContainer}>
-            <label className={styles.label}>Login</label>
-            <input className={styles.input} {...register('login')} />
-            {errors?.login && <span className={styles.error}>{errors.login.message}</span>}
-          </div>
 
-          <div className={styles.inputContainer}>
-            <label className={styles.label}>Password</label>
-            <div className={styles.inputStyles}>
-              <input className={styles.input} type={showPassword ? 'text' : 'password'} {...register('password')} />
-              <div className={styles.passwordIcon} onClick={() => setShowPassword(!showPassword)}>
-                <img src={showPassword ? eyeRoundedIcon : closeEyeRoundedIcon} alt="icon" />
+      <div className={styles.authContainer}>
+        <div className={styles.registerBlock}>
+          <h2 className={styles.title}>Sign Up</h2>
+          <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+            <InputContainer name={'userName'} register={register} label={'Name'} errors={errors.userName?.message} />
+            <InputContainer name={'login'} register={register} label={'Login'} errors={errors.login?.message} />
+            <InputContainer name={'password'} register={register} label={'Password'} errors={errors.password?.message} type={'password'} />
+            <InputContainer name={'confirmPassword'} register={register} label={'Enter your password again'} errors={errors.password?.message} type={'password'} />
+            <div className={styles.checkboxContainer}>
+              <div className={styles.checkboxBlock}>
+                <input type='checkbox' {...register('acceptTerms')} className={styles.checkbox} />
+                <span className={styles.checkboxText}>I accept the agreement</span>
               </div>
+              {errors?.acceptTerms && <span className={styles.errorMessage}>{errors.acceptTerms.message}</span>}
             </div>
-            {errors?.password && <span className={styles.error}>{errors.password.message}</span>}
-          </div>
 
-          <div className={styles.inputContainer}>
-            <label className={styles.label}>Enter your password again</label>
-            <div className={styles.inputStyles}>
-              <input className={styles.input} type={showRepeatPassword ? 'text' : 'password'} {...register('confirmPassword')} />
-              <div className={styles.passwordIcon} onClick={() => setShowRepeatPassword(!showRepeatPassword)}>
-                <img src={showRepeatPassword ? eyeRoundedIcon : closeEyeRoundedIcon} alt="icon" />
-              </div>
+            <div className={styles.buttonContainer}>
+              <Button name={'Sign Up'} type={'submit'} disabled={isLoading} />
             </div>
-            {errors?.confirmPassword && <span className={styles.error}>{errors.confirmPassword.message}</span>}
-          </div>
 
-          <div>
-            <input type='checkbox' {...register('acceptTerms')} />
-            <span>I accept the agreement</span>
-            {errors?.acceptTerms && <span className={styles.error}>{errors.acceptTerms.message}</span>}
-          </div>
-          <input className={styles.input} disabled={isLoading} type="submit" value="Sign Up" />
+            <div className={styles.authSign}>
+              <span className={styles.spanMember}>Already a member?</span>
+              <NavLink to={PATH.LOGIN} className={styles.pathLink}>Sign In</NavLink>
+            </div>
 
-          <div className={styles.authSign}>
-            <span className={styles.spanMember}>Already a member?</span>
-            <NavLink to={PATH.LOGIN} className={styles.pathLink}>Sign In</NavLink>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
 
-      <div className={styles.fonts}>
-        <img src={iconFont} alt="icon" />
+      <div className={styles.imageContainer}>
+        <IconFont className={styles.imageBlock} />
       </div>
+
     </div>
   );
 }

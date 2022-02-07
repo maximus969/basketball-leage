@@ -6,17 +6,39 @@
 }
 
 .label {
-  font-size: 12px;
-  line-height: 22px;
+  font-size: 14px;
+  line-height: 24px;
   text-align: left;
   display: inline;
   margin-bottom: 0;
   color: var(--label-color);
 }
 
+.inputStyles {
+  width: 100%;
+  height: 45%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0px;
+  position: relative;
+}
+
+.passwordIcon {
+  position: absolute;
+  right: 12px;
+  display: flex;
+}
+
 .errorMessage {
   color: #ff768e;
   margin: 0;
   font-size: 12px;
-  line-height: 24px;
+  line-height: 19px;
+  white-space: nowrap;
+}
+
+.errorMessage::before {
+  display: inline;
 }

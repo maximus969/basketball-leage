@@ -11,10 +11,10 @@ import { PATH } from '../../../../routes';
 import { useState } from 'react';
 import searchIcon from '../../../../../assets/icon/search_rounded.svg'
 import { BoxPreview } from '../../../../../ui/BoxPreview/BoxPreview';
-import ReactPaginate from 'react-paginate';
 import { ReactSelect } from '../../../../../ui/ReactSelect/ReactSelect';
-import paginatorStyles from '../../../../../ui/Paginator/Paginator.module.css'
 import { ItemsNotFound } from '../../../../../ui/ItemsNotFound/ItemsNotFound';
+import { Paginator } from '../../../../../ui/Paginator/Paginator';
+import { Button } from '../../../../../ui/Button/Button';
 
 
 export const Teams: React.FC = () => {
@@ -42,21 +42,20 @@ export const Teams: React.FC = () => {
   }
 
   // Paginator + Selector
-  const handlePageClick = (event: any) => {
+  const handlePageClick = (event: { selected: number }) => {
     const newCurrentPage = event.selected + 1
     dispatch(getTeamsTC(searchTeam, newCurrentPage, pageSize))
   };
-  const pageCount = Math.ceil(totalElementCount / pageSize)
 
   const onChangeOption = (value: number) => {
     dispatch(getTeamsTC(searchTeam, 1, value))
   }
 
-  const Items = ({ currentItems }: any) => {
+  const Items = ({ currentItems }: { currentItems: TeamDto[] }) => {
     return (
       <>
         {currentItems &&
-          currentItems.map((item: any) => {
+          currentItems.map((item: TeamDto) => {
             const showTeamInfo = () => {
               navigate(`${item.id}`)
             }
@@ -73,6 +72,7 @@ export const Teams: React.FC = () => {
     <div className={wrapper.mainContent}>
       <div className={styles.mainBlock}>
         <div className={styles.block}>
+
           <div className={styles.searchBlock}>
             <div className={styles.inputStyles}>
               <input className={styles.input} onChange={onSearchChange} placeholder='Search...' />
@@ -80,7 +80,7 @@ export const Teams: React.FC = () => {
                 <img src={searchIcon} alt="icon" />
               </div>
             </div>
-            <button onClick={addTeamHandler} className={styles.addTeamButton}>add +</button>
+            <Button name={'Add +'} onClickHandler={addTeamHandler} width={'104px'} />
           </div>
 
           {teams.length === 0 ?
@@ -91,22 +91,10 @@ export const Teams: React.FC = () => {
           }
 
           <div className={styles.paginateBlock}>
-            <ReactPaginate
-              breakLabel="..."
-              nextLabel=">"
-              nextClassName={paginatorStyles.next}
-              onPageChange={handlePageClick}
-              pageRangeDisplayed={4}
-              pageCount={pageCount}
-              previousLabel="<"
-              previousClassName={paginatorStyles.previous}
-              renderOnZeroPageCount={undefined}
-              className={paginatorStyles.container}
-              activeClassName={paginatorStyles.activePageStyles}
-              pageClassName={paginatorStyles.pageStyles}
-            />
+            <Paginator pageSize={pageSize} totalElementCount={totalElementCount} handlePageClick={handlePageClick} />
             <ReactSelect onChangeOption={onChangeOption} pageSize={pageSize} />
           </div>
+
         </div>
       </div>
     </div>
