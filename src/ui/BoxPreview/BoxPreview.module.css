@@ -5,6 +5,11 @@
   height: 48%;
   background: linear-gradient(121.57deg, #707070 1.62%, #393939 81.02%);
   border-radius: 4px;
+  margin-right: 2%;
+}
+
+.container:nth-child(3n) {
+  margin-right: 0;
 }
 
 .imgBlock {
@@ -46,4 +51,26 @@
   text-align: center;
   color: var(--second-text-color);
   margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    width: 49%;
+    height: 32%;
+  }
+  .container:nth-child(2n + 1) {
+    margin-right: 2%;
+  }
+  .container:nth-child(2n) {
+    margin-right: 0;
+  }
+  .imgBlock {
+    height: 60%;
+  }
+  .img {
+    height: 50%;
+  }
+  .textBlock {
+    height: 40%;
+  }
 }

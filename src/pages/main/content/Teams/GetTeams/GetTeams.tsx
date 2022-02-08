@@ -80,7 +80,9 @@ export const Teams: React.FC = () => {
                 <img src={searchIcon} alt="icon" />
               </div>
             </div>
-            <Button name={'Add +'} onClickHandler={addTeamHandler} width={'104px'} />
+            <div className={styles.buttonContainer}>
+              <Button name={'Add +'} onClickHandler={addTeamHandler} />
+            </div>
           </div>
 
           {teams.length === 0 ?

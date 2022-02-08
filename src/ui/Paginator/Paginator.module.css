@@ -38,3 +38,17 @@
 .next {
   margin-left: 10px;
 }
+
+@media screen and (max-width: 480px) {
+  .container {
+    height: 28px;
+  }
+  .activePageStyles {
+    width: 28px;
+    height: 28px;
+  }
+  .pageStyles {
+    width: 28px;
+    height: 28px;
+  }
+}

@@ -25,6 +25,7 @@
 
 .inputStyles {
   width: 32%;
+  height: 100%;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -53,14 +54,20 @@
   color: #707070;
 }
 
+.buttonContainer {
+  width: 10%;
+  height: 100%;
+}
+
 .items {
   height: calc(100% - 144px);
   overflow: auto;
   margin-top: 72px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: space-between;
 }
 
 .paginateBlock {
@@ -69,4 +76,40 @@
   justify-content: space-between;
   align-items: center;
   height: 40px;
+}
+
+@media screen and (max-width: 768px) {
+  .mainBlock {
+    width: 95%;
+  }
+  .block {
+    height: 98%;
+  }
+  .searchBlock {
+    width: 96%;
+    height: 11%;
+    flex-direction: column;
+    margin-bottom: 5%;
+  }
+  .inputStyles {
+    width: 100%;
+    height: 40%;
+  }
+  .buttonContainer {
+    width: 100%;
+    height: 40%;
+  }
+  .items {
+    height: 80%;
+    margin-top: 18%;
+  }
+  .paginateBlock {
+    height: 28px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .items {
+    margin-top: 23%;
+  }
 }

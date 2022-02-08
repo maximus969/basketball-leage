@@ -1,9 +1,10 @@
 import Select from 'react-select';
+import styles from './ReactSelect.module.css'
 
 const options = [
   { value: 1, label: '1' },
-  { value: 3, label: '3' },
-  { value: 6, label: '6' },
+  { value: 2, label: '2' },
+  { value: 5, label: '5' },
 ]
 
 export const ReactSelect = ({ onChangeOption, pageSize }: ReactSelectPropsType) => {
