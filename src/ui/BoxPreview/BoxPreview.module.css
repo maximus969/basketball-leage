@@ -6,6 +6,7 @@
   background: linear-gradient(121.57deg, #707070 1.62%, #393939 81.02%);
   border-radius: 4px;
   margin-right: 2%;
+  margin-bottom: 2%;
 }
 
 .container:nth-child(3n) {
@@ -21,6 +22,7 @@
 
 .img {
   width: 50%;
+  height: 50%;
 }
 
 .textBlock {

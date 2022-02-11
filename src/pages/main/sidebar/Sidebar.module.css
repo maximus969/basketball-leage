@@ -9,6 +9,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 .sidebarContainer {
@@ -19,6 +20,11 @@
   justify-content: space-between;
   align-items: center;
   align-content: center;
+}
+
+.profileData,
+.line {
+  display: none;
 }
 
 .navBlock {
@@ -40,11 +46,11 @@
 }
 
 .logoutIcon * {
-  fill: #ff768e;
+  fill: var(--logout-color);
 }
 
 .activeIcon * {
-  fill: red;
+  fill: var(--active-nav-color);
 }
 
 .text {
@@ -53,21 +59,151 @@
   color: var(--second-text-color);
 }
 .signOutText {
-  color: #ff768e;
+  color: var(--logout-color);
+}
+
+.name {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 24px;
+  color: var(--navbar-login-name);
 }
 
 .activeNavTab {
   font-size: 18px;
   line-height: 150%;
-  color: red;
+  color: var(--active-nav-color);
 }
 
 .navTab {
   text-decoration: none;
 }
 
+.menuToggle {
+  display: none;
+}
+.menuLabel {
+  display: none;
+}
+
 @media screen and (max-width: 768px) {
   .sidebar {
-    display: none;
+    width: 30%;
+    position: fixed;
+    z-index: 1;
+    visibility: hidden;
+    left: -30%;
+    transition-duration: 0.25s;
+    justify-content: normal;
+  }
+  .line {
+    display: block;
+    width: 100%;
+    height: 0.5px;
+    background: var(--border-color);
+  }
+  .profileData {
+    width: 90%;
+    height: 10%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .profileIcon {
+    height: 50%;
+    margin-right: 8px;
+  }
+  .sidebarContainer {
+    height: 90%;
+    margin: 5% 0;
+    align-items: flex-start;
+  }
+  .navBlock {
+    height: 10%;
+  }
+  .itemsBlock {
+    flex-direction: row;
+  }
+  .icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 6px;
+  }
+  .text {
+    font-size: 13px;
+    line-height: 18px;
+  }
+  .signOutText {
+    color: var(--logout-color);
+  }
+  .activeNavTab {
+    font-size: 13px;
+    line-height: 18px;
+    color: var(--active-nav-color);
+  }
+  .menuLabel {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 3%;
+    left: 3%;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    z-index: 1;
+  }
+
+  .menuLabel > span,
+  .menuLabel > span::before,
+  .menuLabel > span::after {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #dadada;
+    transition-duration: 0.25s;
+  }
+  .menuLabel > span::before {
+    content: "";
+    top: -8px;
+  }
+  .menuLabel > span::after {
+    content: "";
+    top: 8px;
+  }
+  .menuToggle {
+    /* opacity: 0; */
+    position: absolute;
+    top: 0;
+  }
+
+  .menuToggle:checked ~ .menuLabel > span {
+    transform: rotate(45deg);
+  }
+  .menuToggle:checked ~ .menuLabel > span::before {
+    top: 0;
+    transform: rotate(0deg);
+  }
+  .menuToggle:checked ~ .menuLabel > span::after {
+    top: 0;
+    transform: rotate(90deg);
+  }
+  .menuToggle:checked ~ .sidebar {
+    visibility: visible;
+    left: 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .menuLabel {
+    top: 2.5%;
+  }
+  .sidebar {
+    width: 50%;
+    left: -50%;
+  }
+  .navBlock {
+    height: 12%;
   }
 }

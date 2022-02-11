@@ -14,7 +14,7 @@ const initialState = {
   ],
   count: 0,
   page: 1,
-  size: 1,
+  size: 6,
 };
 
 const slice = createSlice({

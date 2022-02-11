@@ -7,10 +7,12 @@ import { addTeamTC } from '../../../../../modules/teams/teamsThunk';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { PATH } from '../../../../routes';
-import { newData } from './../../../../../utils/imgConverter';
+import { imageConverter } from './../../../../../utils/imgConverter';
 import { InputContainer } from '../../../../../ui/InputContainer/InputContainer';
 import { Button } from '../../../../../ui/Button/Button';
 import { AppRootStateType } from '../../../../../core/redux/store';
+import addPhotoImage from '../../../../../assets/icon/add_a_photo_24px_rounded.svg'
+import { useState } from 'react';
 
 
 interface IFormInputs {
@@ -25,6 +27,7 @@ export const AddTeam: React.FC = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const isLoading = useSelector<AppRootStateType, boolean>(state => state.app.status)
+  const [newImageUrl, setNewImageUrl] = useState('')
 
   const validationSchema = Yup.object().shape({
     name: Yup.string()
@@ -35,6 +38,11 @@ export const AddTeam: React.FC = () => {
       .required('Conference is required'),
     foundationYear: Yup.string()
       .required('Year Of Foundation is required'),
+    imageUrl: Yup.mixed()
+      .required('Image is required')
+      .test('length', 'Image is required', (value) => {
+        return value && value.length > 0
+      })
   });
   const formOptions = { resolver: yupResolver(validationSchema) };
 
@@ -45,11 +53,17 @@ export const AddTeam: React.FC = () => {
   } = useForm<IFormInputs>(formOptions);
 
   const onSubmit = (data: IFormInputs) => {
-    newData(data.imageUrl[0], data, dispatch, addTeamTC)
+    dispatch(addTeamTC({ ...data, imageUrl: newImageUrl }));
   };
 
   const cancelHandler = () => {
     navigate(PATH.TEAMS)
+  }
+
+  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.currentTarget && e.currentTarget.files) {
+      imageConverter(e.currentTarget.files[0], setNewImageUrl)
+    }
   }
 
   return (
@@ -58,10 +72,12 @@ export const AddTeam: React.FC = () => {
 
         <form onSubmit={handleSubmit(onSubmit)} className={styles.formContainer}>
 
-          <div className={styles.addFileBlock}>
-            <input type='file' {...register('imageUrl')} className={styles.addFileInput} />
+          <div className={styles.addFileBlock} style={{
+            backgroundImage: `url(${addPhotoImage}), url(${newImageUrl})`
+          }}>
+            <input type='file' {...register('imageUrl')} className={styles.addFileInput}
+              onChange={onChangeHandler} />
           </div>
-
 
           <div className={styles.inputFormContainer}>
             <InputContainer name={'name'} register={register} label={'Name'} errors={errors.name?.message} />
@@ -76,7 +92,7 @@ export const AddTeam: React.FC = () => {
           </div>
 
         </form>
-      </div>
-    </div>
+      </div >
+    </div >
   )
 }

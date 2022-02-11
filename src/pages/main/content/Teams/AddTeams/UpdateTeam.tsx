@@ -8,8 +8,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { AppRootStateType } from '../../../../../core/redux/store';
 import { InputContainer } from '../../../../../ui/InputContainer/InputContainer';
-import { newData } from '../../../../../utils/imgConverter';
+import { imageConverter } from '../../../../../utils/imgConverter';
 import { Button } from '../../../../../ui/Button/Button';
+import addPhotoImage from '../../../../../assets/icon/add_a_photo_24px_rounded.svg'
+import { useState } from 'react';
 
 interface IFormInputs {
   name: string
@@ -28,6 +30,9 @@ export const UpdateTeam: React.FC = () => {
   const conference = useSelector<AppRootStateType, string>(state => state.team.conference)
   const division = useSelector<AppRootStateType, string>(state => state.team.division)
   const foundationYear = useSelector<AppRootStateType, number>(state => state.team.foundationYear)
+  const imageUrl = useSelector<AppRootStateType, string>(state => state.team.imageUrl)
+  const [newImageUrl, setNewImageUrl] = useState(imageUrl)
+
   const validationSchema = Yup.object().shape({
     name: Yup.string()
       .required('Name is required'),
@@ -37,6 +42,11 @@ export const UpdateTeam: React.FC = () => {
       .required('Conference is required'),
     foundationYear: Yup.string()
       .required('Year Of Foundation is required'),
+    imageUrl: Yup.mixed()
+      .required('Image is required')
+      .test('length', 'Image is required', (value) => {
+        return value && value.length > 0
+      })
   });
   const formOptions = { resolver: yupResolver(validationSchema) };
 
@@ -47,12 +57,18 @@ export const UpdateTeam: React.FC = () => {
   } = useForm<IFormInputs>(formOptions);
 
   const onSubmit = (data: IFormInputs) => {
-    newData(data.imageUrl[0], { ...data, id }, dispatch, updateTeamTC)
+    dispatch(updateTeamTC({ ...data, id, imageUrl: newImageUrl }));
 
   };
 
   const cancelHandler = () => {
     navigate(-1)
+  }
+
+  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.currentTarget && e.currentTarget.files) {
+      imageConverter(e.currentTarget.files[0], setNewImageUrl)
+    }
   }
 
   return (
@@ -61,8 +77,12 @@ export const UpdateTeam: React.FC = () => {
 
         <form onSubmit={handleSubmit(onSubmit)} className={styles.formContainer}>
 
-          <div className={styles.addFileBlock}>
-            <input type='file' {...register('imageUrl')} className={styles.addFileInput} />
+          <div className={styles.addFileBlock} style={{
+            backgroundImage: `url(${addPhotoImage}),
+            url(${newImageUrl})`
+          }} >
+            <input type='file' {...register('imageUrl')} className={styles.addFileInput}
+              onChange={onChangeHandler} />
           </div>
 
 

@@ -90,7 +90,7 @@
 }
 
 .deleteIcon * {
-  fill: red;
+  fill: var(--active-nav-color);
 }
 
 /* table styles */
@@ -238,7 +238,7 @@
     margin-bottom: 5%;
   }
   .mainContainer {
-    background: #f6f6f6;
+    background: var(--second-bg-color);
     height: 140vh;
   }
   .tableWrapper {

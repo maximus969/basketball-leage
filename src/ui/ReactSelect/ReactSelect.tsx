@@ -1,19 +1,27 @@
 import Select from 'react-select';
 import styles from './ReactSelect.module.css'
+import { useState } from 'react';
 
 const options = [
-  { value: 1, label: '1' },
-  { value: 2, label: '2' },
-  { value: 5, label: '5' },
+  { value: 6, label: '6' },
+  { value: 12, label: '12' },
+  { value: 24, label: '24' },
 ]
 
 export const ReactSelect = ({ onChangeOption, pageSize }: ReactSelectPropsType) => {
 
   const index = options.findIndex(el => el.value === pageSize)
+  const [deviceHeight, setDeviceHeight] = useState('')
 
   const onChangeCallback = (e: any) => {
     onChangeOption(e.value)
   }
+
+  window.addEventListener('resize', function () {
+    console.log(window.innerWidth);
+    if (window.innerWidth > 768 && deviceHeight !== '40px') setDeviceHeight('40px')
+    else if (window.innerWidth <= 768 && deviceHeight !== '28px') setDeviceHeight('28px')
+  });
 
   const customStyles = {
     option: (provided: any, state: any) => ({
@@ -31,26 +39,19 @@ export const ReactSelect = ({ onChangeOption, pageSize }: ReactSelectPropsType) 
           : undefined,
     }),
     control: () => ({
-      width: '70px',
-      height: '40px',
+      width: '77px',
+      height: deviceHeight,
       display: 'flex',
-      'flex-wrap': 'wrap',
       background: '#ffffff',
       border: '0.5px solid #d1d1d1',
-      'border-radius': '4px',
-      'box-sizing': 'border-box',
-      'align-items': 'center',
-      'justify-content': 'space-between',
-      'box-shadow': '0.5px solid #d1d1d1'
-
-
+      borderRadius: '4px',
     }),
     singleValue: (provided: any, state: any) => {
       const opacity = state.isDisabled ? 0.5 : 1;
       const transition = 'opacity 300ms';
 
       return { ...provided, opacity, transition };
-    }
+    },
   }
 
   return (

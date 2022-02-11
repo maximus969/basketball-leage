@@ -11,7 +11,7 @@
 .formContainer {
   display: flex;
   width: 100%;
-  height: 90%;
+  height: 85%;
   background-color: var(--primary-bg-color);
   margin-top: 4%;
   border-radius: 10px 10px 10px 10px;
@@ -21,13 +21,12 @@
   width: 30%;
   height: 50%;
   margin-left: 6%;
-  background: var(--second-text-color);
+  background-color: var(--second-text-color);
   border-radius: 10px;
   opacity: 0.5;
-  background-image: url("../../../../../assets/icon/add_a_photo_24px_rounded.svg");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 20%;
+  background-size: 25%, contain;
 }
 
 .addFileInput {
@@ -41,7 +40,7 @@
 
 .inputFormContainer {
   width: 35%;
-  height: 115%;
+  height: 100%;
   margin-left: 12%;
 }
 

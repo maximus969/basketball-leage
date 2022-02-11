@@ -1,6 +1,7 @@
 :root {
   --primary-bg-color: #ffffff;
   --second-bg-color: #f6f6f6;
+  --auth-image-bg: #f5fbff;
 
   --login-title-text: #344472;
   --label-color: #707070;
@@ -9,4 +10,9 @@
 
   --primary-text-color: #ffffff;
   --second-text-color: #9c9c9c;
+
+  --logout-color: #ff768e;
+  --active-nav-color: #e4163a;
+
+  --border-color: #9c9c9c;
 }

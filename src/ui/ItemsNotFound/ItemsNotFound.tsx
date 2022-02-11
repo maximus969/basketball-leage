@@ -1,5 +1,4 @@
 import styles from './ItemsNotFound.module.css'
-// import noTeamsIcon from '../../assets/icon/illustration.svg'
 import { ReactComponent as NoTeamsIcon } from '../../assets/icon/illustration.svg'
 
 export const ItemsNotFound = () => {

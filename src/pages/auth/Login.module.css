@@ -1,3 +1,5 @@
+@import "../../assets/theme/theme.css";
+
 .wrapper {
   display: flex;
   flex-direction: row;
@@ -6,7 +8,7 @@
 .authContainer {
   width: 40%;
   height: 100vh;
-  background: #ffffff;
+  background: var(--primary-bg-color);
   display: flex;
   align-content: center;
   justify-content: center;
@@ -16,7 +18,7 @@
 .imageContainer {
   width: 60%;
   height: 100vh;
-  background: #f5fbff;
+  background: var(--auth-image-bg);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,7 +42,7 @@
   font-size: 36px;
   line-height: 49px;
   font-weight: normal;
-  color: #344472;
+  color: var(--login-title-text);
   margin: 0;
   margin-bottom: 30px;
 }
@@ -71,11 +73,11 @@
   margin: 10px 0;
   font-size: 14px;
   line-height: 24px;
-  color: #707070;
+  color: var(--label-color);
 }
 
 .pathLink {
-  color: red;
+  color: var(--active-nav-color);
   margin-left: 5px;
 }
 
@@ -100,11 +102,11 @@ input[type="checkbox"] {
 .checkboxText {
   font-size: 14px;
   line-height: 24px;
-  color: #707070;
+  color: var(--label-color);
 }
 
 .errorMessage {
-  color: #ff768e;
+  color: var(--logout-color);
   margin: 0;
   font-size: 12px;
   line-height: 19px;
