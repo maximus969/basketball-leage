@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { PlayerDtoPageResult } from "../../api/players";
+import { PlayerDtoPageResult } from "../../api/dto/IPlayer";
 
 const initialState = {
   data: [

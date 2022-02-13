@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { LoginResponseType } from "../../api/auth";
+import { LoginResponseType } from "../../api/dto/IAuthorization";
 
 const initialState = {
   isLoggedIn: false,

@@ -22,6 +22,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 .pageStyles {
   width: 40px;
@@ -29,14 +30,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 .previous {
   margin-right: 10px;
+  cursor: pointer;
 }
 
 .next {
   margin-left: 10px;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 480px) {

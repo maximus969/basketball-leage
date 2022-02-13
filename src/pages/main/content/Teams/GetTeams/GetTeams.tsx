@@ -5,7 +5,7 @@ import styles from './GetTeams.module.css'
 import { getTeamsTC } from '../../../../../modules/teams/teamsThunk';
 import { useSelector } from 'react-redux';
 import { AppRootStateType } from '../../../../../core/redux/store';
-import { TeamDto } from '../../../../../api/teams';
+import { TeamDto } from '../../../../../api/dto/ITeam';
 import { useNavigate } from 'react-router-dom';
 import { PATH } from '../../../../routes';
 import { useState } from 'react';

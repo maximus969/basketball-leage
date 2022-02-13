@@ -8,8 +8,8 @@ import { AppRootStateType } from '../../../../../core/redux/store';
 import { ReactComponent as DeleteIcon } from '../../../../../assets/icon/delete_rounded.svg'
 import updateIcon from '../../../../../assets/icon/create_rounded.svg'
 import { getPlayersTC } from '../../../../../modules/players/playersThunk';
-import { PlayerDto } from '../../../../../api/players';
-import { ageCounter } from '../../../../../utils/ageCounter';
+import { PlayerDto } from '../../../../../api/dto/IPlayer';
+import { countAge } from '../../../../../utils/countAge';
 
 export const TeamDescription: React.FC = () => {
   const { id } = useParams()
@@ -42,10 +42,10 @@ export const TeamDescription: React.FC = () => {
         <div className={styles.container}>
           <div className={styles.heading}>
             <div className={styles.iconsContainer}>
-              <div onClick={updateTeam}>
+              <div onClick={updateTeam} className={styles.iconsStyles}>
                 <img src={updateIcon} alt='update' />
               </div>
-              <div onClick={deleteTeam}>
+              <div onClick={deleteTeam} className={styles.iconsStyles}>
                 <DeleteIcon className={styles.deleteIcon} />
               </div>
             </div>
@@ -113,7 +113,7 @@ export const TeamDescription: React.FC = () => {
                     </td>
                     <td className={styles.bodyCell}> {player.height} cm</td>
                     <td className={styles.bodyCell}> {player.weight} kg</td>
-                    <td className={styles.bodyCell}> {ageCounter(player.birthday)} </td>
+                    <td className={styles.bodyCell}> {countAge(player.birthday)} </td>
                   </tr>
                 );
               })}

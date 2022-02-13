@@ -3,7 +3,7 @@ import {
   authAPI,
   LoginRequestData,
   RegistrationRequestData,
-} from "../../api/auth";
+} from "../../api/dto/IAuthorization";
 import { setAppStatus } from "../app/appSlice";
 import { setUserData } from "./authorizationSlice";
 import { saveState } from "./../../utils/localStorage";

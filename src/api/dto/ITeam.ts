@@ -1,4 +1,4 @@
-import { fetchAPI } from "./baseRequest";
+import { fetchAPI } from "../baseRequest";
 
 export const teamsAPI = {
   getTeams(name: string, page: number, pageSize: number) {

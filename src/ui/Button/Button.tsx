@@ -1,6 +1,6 @@
 import styles from './Button.module.css'
 
-export const Button = ({ name, onClickHandler, disabled, width, type }: ButtonPropsType) => {
+export const Button: React.FC<ButtonPropsType> = ({ name, onClickHandler, disabled, width, type }) => {
 
   const buttonType = type === 'submit' ? 'submit' : 'button'
 

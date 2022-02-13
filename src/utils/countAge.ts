@@ -1,4 +1,4 @@
-export const ageCounter = (birthday: string) => {
+export const countAge = (birthday: string) => {
   const birthdayDate = new Date(birthday);
   const dateNow = new Date();
   const ageCount = dateNow.getFullYear() - birthdayDate.getFullYear();

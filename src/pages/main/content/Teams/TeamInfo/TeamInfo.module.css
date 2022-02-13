@@ -89,6 +89,10 @@
   margin: 0;
 }
 
+.iconsStyles {
+  cursor: pointer;
+}
+
 .deleteIcon * {
   fill: var(--active-nav-color);
 }

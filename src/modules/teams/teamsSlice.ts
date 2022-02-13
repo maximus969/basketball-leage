@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { TeamDtoPageResult } from "../../api/teams";
+import { TeamDtoPageResult } from "../../api/dto/ITeam";
 
 const initialState = {
   data: [

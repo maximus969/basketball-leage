@@ -1,9 +1,9 @@
 import { Dispatch } from "redux";
-import { NewTeamDto, teamsAPI } from "../../api/teams";
+import { NewTeamDto, teamsAPI } from "../../api/dto/ITeam";
 import { setAppStatus } from "../app/appSlice";
 import { setTeamInfo } from "./teamSlice";
 import { setTeamsData } from "./teamsSlice";
-import { TeamDto } from "./../../api/teams";
+import { TeamDto } from "../../api/dto/ITeam";
 
 export const getTeamsTC =
   (name: string, page: number, pageSize: number) => (dispatch: Dispatch) => {

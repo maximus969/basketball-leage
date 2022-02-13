@@ -18,7 +18,6 @@ export const ReactSelect = ({ onChangeOption, pageSize }: ReactSelectPropsType) 
   }
 
   window.addEventListener('resize', function () {
-    console.log(window.innerWidth);
     if (window.innerWidth > 768 && deviceHeight !== '40px') setDeviceHeight('40px')
     else if (window.innerWidth <= 768 && deviceHeight !== '28px') setDeviceHeight('28px')
   });
@@ -45,6 +44,7 @@ export const ReactSelect = ({ onChangeOption, pageSize }: ReactSelectPropsType) 
       background: '#ffffff',
       border: '0.5px solid #d1d1d1',
       borderRadius: '4px',
+      cursor: 'pointer',
     }),
     singleValue: (provided: any, state: any) => {
       const opacity = state.isDisabled ? 0.5 : 1;
