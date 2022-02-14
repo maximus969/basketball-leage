@@ -7,7 +7,10 @@ export const getBase64 = (file: any) => {
   });
 };
 
-export const imageConverter = (file: any, setNewImageUrl: any) => {
+export const imageConverter = (
+  file: any,
+  setNewImageUrl: React.Dispatch<React.SetStateAction<string>>
+) => {
   getBase64(file)
     .then((res) => {
       if (typeof res === "string") setNewImageUrl(res);

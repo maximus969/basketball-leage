@@ -1,5 +1,4 @@
 import { Dispatch } from "redux";
-import { number } from "yup/lib/locale";
 import { NewPlayerDto, PlayerDto, playersAPI } from "../../api/dto/IPlayer";
 import { setAppStatus } from "../app/appSlice";
 import { setPlayerData } from "./playerSlice";

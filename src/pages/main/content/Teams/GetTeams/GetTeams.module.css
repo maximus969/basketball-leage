@@ -57,10 +57,6 @@
   color: var(--label-color);
 }
 
-.input:focus {
-  outline: none;
-}
-
 .buttonContainer {
   width: 10%;
   height: 100%;

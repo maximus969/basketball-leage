@@ -78,3 +78,4 @@ export const ProjectRoutes = () => {
 const RequireAuth = (props: any) => {
   return props.isLoggedIn ? props.children : <Navigate to={PATH.LOGIN} />;
 }
+

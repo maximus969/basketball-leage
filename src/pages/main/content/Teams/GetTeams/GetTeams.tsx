@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect } from 'react'
+import { ChangeEvent, useEffect, KeyboardEvent } from 'react'
 import { useDispatch } from 'react-redux'
 import wrapper from '../../Content.module.css'
 import styles from './GetTeams.module.css'
@@ -24,9 +24,11 @@ export const Teams: React.FC = () => {
   const pageSize = useSelector<AppRootStateType, number>(state => state.teams.size)
   const teams = useSelector<AppRootStateType, TeamDto[]>(state => state.teams.data)
   const [searchTeam, setSearchTeam] = useState<string>('')
+  const [paginatorSearch, setPaginatorSearch] = useState<string>('')
 
   useEffect(() => {
     if (!searchTeam) {
+      setPaginatorSearch('')
       dispatch(getTeamsTC(searchTeam, 1, pageSize))
     }
   }, [searchTeam])
@@ -38,13 +40,20 @@ export const Teams: React.FC = () => {
     setSearchTeam(e.currentTarget.value)
   }
   const startSearchingTeam = () => {
+    setPaginatorSearch(searchTeam)
     dispatch(getTeamsTC(searchTeam, 1, pageSize))
+  }
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      setPaginatorSearch(searchTeam)
+      dispatch(getTeamsTC(searchTeam, 1, pageSize))
+    }
   }
 
   // Paginator + Selector
   const handlePageClick = (event: { selected: number }) => {
     const newCurrentPage = event.selected + 1
-    dispatch(getTeamsTC(searchTeam, newCurrentPage, pageSize))
+    dispatch(getTeamsTC(paginatorSearch, newCurrentPage, pageSize))
   };
 
   const onChangeOption = (value: number) => {
@@ -75,7 +84,7 @@ export const Teams: React.FC = () => {
 
           <div className={styles.searchBlock}>
             <div className={styles.inputStyles}>
-              <input className={styles.input} onChange={onSearchChange} placeholder='Search...' />
+              <input className={styles.input} onChange={onSearchChange} onKeyDown={handleKeyDown} placeholder='Search...' />
               <div className={styles.searchIcon} onClick={startSearchingTeam}>
                 <img src={searchIcon} alt="icon" />
               </div>
