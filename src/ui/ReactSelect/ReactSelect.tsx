@@ -1,6 +1,6 @@
 import Select from 'react-select'
 import styles from './ReactSelect.module.css'
-import { useState } from 'react'
+import { FC, useState } from 'react'
 
 const options = [
     { value: 6, label: '6' },
@@ -8,10 +8,10 @@ const options = [
     { value: 24, label: '24' }
 ]
 
-export const ReactSelect = ({
+export const ReactSelect: FC<ReactSelectPropsType> = ({
     onChangeOption,
     pageSize
-}: ReactSelectPropsType) => {
+}) => {
     const index = options.findIndex((el) => el.value === pageSize)
     const [deviceHeight, setDeviceHeight] = useState('')
 
@@ -33,13 +33,13 @@ export const ReactSelect = ({
             color: state.isFocused
                 ? '#FFFFFF'
                 : state.isSelected
-                ? '#FFFFFF'
-                : '#9C9C9C',
+                    ? '#FFFFFF'
+                    : '#9C9C9C',
             background: state.isFocused
                 ? '#FF768E'
                 : state.isSelected
-                ? '#C60E2E'
-                : undefined
+                    ? '#C60E2E'
+                    : undefined
         }),
         control: () => ({
             width: '77px',

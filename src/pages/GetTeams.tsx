@@ -1,22 +1,22 @@
-import { ChangeEvent, useEffect, KeyboardEvent } from 'react'
+import { ChangeEvent, useEffect, KeyboardEvent, FC } from 'react'
 import { useDispatch } from 'react-redux'
-import wrapper from '../../Content.module.css'
+import wrapper from './Content.module.css'
 import styles from './GetTeams.module.css'
-import { getTeamsTC } from '../../../../../modules/teams/teamsThunk'
+import { getTeamsTC } from '../modules/teams/teamsThunk'
 import { useSelector } from 'react-redux'
-import { AppRootStateType } from '../../../../../core/redux/store'
-import { TeamDto } from '../../../../../api/dto/ITeam'
+import { AppRootStateType } from '../core/redux/store'
+import { TeamDto } from '../api/dto/ITeam'
 import { useNavigate } from 'react-router-dom'
-import { PATH } from '../../../../routes'
+import { PATH } from './routes'
 import { useState } from 'react'
-import searchIcon from '../../../../../assets/icon/search_rounded.svg'
-import { BoxPreview } from '../../../../../ui/BoxPreview/BoxPreview'
-import { ReactSelect } from '../../../../../ui/ReactSelect/ReactSelect'
-import { ItemsNotFound } from '../../../../../ui/ItemsNotFound/ItemsNotFound'
-import { Paginator } from '../../../../../ui/Paginator/Paginator'
-import { Button } from '../../../../../ui/Button/Button'
+import searchIcon from '../assets/icon/search_rounded.svg'
+import { BoxPreview } from '../ui/BoxPreview/BoxPreview'
+import { ReactSelect } from '../ui/ReactSelect/ReactSelect'
+import { ItemsNotFound } from '../ui/ItemsNotFound/ItemsNotFound'
+import { Paginator } from '../ui/Paginator/Paginator'
+import { Button } from '../ui/Button/Button'
 
-export const Teams: React.FC = () => {
+export const Teams: FC = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const totalElementCount = useSelector<AppRootStateType, number>(
@@ -29,13 +29,9 @@ export const Teams: React.FC = () => {
         (state) => state.teams.data
     )
     const [searchTeam, setSearchTeam] = useState<string>('')
-    const [paginatorSearch, setPaginatorSearch] = useState<string>('')
 
     useEffect(() => {
-        if (!searchTeam) {
-            setPaginatorSearch('')
-            dispatch(getTeamsTC(searchTeam, 1, pageSize))
-        }
+        dispatch(getTeamsTC(searchTeam, 1, pageSize))
     }, [searchTeam])
 
     const addTeamHandler = () => {
@@ -45,12 +41,10 @@ export const Teams: React.FC = () => {
         setSearchTeam(e.currentTarget.value)
     }
     const startSearchingTeam = () => {
-        setPaginatorSearch(searchTeam)
         dispatch(getTeamsTC(searchTeam, 1, pageSize))
     }
     const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
-            setPaginatorSearch(searchTeam)
             dispatch(getTeamsTC(searchTeam, 1, pageSize))
         }
     }
@@ -58,7 +52,7 @@ export const Teams: React.FC = () => {
     // Paginator + Selector
     const handlePageClick = (event: { selected: number }) => {
         const newCurrentPage = event.selected + 1
-        dispatch(getTeamsTC(paginatorSearch, newCurrentPage, pageSize))
+        dispatch(getTeamsTC(searchTeam, newCurrentPage, pageSize))
     }
 
     const onChangeOption = (value: number) => {

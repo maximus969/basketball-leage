@@ -1,11 +1,11 @@
 export function saveState<T>(key: string, state: T) {
-  const stateAsString = JSON.stringify(state);
-  localStorage.setItem(key, stateAsString);
+    const stateAsString = JSON.stringify(state)
+    localStorage.setItem(key, stateAsString)
 }
 
 export function restoreState(key: string) {
-  let state = null;
-  const stateAsString = localStorage.getItem(key);
-  if (stateAsString !== null) state = JSON.parse(stateAsString);
-  return state;
+    let state = null
+    const stateAsString = localStorage.getItem(key)
+    if (stateAsString !== null) state = JSON.parse(stateAsString)
+    return state
 }

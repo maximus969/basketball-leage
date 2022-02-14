@@ -1,20 +1,20 @@
-import { useEffect } from 'react'
+import { FC, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import wrapper from '../../Content.module.css'
+import wrapper from './Content.module.css'
 import styles from './TeamInfo.module.css'
 import { useDispatch, useSelector } from 'react-redux'
 import {
     deleteTeamTC,
     getTeamInfoTC
-} from '../../../../../modules/teams/teamsThunk'
-import { AppRootStateType } from '../../../../../core/redux/store'
-import { ReactComponent as DeleteIcon } from '../../../../../assets/icon/delete_rounded.svg'
-import updateIcon from '../../../../../assets/icon/create_rounded.svg'
-import { getPlayersTC } from '../../../../../modules/players/playersThunk'
-import { PlayerDto } from '../../../../../api/dto/IPlayer'
-import { countAge } from '../../../../../utils/countAge'
+} from '../modules/teams/teamsThunk'
+import { AppRootStateType } from '../core/redux/store'
+import { ReactComponent as DeleteIcon } from '../assets/icon/delete_rounded.svg'
+import updateIcon from '../assets/icon/create_rounded.svg'
+import { getPlayersTC } from '../modules/players/playersThunk'
+import { PlayerDto } from '../api/dto/IPlayer'
+import { countAge } from '../utils/countAge'
 
-export const TeamDescription: React.FC = () => {
+export const TeamInfo: FC = () => {
     const { id } = useParams()
     const dispatch = useDispatch()
     const navigate = useNavigate()

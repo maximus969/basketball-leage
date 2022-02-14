@@ -10,13 +10,13 @@ export const playersAPI = {
         return fetchAPI().get<PlayerTeamNameDto>(`Player/Get?id=${id}`)
     },
     getPositions() {
-        return fetchAPI().get<string[]>(`Player/GetPositions`)
+        return fetchAPI().get<string[]>('Player/GetPositions')
     },
     addPlayer(data: NewPlayerDto) {
-        return fetchAPI().post<PlayerDto>(`Player/Add`, data)
+        return fetchAPI().post<PlayerDto>('Player/Add', data)
     },
     updatePlayer(data: PlayerDto) {
-        return fetchAPI().put<PlayerDto>(`Player/Update`, data)
+        return fetchAPI().put<PlayerDto>('Player/Update', data)
     },
     deletePlayer(id: number) {
         return fetchAPI().delete<PlayerDto>(`Player/Delete?id=${id}`)

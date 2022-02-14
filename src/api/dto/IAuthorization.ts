@@ -2,10 +2,10 @@ import { fetchAPI } from '../baseRequest'
 
 export const authAPI = {
     regUser(data: RegistrationRequestData) {
-        return fetchAPI().post<LoginResponseType>(`Auth/SignUp`, data)
+        return fetchAPI().post<LoginResponseType>('Auth/SignUp', data)
     },
     login(data: LoginRequestData) {
-        return fetchAPI().post<LoginResponseType>(`Auth/SignIn`, data)
+        return fetchAPI().post<LoginResponseType>('Auth/SignIn', data)
     }
 }
 

@@ -1,0 +1,169 @@
+@import '../assets/theme/theme.css';
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.authContainer {
+    width: 40%;
+    height: 100vh;
+    background: var(--primary-bg-color);
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.imageContainer {
+    width: 60%;
+    height: 100vh;
+    background: var(--auth-image-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.authBlock {
+    width: 60%;
+    height: 55vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.registerBlock {
+    width: 60%;
+    height: 75vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    font-size: 36px;
+    line-height: 49px;
+    font-weight: normal;
+    color: var(--login-title-text);
+    margin: 0;
+    margin-bottom: 30px;
+}
+
+.form {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.imageBlock {
+    width: 100%;
+}
+
+.buttonContainer {
+    margin: 10px 0;
+    height: 10%;
+}
+
+.authSign {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.spanMember {
+    margin: 10px 0;
+    font-size: 14px;
+    line-height: 24px;
+    color: var(--label-color);
+}
+
+.pathLink {
+    color: var(--active-nav-color);
+    margin-left: 5px;
+}
+
+input[type='checkbox'] {
+    margin: 0;
+    margin-right: 10px;
+}
+
+.checkboxContainer {
+    height: 10%;
+    display: flex;
+    flex-direction: column;
+}
+
+.checkboxBlock {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+}
+
+.checkboxText {
+    font-size: 14px;
+    line-height: 24px;
+    color: var(--label-color);
+}
+
+.errorMessage {
+    color: var(--logout-color);
+    margin: 0;
+    font-size: 12px;
+    line-height: 19px;
+}
+
+.errorMessage::before {
+    display: inline;
+}
+
+@media screen and (max-width: 768px) {
+    .imageContainer {
+        width: 0;
+    }
+    .authContainer {
+        width: 100vh;
+    }
+    .authBlock {
+        width: 75%;
+        height: 50vh;
+    }
+    .registerBlock {
+        width: 75%;
+    }
+    .title {
+        margin: 0 auto;
+        margin-bottom: 32px;
+    }
+    .buttonContainer {
+        margin: 5% 0;
+    }
+    .authSign {
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .imageContainer {
+        width: 0;
+    }
+    .authContainer {
+        width: 100vh;
+    }
+    .authBlock {
+        width: 75%;
+        height: 50vh;
+    }
+    .registerBlock {
+        width: 75%;
+    }
+    .title {
+        margin: 0 auto;
+        margin-bottom: 32px;
+    }
+    .buttonContainer {
+        margin: 5% 0;
+    }
+    .authSign {
+        margin: 0;
+    }
+}

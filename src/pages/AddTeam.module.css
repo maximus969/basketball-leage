@@ -1,0 +1,73 @@
+@import '../assets/theme/theme.css';
+
+.container {
+    width: 90%;
+    height: 60%;
+    background-color: var(--primary-bg-color);
+    margin-top: 2%;
+    border-radius: 10px 10px 10px 10px;
+}
+
+.formContainer {
+    display: flex;
+    width: 100%;
+    height: 85%;
+    background-color: var(--primary-bg-color);
+    margin-top: 4%;
+    border-radius: 10px 10px 10px 10px;
+}
+
+.addFileBlock {
+    width: 30%;
+    height: 50%;
+    margin-left: 6%;
+    background-color: var(--second-text-color);
+    border-radius: 10px;
+    opacity: 0.5;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 25%, contain;
+}
+
+.addFileInput {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    display: inline-block;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.inputFormContainer {
+    width: 35%;
+    height: 100%;
+    margin-left: 12%;
+}
+
+.buttonsContainer {
+    width: 100%;
+    height: 9%;
+    display: flex;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        width: 90%;
+        height: 98%;
+        margin-top: 1%;
+    }
+    .formContainer {
+        flex-direction: column;
+        align-items: center;
+    }
+    .addFileBlock {
+        width: 50%;
+        height: 40%;
+        margin: 5% 0;
+    }
+    .inputFormContainer {
+        margin: 0;
+        width: 90%;
+    }
+}

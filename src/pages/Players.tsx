@@ -1,13 +1,14 @@
-import wrapper from '../Content.module.css'
+import wrapper from './Content.module.css'
 import { useDispatch } from 'react-redux'
 import {
     addPlayerTC,
     deletePlayerTC,
     getPlayerInfoTC,
     updatePlayerTC
-} from '../../../../modules/players/playersThunk'
+} from '../modules/players/playersThunk'
+import { FC } from 'react'
 
-export const Players: React.FC = () => {
+export const Players: FC = () => {
     const dispatch = useDispatch()
 
     return (

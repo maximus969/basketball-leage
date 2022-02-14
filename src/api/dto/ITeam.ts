@@ -7,13 +7,13 @@ export const teamsAPI = {
         )
     },
     addTeam(data: NewTeamDto) {
-        return fetchAPI().post<TeamDto>(`Team/Add`, data)
+        return fetchAPI().post<TeamDto>('Team/Add', data)
     },
     getTeamInfo(id: number) {
         return fetchAPI().get<TeamDto>(`Team/Get?id=${id}`)
     },
     updateTeam(data: TeamDto) {
-        return fetchAPI().put<TeamDto>(`Team/Update`, data)
+        return fetchAPI().put<TeamDto>('Team/Update', data)
     },
     deleteTeam(id: number) {
         return fetchAPI().delete<TeamDto>(`Team/Delete?id=${id}`)

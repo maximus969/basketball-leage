@@ -1,14 +1,14 @@
 import React from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
-import { Login } from './auth/Login'
-import { Registration } from './auth/Registration'
-import { Teams } from './main/content/Teams/GetTeams/GetTeams'
+import { Login } from './Login'
+import { Registration } from './Registration'
+import { Teams } from './GetTeams'
 import { useSelector } from 'react-redux'
 import { AppRootStateType } from '../core/redux/store'
-import { AddTeam } from './main/content/Teams/AddTeams/AddTeam'
-import { TeamDescription } from './main/content/Teams/TeamInfo/TeamDescription'
-import { UpdateTeam } from './main/content/Teams/AddTeams/UpdateTeam'
-import { Players } from './main/content/Players/Players'
+import { AddTeam } from './AddTeam'
+import { TeamInfo } from './TeamInfo'
+import { UpdateTeam } from './UpdateTeam'
+import { Players } from './Players'
 
 export const PATH = {
     LOGIN: '/login',
@@ -50,7 +50,7 @@ export const ProjectRoutes = () => {
                     path={PATH.TEAM_DESCRIPTION}
                     element={
                         <RequireAuth isLoggedIn={isLoggedIn}>
-                            <TeamDescription />
+                            <TeamInfo />
                         </RequireAuth>
                     }
                 />
