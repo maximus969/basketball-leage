@@ -1,58 +1,58 @@
 .container {
-  height: 40px;
-  display: flex;
-  flex-direction: row;
-  align-content: center;
-  align-items: center;
-  font-size: 14px;
-  line-height: 24px;
-  text-align: center;
-  color: #707070;
-  justify-content: space-between;
-  padding: 0;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: center;
+    color: #707070;
+    justify-content: space-between;
+    padding: 0;
 }
 .activePageStyles {
-  width: 40px;
-  height: 40px;
-  background-color: #e4163a;
-  border-radius: 4px;
-  font-size: 14px;
-  line-height: 24px;
-  color: #ffffff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
+    width: 40px;
+    height: 40px;
+    background-color: #e4163a;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 24px;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 .pageStyles {
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
 
 .previous {
-  margin-right: 10px;
-  cursor: pointer;
+    margin-right: 10px;
+    cursor: pointer;
 }
 
 .next {
-  margin-left: 10px;
-  cursor: pointer;
+    margin-left: 10px;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 480px) {
-  .container {
-    height: 28px;
-  }
-  .activePageStyles {
-    width: 28px;
-    height: 28px;
-  }
-  .pageStyles {
-    width: 28px;
-    height: 28px;
-  }
+    .container {
+        height: 28px;
+    }
+    .activePageStyles {
+        width: 28px;
+        height: 28px;
+    }
+    .pageStyles {
+        width: 28px;
+        height: 28px;
+    }
 }

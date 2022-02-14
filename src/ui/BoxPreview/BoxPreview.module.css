@@ -1,79 +1,79 @@
-@import "../../assets/theme/theme.css";
+@import '../../assets/theme/theme.css';
 
 .container {
-  width: 32%;
-  height: 48%;
-  background: linear-gradient(121.57deg, #707070 1.62%, #393939 81.02%);
-  border-radius: 4px;
-  margin-right: 2%;
-  margin-bottom: 2%;
-  cursor: pointer;
+    width: 32%;
+    height: 48%;
+    background: linear-gradient(121.57deg, #707070 1.62%, #393939 81.02%);
+    border-radius: 4px;
+    margin-right: 2%;
+    margin-bottom: 2%;
+    cursor: pointer;
 }
 
 .container:nth-child(3n) {
-  margin-right: 0;
+    margin-right: 0;
 }
 
 .imgBlock {
-  height: 75%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    height: 75%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .img {
-  width: 50%;
-  height: 50%;
+    width: 50%;
+    height: 50%;
 }
 
 .textBlock {
-  height: 25%;
-  background: var(--navbar-login-name);
-  border-radius: 0px 0px 4px 4px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    height: 25%;
+    background: var(--navbar-login-name);
+    border-radius: 0px 0px 4px 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .textContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .title {
-  font-size: 18px;
-  line-height: 25px;
-  color: var(--primary-text-color);
-  margin: 0 0 1% 0;
+    font-size: 18px;
+    line-height: 25px;
+    color: var(--primary-text-color);
+    margin: 0 0 1% 0;
 }
 
 .info {
-  font-size: 14px;
-  line-height: 24px;
-  text-align: center;
-  color: var(--second-text-color);
-  margin: 0;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: center;
+    color: var(--second-text-color);
+    margin: 0;
 }
 
 @media screen and (max-width: 768px) {
-  .container {
-    width: 49%;
-    height: 32%;
-  }
-  .container:nth-child(2n + 1) {
-    margin-right: 2%;
-  }
-  .container:nth-child(2n) {
-    margin-right: 0;
-  }
-  .imgBlock {
-    height: 60%;
-  }
-  .img {
-    height: 50%;
-  }
-  .textBlock {
-    height: 40%;
-  }
+    .container {
+        width: 49%;
+        height: 32%;
+    }
+    .container:nth-child(2n + 1) {
+        margin-right: 2%;
+    }
+    .container:nth-child(2n) {
+        margin-right: 0;
+    }
+    .imgBlock {
+        height: 60%;
+    }
+    .img {
+        height: 50%;
+    }
+    .textBlock {
+        height: 40%;
+    }
 }

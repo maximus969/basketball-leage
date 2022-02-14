@@ -1,24 +1,24 @@
 @font-face {
-  font-family: "Avenir", "sans-serif";
-  src: url("./assets/fonts/AvenirLTStd-Roman.otf") format("truetype");
-  font-style: normal;
-  font-weight: 500;
+    font-family: 'Avenir', 'sans-serif';
+    src: url('./assets/fonts/AvenirLTStd-Roman.otf') format('truetype');
+    font-style: normal;
+    font-weight: 500;
 }
 
 body {
-  font-family: "Avenir";
-  margin: 0;
-  background: #ffffff;
+    font-family: 'Avenir';
+    margin: 0;
+    background: #ffffff;
 }
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 ul {
-  list-style: none;
+    list-style: none;
 }
 
 input:focus {
-  outline: none;
+    outline: none;
 }
