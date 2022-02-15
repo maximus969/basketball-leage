@@ -25,56 +25,59 @@ export const ProjectRoutes = () => {
         (state) => state.auth.isLoggedIn
     )
     return (
-        <>
-            <Routes>
-                <Route path="/" element={<Login />} />
-                <Route path={PATH.LOGIN} element={<Login />} />
-                <Route path={PATH.REGISTRATION} element={<Registration />} />
-                <Route
-                    path={PATH.TEAMS}
-                    element={
-                        <RequireAuth isLoggedIn={isLoggedIn}>
-                            <Teams />
-                        </RequireAuth>
-                    }
-                />
-                <Route
-                    path={PATH.ADD_TEAMS}
-                    element={
-                        <RequireAuth isLoggedIn={isLoggedIn}>
-                            <AddTeam />
-                        </RequireAuth>
-                    }
-                />
-                <Route
-                    path={PATH.TEAM_DESCRIPTION}
-                    element={
-                        <RequireAuth isLoggedIn={isLoggedIn}>
-                            <TeamInfo />
-                        </RequireAuth>
-                    }
-                />
-                <Route
-                    path={PATH.UPDATE_TEAM}
-                    element={
-                        <RequireAuth isLoggedIn={isLoggedIn}>
-                            <UpdateTeam />
-                        </RequireAuth>
-                    }
-                />
-                <Route
-                    path={PATH.PLAYERS}
-                    element={
-                        <RequireAuth isLoggedIn={isLoggedIn}>
-                            <Players />
-                        </RequireAuth>
-                    }
-                />
-            </Routes>
-        </>
+        <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path={PATH.LOGIN} element={<Login />} />
+            <Route path={PATH.REGISTRATION} element={<Registration />} />
+            <Route
+                path={PATH.TEAMS}
+                element={
+                    <RequireAuth isLoggedIn={isLoggedIn}>
+                        <Teams />
+                    </RequireAuth>
+                }
+            />
+            <Route
+                path={PATH.ADD_TEAMS}
+                element={
+                    <RequireAuth isLoggedIn={isLoggedIn}>
+                        <AddTeam />
+                    </RequireAuth>
+                }
+            />
+            <Route
+                path={PATH.TEAM_DESCRIPTION}
+                element={
+                    <RequireAuth isLoggedIn={isLoggedIn}>
+                        <TeamInfo />
+                    </RequireAuth>
+                }
+            />
+            <Route
+                path={PATH.UPDATE_TEAM}
+                element={
+                    <RequireAuth isLoggedIn={isLoggedIn}>
+                        <UpdateTeam />
+                    </RequireAuth>
+                }
+            />
+            <Route
+                path={PATH.PLAYERS}
+                element={
+                    <RequireAuth isLoggedIn={isLoggedIn}>
+                        <Players />
+                    </RequireAuth>
+                }
+            />
+        </Routes>
     )
 }
 
-const RequireAuth = (props: any) => {
+const RequireAuth = (props: RequireAuthPropsType) => {
     return props.isLoggedIn ? props.children : <Navigate to={PATH.LOGIN} />
 }
+
+export type RequireAuthPropsType = {
+    isLoggedIn: boolean;
+    children: JSX.Element;
+};

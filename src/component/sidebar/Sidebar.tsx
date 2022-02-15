@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { signOut } from '../../modules/auth/authorizationSlice'
 import { ReactComponent as Logout } from '../../assets/icon/logout.svg'
 import { ReactComponent as TeamsIcon } from '../../assets/icon/teams.svg'
@@ -8,25 +8,19 @@ import styles from './Sidebar.module.css'
 import { NavLink } from 'react-router-dom'
 import { PATH } from '../../pages/routes'
 import { FC, useState } from 'react'
-import { AppRootStateType } from '../../core/redux/store'
+import { restoreFromLocalStorage } from '../../utils/localStorage'
 
 export const Sidebar: FC = () => {
     const dispatch = useDispatch()
     const [isTeamTabActive, setIsTeamTabActive] = useState(true)
     const [isPlayersTabActive, setIsPlayersTabActive] = useState(false)
-    const name = useSelector<AppRootStateType, string>(
-        (state) => state.auth.name
-    )
+    const name = restoreFromLocalStorage('name')
 
     const signOutHandler = () => {
-        dispatch(
-            signOut({
-                name: '',
-                avatarUrl: '',
-                token: ''
-            })
-        )
-        localStorage.removeItem('state')
+        dispatch(signOut())
+        localStorage.removeItem('token')
+        localStorage.removeItem('name')
+        localStorage.removeItem('avatarUrl')
     }
 
     const onTeamTabClick = () => {

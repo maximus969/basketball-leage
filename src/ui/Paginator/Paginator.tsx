@@ -10,23 +10,21 @@ export const Paginator: FC<PaginatorPropsType> = ({
     const pageCount = Math.ceil(totalElementCount / pageSize)
 
     return (
-        <>
-            <ReactPaginate
-                breakLabel="..."
-                nextLabel=">"
-                nextClassName={paginatorStyles.next}
-                onPageChange={handlePageClick}
-                pageRangeDisplayed={2}
-                marginPagesDisplayed={2}
-                pageCount={pageCount}
-                previousLabel="<"
-                previousClassName={paginatorStyles.previous}
-                renderOnZeroPageCount={undefined}
-                className={paginatorStyles.container}
-                activeClassName={paginatorStyles.activePageStyles}
-                pageClassName={paginatorStyles.pageStyles}
-            />
-        </>
+        <ReactPaginate
+            breakLabel="..."
+            nextLabel=">"
+            nextClassName={paginatorStyles.next}
+            onPageChange={handlePageClick}
+            pageRangeDisplayed={2}
+            marginPagesDisplayed={2}
+            pageCount={pageCount}
+            previousLabel="<"
+            previousClassName={paginatorStyles.previous}
+            renderOnZeroPageCount={undefined}
+            className={paginatorStyles.container}
+            activeClassName={paginatorStyles.activePageStyles}
+            pageClassName={paginatorStyles.pageStyles}
+        />
     )
 }
 

@@ -1,14 +1,12 @@
 import React, { FC } from 'react'
-import { useSelector } from 'react-redux'
-import { AppRootStateType } from '../../core/redux/store'
 import logo from '../../assets/icon/logo.png'
 import profileIcon from '../../assets/icon/profileIcon.svg'
 import styles from './Header.module.css'
+import { restoreFromLocalStorage } from '../../utils/localStorage'
 
 export const Header: FC = () => {
-    const name = useSelector<AppRootStateType, string>(
-        (state) => state.auth.name
-    )
+
+    const name = restoreFromLocalStorage('name')
 
     return (
         <div className={styles.header}>

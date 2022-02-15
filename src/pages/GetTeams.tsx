@@ -43,11 +43,7 @@ export const Teams: FC = () => {
     const startSearchingTeam = () => {
         dispatch(getTeamsTC(searchTeam, 1, pageSize))
     }
-    const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === 'Enter') {
-            dispatch(getTeamsTC(searchTeam, 1, pageSize))
-        }
-    }
+
 
     // Paginator + Selector
     const handlePageClick = (event: { selected: number }) => {
@@ -90,7 +86,6 @@ export const Teams: FC = () => {
                             <input
                                 className={styles.input}
                                 onChange={onSearchChange}
-                                onKeyDown={handleKeyDown}
                                 placeholder="Search..."
                             />
                             <div

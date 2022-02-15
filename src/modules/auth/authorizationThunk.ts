@@ -6,7 +6,7 @@ import {
 } from '../../api/dto/IAuthorization'
 import { setAppStatus } from '../app/appSlice'
 import { setUserData } from './authorizationSlice'
-import { saveState } from './../../utils/localStorage'
+import { saveInLocalStorage } from './../../utils/localStorage'
 
 export const authTC = (data: LoginRequestData) => (dispatch: Dispatch) => {
     dispatch(setAppStatus({ status: true }))
@@ -14,8 +14,10 @@ export const authTC = (data: LoginRequestData) => (dispatch: Dispatch) => {
         .login(data)
         .then((res) => {
             if (res.request.status === 200) {
-                dispatch(setUserData(res.data))
-                saveState('state', res.data)
+                saveInLocalStorage('token', res.data.token)
+                saveInLocalStorage('name', res.data.name)
+                saveInLocalStorage('avatarUrl', res.data.avatarUrl)
+                dispatch(setUserData())
             }
         })
         .catch((error) => {
@@ -33,8 +35,10 @@ export const registerTC =
             .regUser(data)
             .then((res) => {
                 if (res.request.status === 200) {
-                    dispatch(setUserData(res.data))
-                    saveState('state', res.data)
+                    saveInLocalStorage('token', res.data.token)
+                    saveInLocalStorage('name', res.data.name)
+                    saveInLocalStorage('avatarUrl', res.data.avatarUrl)
+                    dispatch(setUserData())
                 }
             })
             .catch((error) => {

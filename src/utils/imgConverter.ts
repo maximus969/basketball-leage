@@ -1,4 +1,4 @@
-export const getBase64 = (file: any) => {
+export const getBase64 = (file: File) => {
     return new Promise((resolve, reject) => {
         const reader = new FileReader()
         reader.readAsDataURL(file)
@@ -8,7 +8,7 @@ export const getBase64 = (file: any) => {
 }
 
 export const imageConverter = (
-    file: any,
+    file: File,
     setNewImageUrl: React.Dispatch<React.SetStateAction<string>>
 ) => {
     getBase64(file)

@@ -11,19 +11,17 @@ export const Button: FC<ButtonPropsType> = ({
   const buttonType = type === 'submit' ? 'submit' : 'button'
 
   return (
-    <>
-      <button
-        style={{ width: width }}
-        onClick={onClickHandler}
-        type={buttonType}
-        disabled={disabled}
-        className={
-          name === 'Cancel' ? styles.cancelButton : styles.button
-        }
-      >
-        {name}
-      </button>
-    </>
+    <button
+      style={{ width: width }}
+      onClick={onClickHandler}
+      type={buttonType}
+      disabled={disabled}
+      className={
+        name === 'Cancel' ? styles.cancelButton : styles.button
+      }
+    >
+      {name}
+    </button>
   )
 }
 

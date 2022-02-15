@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import styles from './Input.module.css'
 
+
 export const Input: FC<InputPropsType> = ({
     register,
     name,
@@ -11,14 +12,12 @@ export const Input: FC<InputPropsType> = ({
     const inputType = isPasswordType ? 'password' : 'text'
 
     return (
-        <>
-            <input
-                className={styles.input}
-                {...register(name)}
-                defaultValue={value}
-                type={inputType}
-            />
-        </>
+        <input
+            className={styles.input}
+            {...register(name)}
+            defaultValue={value}
+            type={inputType}
+        />
     )
 }
 

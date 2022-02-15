@@ -1,22 +1,18 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { LoginResponseType } from '../../api/dto/IAuthorization'
+import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    isLoggedIn: false,
-    name: '',
-    avatarUrl: '',
-    token: ''
+    isLoggedIn: false
 }
 
 const slice = createSlice({
     name: 'login',
     initialState: initialState,
     reducers: {
-        setUserData(state, action: PayloadAction<LoginResponseType>) {
-            return { ...action.payload, isLoggedIn: true }
+        setUserData(state) {
+            return { isLoggedIn: true }
         },
-        signOut(state, action: PayloadAction<LoginResponseType>) {
-            return { ...action.payload, isLoggedIn: false }
+        signOut(state) {
+            return { isLoggedIn: false }
         }
     }
 })

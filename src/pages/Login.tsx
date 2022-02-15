@@ -12,7 +12,7 @@ import { PATH } from './routes'
 import { Button } from '../ui/Button/Button'
 import { InputContainer } from '../ui/InputContainer/InputContainer'
 
-interface IFormInputs {
+export interface ILoginFormInputs {
     login: string
     password: string
 }
@@ -38,9 +38,9 @@ export const Login: FC = () => {
         register,
         handleSubmit,
         formState: { errors }
-    } = useForm<IFormInputs>(formOptions)
+    } = useForm<ILoginFormInputs>(formOptions)
 
-    const onSubmit = (data: IFormInputs) => {
+    const onSubmit = (data: ILoginFormInputs) => {
         dispatch(
             authTC({
                 login: data.login,

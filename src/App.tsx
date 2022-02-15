@@ -6,7 +6,7 @@ import { AppRootStateType } from './core/redux/store'
 import { Header } from './component/header/Header'
 import { Sidebar } from './component/sidebar/Sidebar'
 import { ProjectRoutes } from './pages/routes'
-import { restoreState } from './utils/localStorage'
+import { restoreFromLocalStorage } from './utils/localStorage'
 import { useDispatch } from 'react-redux'
 import { setUserData } from './modules/auth/authorizationSlice'
 
@@ -17,8 +17,8 @@ const App = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        const state = restoreState('state')
-        if (state) dispatch(setUserData(state))
+        const token = restoreFromLocalStorage('token')
+        if (token) dispatch(setUserData())
     }, [])
 
     return (

@@ -3,10 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import wrapper from './Content.module.css'
 import styles from './TeamInfo.module.css'
 import { useDispatch, useSelector } from 'react-redux'
-import {
-    deleteTeamTC,
-    getTeamInfoTC
-} from '../modules/teams/teamsThunk'
+import { deleteTeamTC, getTeamInfoTC } from '../modules/teams/teamsThunk'
 import { AppRootStateType } from '../core/redux/store'
 import { ReactComponent as DeleteIcon } from '../assets/icon/delete_rounded.svg'
 import updateIcon from '../assets/icon/create_rounded.svg'

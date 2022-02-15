@@ -1,12 +1,19 @@
-import Select from 'react-select'
+import Select, { SingleValue, StylesConfig } from 'react-select'
 import styles from './ReactSelect.module.css'
 import { FC, useState } from 'react'
 
-const options = [
+type MyOptionType = {
+    label: string;
+    value: number;
+};
+
+const options: MyOptionType[] = [
     { value: 6, label: '6' },
     { value: 12, label: '12' },
     { value: 24, label: '24' }
 ]
+
+type IsMulti = false;
 
 export const ReactSelect: FC<ReactSelectPropsType> = ({
     onChangeOption,
@@ -15,8 +22,10 @@ export const ReactSelect: FC<ReactSelectPropsType> = ({
     const index = options.findIndex((el) => el.value === pageSize)
     const [deviceHeight, setDeviceHeight] = useState('')
 
-    const onChangeCallback = (e: any) => {
-        onChangeOption(e.value)
+    const onChangeCallback = (e: SingleValue<MyOptionType>) => {
+        if (e?.value) {
+            onChangeOption(e.value)
+        }
     }
 
     window.addEventListener('resize', function () {
@@ -26,8 +35,8 @@ export const ReactSelect: FC<ReactSelectPropsType> = ({
             setDeviceHeight('28px')
     })
 
-    const customStyles = {
-        option: (provided: any, state: any) => ({
+    const customStyles: StylesConfig<MyOptionType, IsMulti> = {
+        option: (provided, state) => ({
             ...provided,
             borderBottom: '1px dotted pink',
             color: state.isFocused
@@ -41,16 +50,25 @@ export const ReactSelect: FC<ReactSelectPropsType> = ({
                     ? '#C60E2E'
                     : undefined
         }),
-        control: () => ({
+        control: (provided, state) => ({
+            ...provided,
             width: '77px',
-            height: deviceHeight,
+            height: '20px',
             display: 'flex',
             background: '#ffffff',
             border: '0.5px solid #d1d1d1',
             borderRadius: '4px',
-            cursor: 'pointer'
+            cursor: 'pointer',
+            boxShadow: 'none',
+            '&:hover': {
+                border: '0.5px solid #d1d1d1',
+            },
+            "@media screen and (max-width: 768px)": {
+                ...provided,
+                height: '28px',
+            },
         }),
-        singleValue: (provided: any, state: any) => {
+        singleValue: (provided, state) => {
             const opacity = state.isDisabled ? 0.5 : 1
             const transition = 'opacity 300ms'
 
@@ -59,15 +77,13 @@ export const ReactSelect: FC<ReactSelectPropsType> = ({
     }
 
     return (
-        <>
-            <Select
-                options={options}
-                defaultValue={options[index]}
-                onChange={onChangeCallback}
-                menuPlacement="top"
-                styles={customStyles}
-            />
-        </>
+        <Select
+            options={options}
+            defaultValue={options[index]}
+            onChange={onChangeCallback}
+            menuPlacement="top"
+            styles={customStyles}
+        />
     )
 }
 

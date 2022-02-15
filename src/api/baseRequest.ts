@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { restoreState } from '../utils/localStorage'
+import { restoreFromLocalStorage } from '../utils/localStorage'
 
 export const fetchAPI = () => {
     const instance = axios.create({
@@ -11,8 +11,9 @@ export const fetchAPI = () => {
     })
 
     instance.interceptors.request.use((config) => {
-        const state = restoreState('state')
-        const token = state === null ? '' : state.token
+        const tokenFromLocalStorage = restoreFromLocalStorage('token')
+        const token =
+            tokenFromLocalStorage === null ? '' : tokenFromLocalStorage
         if (!config) {
             config = {}
         }
