@@ -20,13 +20,13 @@ export const Teams: FC = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const totalElementCount = useSelector<AppRootStateType, number>(
-        (state) => state.teams.count
+        (state) => state.teams.teams.count
     )
     const pageSize = useSelector<AppRootStateType, number>(
-        (state) => state.teams.size
+        (state) => state.teams.teams.size
     )
     const teams = useSelector<AppRootStateType, TeamDto[]>(
-        (state) => state.teams.data
+        (state) => state.teams.teams.data
     )
     const [searchTeam, setSearchTeam] = useState<string>('')
 
@@ -43,7 +43,6 @@ export const Teams: FC = () => {
     const startSearchingTeam = () => {
         dispatch(getTeamsTC(searchTeam, 1, pageSize))
     }
-
 
     // Paginator + Selector
     const handlePageClick = (event: { selected: number }) => {

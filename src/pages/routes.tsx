@@ -78,6 +78,6 @@ const RequireAuth = (props: RequireAuthPropsType) => {
 }
 
 export type RequireAuthPropsType = {
-    isLoggedIn: boolean;
-    children: JSX.Element;
-};
+    isLoggedIn: boolean
+    children: JSX.Element
+}

@@ -64,8 +64,9 @@ export const Sidebar: FC = () => {
                                 onClick={onTeamTabClick}
                             >
                                 <TeamsIcon
-                                    className={`${styles.icon} ${isTeamTabActive ? styles.activeIcon : ''
-                                        }`}
+                                    className={`${styles.icon} ${
+                                        isTeamTabActive ? styles.activeIcon : ''
+                                    }`}
                                 />
                                 <span
                                     className={
@@ -85,10 +86,11 @@ export const Sidebar: FC = () => {
                                 onClick={onPlayersTabClick}
                             >
                                 <PlayersIcon
-                                    className={`${styles.icon} ${isPlayersTabActive
-                                        ? styles.activeIcon
-                                        : ''
-                                        }`}
+                                    className={`${styles.icon} ${
+                                        isPlayersTabActive
+                                            ? styles.activeIcon
+                                            : ''
+                                    }`}
                                 />
                                 <span
                                     className={

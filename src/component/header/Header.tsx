@@ -5,7 +5,6 @@ import styles from './Header.module.css'
 import { restoreFromLocalStorage } from '../../utils/localStorage'
 
 export const Header: FC = () => {
-
     const name = restoreFromLocalStorage('name')
 
     return (

@@ -1,5 +1,3 @@
-import { yupResolver } from '@hookform/resolvers/yup'
-import * as Yup from 'yup'
 import { useForm } from 'react-hook-form'
 import wrapper from './Content.module.css'
 import styles from './AddTeam.module.css'
@@ -30,27 +28,14 @@ export const AddTeam: FC = () => {
     )
     const [newImageUrl, setNewImageUrl] = useState('')
 
-    const validationSchema = Yup.object().shape({
-        name: Yup.string().required('Name is required'),
-        division: Yup.string().required('Division is required'),
-        conference: Yup.string().required('Conference is required'),
-        foundationYear: Yup.string().required('Year Of Foundation is required'),
-        imageUrl: Yup.mixed()
-            .required('Image is required')
-            .test('length', 'Image is required', (value) => {
-                return value && value.length > 0
-            })
-    })
-    const formOptions = { resolver: yupResolver(validationSchema) }
-
     const {
         register,
         handleSubmit,
         formState: { errors }
-    } = useForm<IFormInputs>(formOptions)
+    } = useForm<IFormInputs>()
 
     const onSubmit = (data: IFormInputs) => {
-        dispatch(addTeamTC({ ...data, imageUrl: newImageUrl }))
+        dispatch(addTeamTC({ ...data, imageUrl: newImageUrl }, navigate))
     }
 
     const cancelHandler = () => {
@@ -78,7 +63,7 @@ export const AddTeam: FC = () => {
                     >
                         <input
                             type="file"
-                            {...register('imageUrl')}
+                            {...register('imageUrl', { required: true })}
                             className={styles.addFileInput}
                             onChange={onChangeHandler}
                         />
@@ -90,24 +75,28 @@ export const AddTeam: FC = () => {
                             register={register}
                             label={'Name'}
                             errors={errors.name?.message}
+                            rules={{ required: 'Name is required' }}
                         />
                         <InputContainer
                             name={'division'}
                             register={register}
                             label={'Division'}
                             errors={errors.division?.message}
+                            rules={{ required: 'Division is required' }}
                         />
                         <InputContainer
                             name={'conference'}
                             register={register}
                             label={'Conference'}
                             errors={errors.conference?.message}
+                            rules={{ required: 'Conference is required' }}
                         />
                         <InputContainer
                             name={'foundationYear'}
                             register={register}
                             label={'Year Of Foundation'}
                             errors={errors.foundationYear?.message}
+                            rules={{ required: 'Year Of Foundation is required' }}
                         />
                         <div className={styles.buttonsContainer}>
                             <Button

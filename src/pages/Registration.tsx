@@ -1,7 +1,5 @@
 import React, { FC } from 'react'
 import { useForm } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup'
-import * as Yup from 'yup'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppRootStateType } from '../core/redux/store'
 import { registerTC } from '../modules/auth/authorizationThunk'
@@ -29,23 +27,12 @@ export const Registration: FC = () => {
         (state) => state.app.status
     )
 
-    const validationSchema = Yup.object().shape({
-        userName: Yup.string().required('Name is required'),
-        login: Yup.string().required('Login is required'),
-        password: Yup.string()
-            .min(6, 'Password must be at least 6 characters')
-            .required('Password is required'),
-        confirmPassword: Yup.string()
-            .oneOf([Yup.ref('password'), null], 'Passwords must match')
-            .required('Confirm Password is required'),
-        acceptTerms: Yup.bool().oneOf([true], 'Accept Agreement is required')
-    })
-    const formOptions = { resolver: yupResolver(validationSchema) }
     const {
         register,
         handleSubmit,
-        formState: { errors }
-    } = useForm<IFormInputs>(formOptions)
+        formState: { errors },
+        getValues
+    } = useForm<IFormInputs>({ mode: 'onSubmit', reValidateMode: 'onSubmit' })
     const onSubmit = (data: IFormInputs) => {
         dispatch(
             registerTC({
@@ -55,7 +42,7 @@ export const Registration: FC = () => {
             })
         )
     }
-
+    console.log(errors)
     if (isLoggedIn) {
         return <Navigate replace to={PATH.TEAMS} />
     }
@@ -74,12 +61,14 @@ export const Registration: FC = () => {
                             register={register}
                             label={'Name'}
                             errors={errors.userName?.message}
+                            rules={{ required: 'Name is required' }}
                         />
                         <InputContainer
                             name={'login'}
                             register={register}
                             label={'Login'}
                             errors={errors.login?.message}
+                            rules={{ required: 'Login is required' }}
                         />
                         <InputContainer
                             name={'password'}
@@ -87,19 +76,25 @@ export const Registration: FC = () => {
                             label={'Password'}
                             errors={errors.password?.message}
                             type={'password'}
+                            rules={{ required: 'Password is required' }}
                         />
                         <InputContainer
                             name={'confirmPassword'}
                             register={register}
                             label={'Enter your password again'}
-                            errors={errors.password?.message}
+                            errors={errors.confirmPassword?.message}
                             type={'password'}
+                            rules={{
+                                required: 'Confirm password is required',
+                                validate: (value: string) => value === getValues('password') || 'Passwords should match'
+                            }}
                         />
+
                         <div className={styles.checkboxContainer}>
                             <div className={styles.checkboxBlock}>
                                 <input
                                     type="checkbox"
-                                    {...register('acceptTerms')}
+                                    {...register('acceptTerms', { required: 'AcceptTerms is required' })}
                                     className={styles.checkbox}
                                 />
                                 <span className={styles.checkboxText}>

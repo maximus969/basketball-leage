@@ -1,12 +1,12 @@
 import { FC } from 'react'
 import styles from './Input.module.css'
 
-
 export const Input: FC<InputPropsType> = ({
     register,
     name,
     value,
     isPasswordType,
+    rules,
     ...rest
 }) => {
     const inputType = isPasswordType ? 'password' : 'text'
@@ -14,7 +14,7 @@ export const Input: FC<InputPropsType> = ({
     return (
         <input
             className={styles.input}
-            {...register(name)}
+            {...register(name, rules)}
             defaultValue={value}
             type={inputType}
         />
@@ -26,4 +26,5 @@ type InputPropsType = {
     name: string
     value?: string | number
     isPasswordType?: boolean | string
+    rules?: any
 }

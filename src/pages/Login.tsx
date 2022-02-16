@@ -1,7 +1,5 @@
 import React, { FC } from 'react'
 import { useForm } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup'
-import * as Yup from 'yup'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppRootStateType } from '../core/redux/store'
 import { authTC } from '../modules/auth/authorizationThunk'
@@ -26,19 +24,11 @@ export const Login: FC = () => {
         (state) => state.app.status
     )
 
-    const validationSchema = Yup.object().shape({
-        login: Yup.string().required('Login is required'),
-        password: Yup.string()
-            .min(6, 'Password must be at least 6 characters')
-            .required('Password is required')
-    })
-    const formOptions = { resolver: yupResolver(validationSchema) }
-
     const {
         register,
         handleSubmit,
         formState: { errors }
-    } = useForm<ILoginFormInputs>(formOptions)
+    } = useForm<ILoginFormInputs>()
 
     const onSubmit = (data: ILoginFormInputs) => {
         dispatch(
@@ -67,6 +57,7 @@ export const Login: FC = () => {
                             register={register}
                             label={'Login'}
                             errors={errors.login?.message}
+                            rules={{ required: 'Login is required' }}
                         />
                         <InputContainer
                             name={'password'}
@@ -74,6 +65,7 @@ export const Login: FC = () => {
                             label={'Password'}
                             errors={errors.password?.message}
                             type={'password'}
+                            rules={{ required: 'Password is required' }}
                         />
 
                         <div className={styles.buttonContainer}>

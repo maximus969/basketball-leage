@@ -1,8 +1,7 @@
 import { Dispatch } from 'redux'
 import { NewPlayerDto, PlayerDto, playersAPI } from '../../api/dto/IPlayer'
 import { setAppStatus } from '../app/appSlice'
-import { setPlayerData } from './playerSlice'
-import { setPlayersData } from './playersSlice'
+import { setPlayersData, setPlayerData } from './playersSlice'
 
 export const getPlayersTC =
     (name: string, id: number, page: number, pageSize: number) =>

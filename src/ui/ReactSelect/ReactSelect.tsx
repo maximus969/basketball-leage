@@ -3,9 +3,9 @@ import styles from './ReactSelect.module.css'
 import { FC, useState } from 'react'
 
 type MyOptionType = {
-    label: string;
-    value: number;
-};
+    label: string
+    value: number
+}
 
 const options: MyOptionType[] = [
     { value: 6, label: '6' },
@@ -13,7 +13,7 @@ const options: MyOptionType[] = [
     { value: 24, label: '24' }
 ]
 
-type IsMulti = false;
+type IsMulti = false
 
 export const ReactSelect: FC<ReactSelectPropsType> = ({
     onChangeOption,
@@ -42,13 +42,13 @@ export const ReactSelect: FC<ReactSelectPropsType> = ({
             color: state.isFocused
                 ? '#FFFFFF'
                 : state.isSelected
-                    ? '#FFFFFF'
-                    : '#9C9C9C',
+                ? '#FFFFFF'
+                : '#9C9C9C',
             background: state.isFocused
                 ? '#FF768E'
                 : state.isSelected
-                    ? '#C60E2E'
-                    : undefined
+                ? '#C60E2E'
+                : undefined
         }),
         control: (provided, state) => ({
             ...provided,
@@ -61,12 +61,12 @@ export const ReactSelect: FC<ReactSelectPropsType> = ({
             cursor: 'pointer',
             boxShadow: 'none',
             '&:hover': {
-                border: '0.5px solid #d1d1d1',
+                border: '0.5px solid #d1d1d1'
             },
-            "@media screen and (max-width: 768px)": {
+            '@media screen and (max-width: 768px)': {
                 ...provided,
-                height: '28px',
-            },
+                height: '28px'
+            }
         }),
         singleValue: (provided, state) => {
             const opacity = state.isDisabled ? 0.5 : 1

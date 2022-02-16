@@ -16,22 +16,22 @@ export const TeamInfo: FC = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const name = useSelector<AppRootStateType, string>(
-        (state) => state.team.name
+        (state) => state.teams.team.name
     )
     const conference = useSelector<AppRootStateType, string>(
-        (state) => state.team.conference
+        (state) => state.teams.team.conference
     )
     const division = useSelector<AppRootStateType, string>(
-        (state) => state.team.division
+        (state) => state.teams.team.division
     )
     const foundationYear = useSelector<AppRootStateType, number>(
-        (state) => state.team.foundationYear
+        (state) => state.teams.team.foundationYear
     )
     const imageUrl = useSelector<AppRootStateType, string>(
-        (state) => state.team.imageUrl
+        (state) => state.teams.team.imageUrl
     )
     const teamsPlayers = useSelector<AppRootStateType, PlayerDto[]>(
-        (state) => state.players.data
+        (state) => state.players.players.data
     )
 
     useEffect(() => {

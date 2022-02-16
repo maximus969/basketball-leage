@@ -1,23 +1,37 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { PlayerDtoPageResult } from '../../api/dto/IPlayer'
+import { PlayerDtoPageResult, PlayerTeamNameDto } from '../../api/dto/IPlayer'
 
 const initialState = {
-    data: [
-        {
-            name: '',
-            number: 0,
-            position: '',
-            team: 0,
-            birthday: '',
-            height: 0,
-            weight: 0,
-            avatarUrl: '',
-            id: 0
-        }
-    ],
-    count: 0,
-    page: 1,
-    size: 1
+    players: {
+        data: [
+            {
+                name: '',
+                number: 0,
+                position: '',
+                team: 0,
+                birthday: '',
+                height: 0,
+                weight: 0,
+                avatarUrl: '',
+                id: 0
+            }
+        ],
+        count: 0,
+        page: 1,
+        size: 1
+    },
+    player: {
+        name: '',
+        number: 0,
+        position: '',
+        team: 0,
+        birthday: '',
+        height: 0,
+        weight: 0,
+        avatarUrl: '',
+        id: 0,
+        teamName: ''
+    }
 }
 
 const slice = createSlice({
@@ -25,10 +39,14 @@ const slice = createSlice({
     initialState: initialState,
     reducers: {
         setPlayersData(state, action: PayloadAction<PlayerDtoPageResult>) {
-            return { ...action.payload }
+            state.players = action.payload
+        },
+        setPlayerData(state, action: PayloadAction<PlayerTeamNameDto>) {
+            state.player = action.payload
         }
     }
 })
 
 export const playersReducer = slice.reducer
 export const { setPlayersData } = slice.actions
+export const { setPlayerData } = slice.actions

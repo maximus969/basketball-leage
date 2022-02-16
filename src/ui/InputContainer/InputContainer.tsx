@@ -4,7 +4,6 @@ import { useState, useEffect, FC } from 'react'
 import eyeRoundedIcon from '../../assets/icon/eyeRounded.svg'
 import closeEyeRoundedIcon from '../../assets/icon/closeEyeRounded.svg'
 
-
 export const InputContainer: FC<InputContainerPropsType> = ({
     register,
     name,
@@ -12,6 +11,7 @@ export const InputContainer: FC<InputContainerPropsType> = ({
     errors,
     value,
     type,
+    rules,
     ...rest
 }) => {
     const [showPassword, setShowPassword] = useState(false)
@@ -28,6 +28,7 @@ export const InputContainer: FC<InputContainerPropsType> = ({
                     register={register}
                     value={value}
                     isPasswordType={showPassword}
+                    rules={rules}
                 />
                 {type && (
                     <div
@@ -57,4 +58,5 @@ type InputContainerPropsType = {
     errors: string | undefined
     value?: string | number
     type?: string
+    rules?: any
 }
