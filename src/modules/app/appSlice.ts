@@ -19,8 +19,7 @@ const slice = createSlice({
 })
 
 export const appReducer = slice.reducer
-export const setAppStatus = slice.actions.setAppStatus
-export const setAppError = slice.actions.setAppError
+export const { setAppStatus, setAppError } = slice.actions
 
 export type InitialStateType = {
     status: boolean

@@ -7,13 +7,15 @@ export const Input: FC<InputPropsType> = ({
     value,
     isPasswordType,
     rules,
+    error,
     ...rest
 }) => {
     const inputType = isPasswordType ? 'password' : 'text'
+    const errorStyle = error ? `${styles.error}` : ''
 
     return (
         <input
-            className={styles.input}
+            className={`${styles.input} ${errorStyle}`}
             {...register(name, rules)}
             defaultValue={value}
             type={inputType}
@@ -27,4 +29,5 @@ type InputPropsType = {
     value?: string | number
     isPasswordType?: boolean | string
     rules?: any
+    error: string | undefined
 }

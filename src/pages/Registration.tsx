@@ -86,7 +86,9 @@ export const Registration: FC = () => {
                             type={'password'}
                             rules={{
                                 required: 'Confirm password is required',
-                                validate: (value: string) => value === getValues('password') || 'Passwords should match'
+                                validate: (value: string) =>
+                                    value === getValues('password') ||
+                                    'Passwords should match'
                             }}
                         />
 
@@ -94,7 +96,9 @@ export const Registration: FC = () => {
                             <div className={styles.checkboxBlock}>
                                 <input
                                     type="checkbox"
-                                    {...register('acceptTerms', { required: 'AcceptTerms is required' })}
+                                    {...register('acceptTerms', {
+                                        required: 'AcceptTerms is required'
+                                    })}
                                     className={styles.checkbox}
                                 />
                                 <span className={styles.checkboxText}>

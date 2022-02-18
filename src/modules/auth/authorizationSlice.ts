@@ -18,5 +18,4 @@ const slice = createSlice({
 })
 
 export const authReducer = slice.reducer
-export const { setUserData } = slice.actions
-export const { signOut } = slice.actions
+export const { setUserData, signOut } = slice.actions

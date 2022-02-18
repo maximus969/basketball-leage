@@ -23,7 +23,7 @@ export const ReactSelect: FC<ReactSelectPropsType> = ({
     const [deviceHeight, setDeviceHeight] = useState('')
 
     const onChangeCallback = (e: SingleValue<MyOptionType>) => {
-        if (e?.value) {
+        if (e?.value && e.value !== pageSize) {
             onChangeOption(e.value)
         }
     }
@@ -42,13 +42,13 @@ export const ReactSelect: FC<ReactSelectPropsType> = ({
             color: state.isFocused
                 ? '#FFFFFF'
                 : state.isSelected
-                ? '#FFFFFF'
-                : '#9C9C9C',
+                    ? '#FFFFFF'
+                    : '#9C9C9C',
             background: state.isFocused
                 ? '#FF768E'
                 : state.isSelected
-                ? '#C60E2E'
-                : undefined
+                    ? '#C60E2E'
+                    : undefined
         }),
         control: (provided, state) => ({
             ...provided,

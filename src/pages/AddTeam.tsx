@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form'
 import wrapper from './Content.module.css'
 import styles from './AddTeam.module.css'
-import { addTeamTC } from '../modules/teams/teamsThunk'
+import { addTeam } from '../modules/teams/teamsThunk'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { PATH } from './routes'
@@ -34,8 +34,11 @@ export const AddTeam: FC = () => {
         formState: { errors }
     } = useForm<IFormInputs>()
 
-    const onSubmit = (data: IFormInputs) => {
-        dispatch(addTeamTC({ ...data, imageUrl: newImageUrl }, navigate))
+    const onSubmit = (formData: IFormInputs) => {
+        dispatch(addTeam({
+            data: { ...formData, imageUrl: newImageUrl },
+            navigate
+        }))
     }
 
     const cancelHandler = () => {
@@ -96,7 +99,9 @@ export const AddTeam: FC = () => {
                             register={register}
                             label={'Year Of Foundation'}
                             errors={errors.foundationYear?.message}
-                            rules={{ required: 'Year Of Foundation is required' }}
+                            rules={{
+                                required: 'Year Of Foundation is required'
+                            }}
                         />
                         <div className={styles.buttonsContainer}>
                             <Button

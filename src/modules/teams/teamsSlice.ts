@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { TeamDto, TeamDtoPageResult } from '../../api/dto/ITeam'
+import { deleteTeam, fetchTeams, getTeamInfo, updateTeam } from './teamsThunk'
 
 const initialState = {
     teams: {
@@ -24,7 +25,7 @@ const initialState = {
         conference: '',
         imageUrl: '',
         id: 0
-    }
+    },
 }
 
 const slice = createSlice({
@@ -37,9 +38,29 @@ const slice = createSlice({
         setTeamInfo(state, action: PayloadAction<TeamDto>) {
             state.team = action.payload
         }
+    },
+    extraReducers: (builder) => {
+        builder
+            .addCase(fetchTeams.fulfilled, (state, action) => {
+            if (action && action.payload) {
+            state.teams = action.payload
+            }
+          })
+          .addCase(getTeamInfo.fulfilled, (state, action) => {
+            if (action && action.payload) {
+            state.team = action.payload
+            }
+          })
+          .addCase(updateTeam.fulfilled, (state, action) => {
+            if (action && action.payload) {
+            state.team = action.payload
+            }
+          })
+          .addCase(deleteTeam.fulfilled, (state) => {
+            state.team = initialState.team
+          })
     }
 })
 
 export const teamsReducer = slice.reducer
-export const { setTeamsData } = slice.actions
-export const { setTeamInfo } = slice.actions
+export const { setTeamsData, setTeamInfo } = slice.actions

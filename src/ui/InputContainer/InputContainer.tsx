@@ -29,6 +29,7 @@ export const InputContainer: FC<InputContainerPropsType> = ({
                     value={value}
                     isPasswordType={showPassword}
                     rules={rules}
+                    error={errors}
                 />
                 {type && (
                     <div

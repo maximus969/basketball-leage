@@ -48,5 +48,4 @@ const slice = createSlice({
 })
 
 export const playersReducer = slice.reducer
-export const { setPlayersData } = slice.actions
-export const { setPlayerData } = slice.actions
+export const { setPlayersData, setPlayerData } = slice.actions

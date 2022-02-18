@@ -9,9 +9,10 @@
   box-sizing: border-box;
   font-size: 14px;
   line-height: 24px;
+  color: #303030;
 }
 
-.input .error {
+.error {
   border: 1px solid #ff768e;
 }
 

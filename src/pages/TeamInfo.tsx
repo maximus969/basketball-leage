@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import wrapper from './Content.module.css'
 import styles from './TeamInfo.module.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { deleteTeamTC, getTeamInfoTC } from '../modules/teams/teamsThunk'
+import { deleteTeam, getTeamInfo } from '../modules/teams/teamsThunk'
 import { AppRootStateType } from '../core/redux/store'
 import { ReactComponent as DeleteIcon } from '../assets/icon/delete_rounded.svg'
 import updateIcon from '../assets/icon/create_rounded.svg'
@@ -35,12 +35,12 @@ export const TeamInfo: FC = () => {
     )
 
     useEffect(() => {
-        dispatch(getTeamInfoTC(Number(id)))
+        dispatch(getTeamInfo(Number(id)))
         dispatch(getPlayersTC('', Number(id), 1, 7))
     }, [])
 
-    const deleteTeam = () => {
-        dispatch(deleteTeamTC(Number(id)))
+    const deleteTeamHandler = () => {
+        dispatch(deleteTeam(Number(id)))
         navigate(-1)
     }
     const updateTeam = () => {
@@ -60,7 +60,7 @@ export const TeamInfo: FC = () => {
                                 <img src={updateIcon} alt="update" />
                             </div>
                             <div
-                                onClick={deleteTeam}
+                                onClick={deleteTeamHandler}
                                 className={styles.iconsStyles}
                             >
                                 <DeleteIcon className={styles.deleteIcon} />
