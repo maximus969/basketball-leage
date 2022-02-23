@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppRootStateType } from '../core/redux/store'
-import { authTC } from '../modules/auth/authorizationThunk'
+import { loginTC } from '../modules/auth/authorizationThunk'
 import styles from './Auth.module.css'
 import { ReactComponent as IconFont } from '../assets/icon/Group.svg'
 import { Navigate, NavLink } from 'react-router-dom'
@@ -32,7 +32,7 @@ export const Login: FC = () => {
 
     const onSubmit = (data: ILoginFormInputs) => {
         dispatch(
-            authTC({
+            loginTC({
                 login: data.login,
                 password: data.password
             })

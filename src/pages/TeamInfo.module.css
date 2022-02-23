@@ -4,59 +4,75 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
 .container {
-    width: 90%;
-    height: 47%;
-    margin-top: 2%;
+    width: 100%;
+    max-width: 1140px;
+    height: 473px;
+    margin: 32px auto 24px;
     border-radius: 10px;
     overflow: hidden;
     background: linear-gradient(276.45deg, #707070 0%, #393939 100.28%);
 }
+.playerContainer {
+    height: 594px;
+}
 
 .heading {
-    height: 15%;
+    height: 69px;
     background-color: var(--primary-bg-color);
     display: flex;
     align-items: center;
     justify-content: flex-end;
 }
 .iconsContainer {
-    width: 50px;
+    width: 72px;
     margin-right: 24px;
     display: flex;
     justify-content: space-between;
 }
 .teamInfoContainer {
     display: flex;
-    height: 85%;
+    height: 404px;
+}
+.playerInfoContainer {
+    height: 525px;
 }
 .imgBlock {
-    width: 40%;
+    margin: 0 146px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+.imgPlayerBlock {
+    margin: 0;
+    margin-right: 56px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
 
 .img {
-    width: 150px;
-    height: 150px;
+    width: 210px;
+    height: 210px;
+}
+
+.imgPlayer {
+    width: 531px;
+    height: 531px;
+    margin-bottom: -36px;
 }
 
 .textInfoBlock {
-    width: 60%;
     display: flex;
     flex-direction: column;
     align-content: flex-start;
-    justify-content: center;
+    margin-top: 65px;
 }
 .textInfo {
-    height: 75%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 }
 .title {
     font-weight: 800;
@@ -64,33 +80,45 @@
     line-height: 49px;
     color: var(--primary-text-color);
     margin: 0;
+    margin-bottom: 40px;
+}
+.numberStyles {
+    color: red;
 }
 .description {
     display: flex;
     flex-wrap: wrap;
 }
 .descriptionBlock {
-    width: 46%;
-    margin-right: 2%;
-    margin-bottom: 2%;
+    width: 296px;
+    margin-bottom: 54px;
+}
+.descriptionPlayerBlock {
+    width: 270px;
+    margin-bottom: 54px;
 }
 
 .label {
     font-weight: 800;
-    font-size: 22px;
-    line-height: 26px;
+    font-size: 24px;
+line-height: 33px;
     color: var(--primary-text-color);
 }
 .text {
     font-weight: 500;
-    font-size: 16px;
-    line-height: 25px;
+    font-size: 18px;
+line-height: 25px;
     color: var(--primary-text-color);
     margin: 0;
 }
 
 .iconsStyles {
     cursor: pointer;
+}
+
+.headerIcon {
+    width: 24px;
+    height: 24px;
 }
 
 .deleteIcon * {
@@ -100,9 +128,9 @@
 /* table styles */
 
 .tableWrapper {
-    width: 90%;
-    margin-top: 1%;
-    margin-bottom: 2%;
+    width: 100%;
+    max-width: 1140px;
+    margin: 0 auto;
     display: flex;
     justify-content: center;
 }
@@ -110,15 +138,16 @@
 .table {
     width: 100%;
     border-collapse: collapse;
+    margin-bottom: 20px;
 }
 
 .headerName {
-    height: 100%;
+    height: 54px;
     color: var(--label-color);
     font-size: 18px;
-    line-height: 36px;
+    line-height: 25px;
     font-weight: 500;
-    padding-left: 2%;
+    padding-left: 32px;
     box-shadow: 1px 0 0 0 #9c9c9c, 0 1px 0 0 #9c9c9c, 1px 1px 0 0 #9c9c9c,
         1px 0 0 0 #9c9c9c inset, 0 1px 0 0 #9c9c9c inset;
     border-top-left-radius: 10px;
@@ -126,6 +155,7 @@
 }
 
 .headerAtributes {
+    height: 40px;
     box-shadow: 1px 0 0 0 #9c9c9c, 0 1px 0 0 #9c9c9c, 1px 1px 0 0 #9c9c9c,
         1px 0 0 0 #9c9c9c inset, 0 1px 0 0 #9c9c9c inset;
 }
@@ -136,15 +166,15 @@
     line-height: 24px;
     color: var(--label-color);
     font-weight: 500;
-    padding-left: 2%;
+    padding-left: 32px;
 }
 
-.tableBody {
+/* .tableBody {
     width: 100%;
-}
+} */
 
 .bodyAtributes {
-    height: 14%;
+    height: 56px;
     font-size: 14px;
     line-height: 36px;
     color: var(--label-color);
@@ -157,12 +187,16 @@
     border-bottom-right-radius: 10px;
 }
 
-.bodyAtributes tr:nth-child(even) {
-    height: 14%;
+.bodyCell {
+    padding-left: 32px;
 }
 
-.bodyCell {
-    padding-left: 2%;
+.bodyCell:nth-child(1) {
+    width: 16px;
+}
+
+.bodyCell:nth-child(2) {
+    width: 700px;
 }
 
 .playerInfoBlock {
@@ -172,8 +206,9 @@
 }
 
 .playerImg {
-    width: 30px;
-    margin-right: 2%;
+    width: 52px;
+    height: 38px;
+    margin-right: 10px;
 }
 .playerInfo {
     display: flex;
@@ -181,7 +216,7 @@
 }
 .playerInfoName {
     font-size: 14px;
-    line-height: 15px;
+    line-height: 24px;
 }
 .playerInfoPosition {
     font-size: 13px;
@@ -192,38 +227,60 @@
 @media screen and (max-width: 768px) {
     .container {
         width: 100%;
-        height: 60%;
+        height: 590px;
         border-radius: 0;
+        margin: 16px auto;
+    }
+    .playerContainer {
+        height: 797px;
     }
     .heading {
-        height: 7%;
+        height: 48px;
+    }
+    .iconsContainer {
+        width: 66px;
+        margin-right: 12px;
     }
     .teamInfoContainer {
-        height: 93%;
+        height: 542px;
         flex-direction: column;
         align-items: center;
     }
+    .playerInfoContainer {
+        height: 749px;
+    }
     .imgBlock {
         width: 100%;
-        margin: 5% 0;
+        margin: 48px 0;
         display: flex;
         justify-content: center;
         align-items: center;
     }
+    .imgPlayerBlock {
+        margin: 48px 0;
+        width: 100%;
+        height: 112px;
+    }
     .img {
-        width: 60%;
+        width: 89px;
+        height: 90px;
+        margin: 0;
+    }
+    .imgPlayer {
+        width: 143px;
+        height: 112px;
     }
     .textInfoBlock {
         display: flex;
         flex-direction: column;
         align-content: flex-start;
         justify-content: flex-start;
+        margin-top: 0;
     }
     .textInfo {
         align-items: center;
     }
     .description {
-        width: 100%;
         flex-direction: column;
         align-items: center;
     }
@@ -232,22 +289,28 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-bottom: 10%;
-        margin-right: 0;
+        margin-bottom: 32px;
+    }
+    .descriptionPlayerBlock {
+        text-align: center;
     }
     .title {
-        margin-bottom: 50%;
+        margin-bottom: 48px;
+        font-size: 17px;
+line-height: 25px;
     }
     .label {
-        margin-bottom: 5%;
+font-size: 17px;
+line-height: 25px;
+margin-bottom: 8px;
     }
-    .mainContainer {
-        background: var(--second-bg-color);
-        height: 140vh;
+    .text {
+font-size: 15px;
+line-height: 24px;
     }
-    .tableWrapper {
-        margin-top: 5%;
-        width: 102%;
+    .table {
+        margin-left: -2px;
+        width: 102vh;
     }
     .headerName {
         border-top-left-radius: 0;
@@ -257,14 +320,8 @@
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
     }
-    .headerName {
-        padding-left: 4%;
-    }
-    .th1 {
-        padding-left: 4%;
-    }
-    .bodyCell {
-        padding-left: 4%;
+    .headerName, .th1, .bodyCell {
+        padding-left: 16px;
     }
     .th1:nth-child(n + 3) {
         display: none;

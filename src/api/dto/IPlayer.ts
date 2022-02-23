@@ -1,9 +1,11 @@
 import { fetchAPI } from '../baseRequest'
 
 export const playersAPI = {
-    getPlayers(name: string, id: number, page: number, pageSize: number) {
+    getPlayers(name: string, id: number[], page: number, pageSize: number) {
+        const teamsId = '&' + id.map(el => `TeamIds=${el}`).join('&')
+        const finalId = id.length === 0 ? '' : teamsId
         return fetchAPI().get<PlayerDtoPageResult>(
-            `Player/GetPlayers?Name=${name}&TeamIds=${id}&Page=${page}&PageSize=${pageSize}`
+            `Player/GetPlayers?Name=${name}${finalId}&Page=${page}&PageSize=${pageSize}`
         )
     },
     getPlayerInfo(id: number) {

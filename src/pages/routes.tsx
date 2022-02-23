@@ -9,6 +9,10 @@ import { AddTeam } from './AddTeam'
 import { TeamInfo } from './TeamInfo'
 import { UpdateTeam } from './UpdateTeam'
 import { Players } from './Players'
+import { PlayerInfo } from './PlayerInfo'
+import { AddPlayer } from './AddPlayer'
+import { UpdatePlayer } from './UpdatePlayer';
+import { PageNotFound } from './PageNotFound'
 
 export const PATH = {
     LOGIN: '/login',
@@ -17,7 +21,11 @@ export const PATH = {
     ADD_TEAMS: '/teams/add-new-team',
     TEAM_DESCRIPTION: '/teams/:id',
     UPDATE_TEAM: '/teams/:id/update-team',
-    PLAYERS: '/players'
+    PLAYERS: '/players',
+    PLAYER_INFO: '/players/:id',
+    ADD_PLAYER: '/players/add-new-player',
+    UPDATE_PLAYER: '/players/:id/update-player',
+    PAGE_NOT_FOUND: '/page-not-found',
 }
 
 export const ProjectRoutes = () => {
@@ -69,6 +77,31 @@ export const ProjectRoutes = () => {
                     </RequireAuth>
                 }
             />
+            <Route
+                path={PATH.PLAYER_INFO}
+                element={
+                    <RequireAuth isLoggedIn={isLoggedIn}>
+                        <PlayerInfo />
+                    </RequireAuth>
+                }
+            />
+            <Route
+                path={PATH.ADD_PLAYER}
+                element={
+                    <RequireAuth isLoggedIn={isLoggedIn}>
+                        <AddPlayer />
+                    </RequireAuth>
+                }
+            />
+            <Route
+                path={PATH.UPDATE_PLAYER}
+                element={
+                    <RequireAuth isLoggedIn={isLoggedIn}>
+                        <UpdatePlayer />
+                    </RequireAuth>
+                }
+            />
+            <Route path="*" element={<PageNotFound />} />
         </Routes>
     )
 }

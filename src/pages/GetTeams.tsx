@@ -16,7 +16,6 @@ import { ItemsNotFound } from '../ui/ItemsNotFound/ItemsNotFound'
 import { Paginator } from '../ui/Paginator/Paginator'
 import { Button } from '../ui/Button/Button'
 
-
 export const Teams: FC = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -66,10 +65,11 @@ export const Teams: FC = () => {
                         return (
                             <BoxPreview
                                 onClick={showTeamInfo}
-                                foundationYear={item.foundationYear}
+                                date={item.foundationYear}
                                 name={item.name}
                                 imageUrl={item.imageUrl}
                                 key={item.id}
+                                item='team'
                             />
                         )
                     })}
@@ -104,7 +104,7 @@ export const Teams: FC = () => {
                     </div>
 
                     {teams.length === 0 ? (
-                        <ItemsNotFound />
+                        <ItemsNotFound item={'teams'} />
                     ) : (
                         <div className={styles.items}>
                             <Items currentItems={teams} />

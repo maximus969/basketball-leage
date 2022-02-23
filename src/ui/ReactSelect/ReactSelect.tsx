@@ -19,7 +19,8 @@ export const ReactSelect: FC<ReactSelectPropsType> = ({
     onChangeOption,
     pageSize
 }) => {
-    const index = options.findIndex((el) => el.value === pageSize)
+    let index = options.findIndex((el) => el.value === pageSize)
+    typeof index === 'number' ? index : index = 0
     const [deviceHeight, setDeviceHeight] = useState('')
 
     const onChangeCallback = (e: SingleValue<MyOptionType>) => {
@@ -53,7 +54,7 @@ export const ReactSelect: FC<ReactSelectPropsType> = ({
         control: (provided, state) => ({
             ...provided,
             width: '77px',
-            height: '20px',
+            height: '40px',
             display: 'flex',
             background: '#ffffff',
             border: '0.5px solid #d1d1d1',
@@ -63,9 +64,14 @@ export const ReactSelect: FC<ReactSelectPropsType> = ({
             '&:hover': {
                 border: '0.5px solid #d1d1d1'
             },
-            '@media screen and (max-width: 768px)': {
+            '@media screen and (max-width: 480px)': {
                 ...provided,
-                height: '28px'
+                height: '28px',
+                border: '0.5px solid #d1d1d1',
+                boxShadow: 'none',
+                '&:hover': {
+                    border: '0.5px solid #d1d1d1'
+                },
             }
         }),
         singleValue: (provided, state) => {

@@ -4,7 +4,7 @@ import { setAppStatus } from '../app/appSlice'
 import { setPlayersData, setPlayerData } from './playersSlice'
 
 export const getPlayersTC =
-    (name: string, id: number, page: number, pageSize: number) =>
+    (name: string, id: number[], page: number, pageSize: number) =>
     (dispatch: Dispatch) => {
         dispatch(setAppStatus({ status: true }))
         playersAPI
@@ -28,7 +28,6 @@ export const getPlayerInfoTC = (id: number) => (dispatch: Dispatch) => {
         .getPlayerInfo(id)
         .then((res) => {
             if (res.request.status === 200) {
-                console.log(res.data)
                 dispatch(setPlayerData(res.data))
             }
         })
@@ -106,3 +105,5 @@ export const deletePlayerTC = (id: number) => (dispatch: Dispatch) => {
             dispatch(setAppStatus({ status: false }))
         })
 }
+
+

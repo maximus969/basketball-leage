@@ -1,0 +1,64 @@
+@import "../assets/theme/theme.css";
+
+.container {
+  position: absolute;
+  z-index: 10;
+  background: var(--primary-bg-color);
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.icon {
+  width: 380px;
+  height: 212px;
+}
+
+.textBlock {
+  margin: 48px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.firstText {
+  margin: 0;
+  margin-bottom: 24px;
+  font-weight: 800;
+  font-size: 36px;
+line-height: 49px;
+  color: var(--logout-color);
+}
+
+.secondText {
+  margin: 0;
+  font-size: 24px;
+line-height: 33px;
+  font-weight: normal;
+  color: var(--label-color);
+}
+
+@media screen and (max-width: 768px) {
+  .icon {
+    width: 285px;
+    height: 160px;
+  }
+  .firstText {
+    font-size: 17px;
+    line-height: 25px;
+  }
+  .secondText {
+    font-size: 15px;
+    line-height: 24px;
+  }
+}

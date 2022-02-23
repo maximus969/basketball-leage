@@ -18,7 +18,7 @@ const initialState = {
         ],
         count: 0,
         page: 1,
-        size: 1
+        size: 6
     },
     player: {
         name: '',
@@ -31,7 +31,7 @@ const initialState = {
         avatarUrl: '',
         id: 0,
         teamName: ''
-    }
+    },
 }
 
 const slice = createSlice({
@@ -43,7 +43,7 @@ const slice = createSlice({
         },
         setPlayerData(state, action: PayloadAction<PlayerTeamNameDto>) {
             state.player = action.payload
-        }
+        },
     }
 })
 

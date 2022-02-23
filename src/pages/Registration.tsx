@@ -32,7 +32,7 @@ export const Registration: FC = () => {
         handleSubmit,
         formState: { errors },
         getValues
-    } = useForm<IFormInputs>({ mode: 'onSubmit', reValidateMode: 'onSubmit' })
+    } = useForm<IFormInputs>({ mode: 'onSubmit' })
     const onSubmit = (data: IFormInputs) => {
         dispatch(
             registerTC({
@@ -93,18 +93,18 @@ export const Registration: FC = () => {
                         />
 
                         <div className={styles.checkboxContainer}>
-                            <div className={styles.checkboxBlock}>
-                                <input
-                                    type="checkbox"
-                                    {...register('acceptTerms', {
-                                        required: 'AcceptTerms is required'
-                                    })}
-                                    className={styles.checkbox}
-                                />
-                                <span className={styles.checkboxText}>
+                            <input
+                                type="checkbox" id="checkbox"
+                                {...register('acceptTerms', {
+                                    required: 'You must be accept by agreement'
+                                })}
+                                className={errors?.acceptTerms ? styles.checkboxError : styles.customCheckbox}
+                            />
+                            <label htmlFor="checkbox">
+                                <span className={`${styles.checkboxText} ${errors?.acceptTerms ? styles.spanError : ''}`}>
                                     I accept the agreement
                                 </span>
-                            </div>
+                            </label>
                             {errors?.acceptTerms && (
                                 <span className={styles.errorMessage}>
                                     {errors.acceptTerms.message}

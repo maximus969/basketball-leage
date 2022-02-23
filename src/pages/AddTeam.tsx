@@ -12,6 +12,7 @@ import { AppRootStateType } from '../core/redux/store'
 import addPhotoImage from '../assets/icon/add_a_photo_24px_rounded.svg'
 import { FC, useState } from 'react'
 
+
 export interface IFormInputs {
     name: string
     division: string
@@ -35,10 +36,12 @@ export const AddTeam: FC = () => {
     } = useForm<IFormInputs>()
 
     const onSubmit = (formData: IFormInputs) => {
-        dispatch(addTeam({
-            data: { ...formData, imageUrl: newImageUrl },
-            navigate
-        }))
+        dispatch(
+            addTeam({
+                data: { ...formData, imageUrl: newImageUrl },
+                navigate
+            })
+        )
     }
 
     const cancelHandler = () => {
@@ -107,12 +110,12 @@ export const AddTeam: FC = () => {
                             <Button
                                 name={'Cancel'}
                                 onClickHandler={cancelHandler}
-                                width={'45%'}
+                                width={'171px'}
                                 disabled={isLoading}
                             />
                             <Button
                                 name={'Save'}
-                                width={'45%'}
+                                width={'171px'}
                                 type={'submit'}
                                 disabled={isLoading}
                             />

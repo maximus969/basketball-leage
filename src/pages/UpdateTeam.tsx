@@ -52,10 +52,12 @@ export const UpdateTeam: FC = () => {
     } = useForm<IFormInputs>()
 
     const onSubmit = (formData: IFormInputs) => {
-        dispatch(updateTeam({
-            data: { ...formData, id, imageUrl: newImageUrl },
-            navigate
-        }))
+        dispatch(
+            updateTeam({
+                data: { ...formData, id, imageUrl: newImageUrl },
+                navigate
+            })
+        )
     }
 
     const cancelHandler = () => {
@@ -128,13 +130,13 @@ export const UpdateTeam: FC = () => {
                         <div className={styles.buttonsContainer}>
                             <Button
                                 name={'Cancel'}
-                                width={'45%'}
+                                width={'171px'}
                                 onClickHandler={cancelHandler}
                                 disabled={isLoading}
                             />
                             <Button
                                 name={'Save'}
-                                width={'45%'}
+                                width={'171px'}
                                 type={'submit'}
                                 disabled={isLoading}
                             />

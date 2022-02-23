@@ -25,7 +25,7 @@ const initialState = {
         conference: '',
         imageUrl: '',
         id: 0
-    },
+    }
 }
 
 const slice = createSlice({
@@ -42,23 +42,23 @@ const slice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(fetchTeams.fulfilled, (state, action) => {
-            if (action && action.payload) {
-            state.teams = action.payload
-            }
-          })
-          .addCase(getTeamInfo.fulfilled, (state, action) => {
-            if (action && action.payload) {
-            state.team = action.payload
-            }
-          })
-          .addCase(updateTeam.fulfilled, (state, action) => {
-            if (action && action.payload) {
-            state.team = action.payload
-            }
-          })
-          .addCase(deleteTeam.fulfilled, (state) => {
-            state.team = initialState.team
-          })
+                if (action && action.payload) {
+                    state.teams = action.payload
+                }
+            })
+            .addCase(getTeamInfo.fulfilled, (state, action) => {
+                if (action && action.payload) {
+                    state.team = action.payload
+                }
+            })
+            .addCase(updateTeam.fulfilled, (state, action) => {
+                if (action && action.payload) {
+                    state.team = action.payload
+                }
+            })
+            .addCase(deleteTeam.fulfilled, (state) => {
+                state.team = initialState.team
+            })
     }
 })
 

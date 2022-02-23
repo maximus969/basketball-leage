@@ -5,7 +5,7 @@
     box-shadow: 0px 1px 10px rgba(209, 209, 209, 0.5);
     position: fixed;
     width: 100%;
-    height: 10vh;
+    height: 80px;
     display: flex;
     align-content: center;
     justify-content: center;
@@ -13,7 +13,8 @@
 }
 
 .headerContainer {
-    width: 90%;
+    width: 100%;
+    margin: 0 51px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -23,7 +24,7 @@
     width: 120px;
     height: 50%;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
 }
 
@@ -34,25 +35,28 @@
     color: var(--navbar-login-name);
 }
 
-.logoBlock {
-    height: 60%;
-}
-
 .logo {
-    height: 100%;
+    width: 175px;
+    height: 44px;
 }
 
 .profileIcon {
-    height: 100%;
+    width: 30px;
+    height: 30px;
+    margin-left: 19px;
 }
 
 @media screen and (max-width: 768px) {
     .header {
-        height: 9vh;
+        height: 62px;
         position: absolute;
     }
     .headerContainer {
         justify-content: center;
+    }
+    .logo {
+        width: 137px;
+        height: 34px;
     }
     .profileData {
         display: none;

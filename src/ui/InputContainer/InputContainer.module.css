@@ -1,5 +1,5 @@
 .inputContainer {
-  height: 23%;
+  height: 90px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -16,7 +16,6 @@
 
 .inputStyles {
   width: 100%;
-  height: 45%;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -34,8 +33,9 @@
 .errorMessage {
   color: #ff768e;
   margin: 0;
+  margin-top: 2px;
   font-size: 12px;
-  line-height: 19px;
+  line-height: 18px;
   white-space: nowrap;
 }
 

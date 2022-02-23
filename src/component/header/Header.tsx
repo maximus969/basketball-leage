@@ -10,9 +10,7 @@ export const Header: FC = () => {
     return (
         <div className={styles.header}>
             <div className={styles.headerContainer}>
-                <div className={styles.logoBlock}>
-                    <img className={styles.logo} src={logo} alt="logo" />
-                </div>
+                <img className={styles.logo} src={logo} alt="logo" />
                 <div className={styles.profileData}>
                     <span className={styles.name}>{name}</span>
                     <img

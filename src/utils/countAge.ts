@@ -12,3 +12,12 @@ export const countAge = (birthday: string) => {
     }
     return daysCount < 0 ? ageCount - 1 : ageCount
 }
+
+export const ageToFormat = (birthday: string) => {
+    const birthdayDate = new Date(birthday)
+    const  years = birthdayDate.getFullYear()
+    const  month = birthdayDate.getMonth() < 9 ? '0' + (birthdayDate.getMonth() + 1) : birthdayDate.getMonth() + 1
+    const  days = birthdayDate.getDate() < 10 ? '0' + birthdayDate.getDate() : birthdayDate.getDate()
+    const age = `${years}-${month}-${days}`
+    return age
+}

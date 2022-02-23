@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { deleteTeam, getTeamInfo } from '../modules/teams/teamsThunk'
 import { AppRootStateType } from '../core/redux/store'
 import { ReactComponent as DeleteIcon } from '../assets/icon/delete_rounded.svg'
-import updateIcon from '../assets/icon/create_rounded.svg'
+import { ReactComponent as UpdateIcon } from '../assets/icon/create_rounded.svg'
 import { getPlayersTC } from '../modules/players/playersThunk'
 import { PlayerDto } from '../api/dto/IPlayer'
 import { countAge } from '../utils/countAge'
@@ -36,7 +36,7 @@ export const TeamInfo: FC = () => {
 
     useEffect(() => {
         dispatch(getTeamInfo(Number(id)))
-        dispatch(getPlayersTC('', Number(id), 1, 7))
+        dispatch(getPlayersTC('', [Number(id)], 0, 0))
     }, [])
 
     const deleteTeamHandler = () => {
@@ -57,13 +57,13 @@ export const TeamInfo: FC = () => {
                                 onClick={updateTeam}
                                 className={styles.iconsStyles}
                             >
-                                <img src={updateIcon} alt="update" />
+                                <UpdateIcon className={styles.headerIcon} />
                             </div>
                             <div
                                 onClick={deleteTeamHandler}
                                 className={styles.iconsStyles}
                             >
-                                <DeleteIcon className={styles.deleteIcon} />
+                                <DeleteIcon className={`${styles.headerIcon} ${styles.deleteIcon}`} />
                             </div>
                         </div>
                     </div>
@@ -82,10 +82,10 @@ export const TeamInfo: FC = () => {
                                 <div className={styles.description}>
                                     <div className={styles.descriptionBlock}>
                                         <label className={styles.label}>
-                                            Conference
+                                            Year of foundation
                                         </label>
                                         <p className={styles.text}>
-                                            {conference}
+                                            {foundationYear}
                                         </p>
                                     </div>
                                     <div className={styles.descriptionBlock}>
@@ -98,10 +98,10 @@ export const TeamInfo: FC = () => {
                                     </div>
                                     <div className={styles.descriptionBlock}>
                                         <label className={styles.label}>
-                                            Year of foundation
+                                            Conference
                                         </label>
                                         <p className={styles.text}>
-                                            {foundationYear}
+                                            {conference}
                                         </p>
                                     </div>
                                 </div>

@@ -1,25 +1,26 @@
 @import '../assets/theme/theme.css';
 
 .container {
-    width: 90%;
-    height: 60%;
+    width: calc(100% - 160px);
+    height: 565px;
+    margin-top: 32px;
     background-color: var(--primary-bg-color);
-    margin-top: 2%;
     border-radius: 10px 10px 10px 10px;
+}
+.playerContainer {
+    height: 655px;
 }
 
 .formContainer {
     display: flex;
     width: 100%;
-    height: 85%;
     background-color: var(--primary-bg-color);
-    margin-top: 4%;
-    border-radius: 10px 10px 10px 10px;
+    margin-top: 117px;
 }
 
 .addFileBlock {
-    width: 30%;
-    height: 50%;
+    width: 336px;
+    height: 261px;
     margin-left: 6%;
     background-color: var(--second-text-color);
     border-radius: 10px;
@@ -39,9 +40,8 @@
 }
 
 .inputFormContainer {
-    width: 35%;
-    height: 100%;
-    margin-left: 12%;
+    width: 366px;
+    margin-left: 136px;
 }
 
 .buttonsContainer {
@@ -50,24 +50,37 @@
     display: flex;
     justify-content: space-between;
 }
+.twoItemsContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.oneItemContainer {
+    width: 171px;
+}
 
 @media screen and (max-width: 768px) {
     .container {
-        width: 90%;
-        height: 98%;
-        margin-top: 1%;
+        width: 100%;
+        margin-top: 16px;
     }
     .formContainer {
+        margin: 0;
         flex-direction: column;
         align-items: center;
     }
     .addFileBlock {
-        width: 50%;
-        height: 40%;
-        margin: 5% 0;
+        width: 185px;
+        height: 144px;
+        margin: 48px 0;
     }
     .inputFormContainer {
         margin: 0;
-        width: 90%;
+        width: 327px;
+        margin-bottom: 48px;
+    }
+    .oneItemContainer {
+        width: 151px;
     }
 }

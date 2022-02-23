@@ -7,6 +7,7 @@
 
 .authContainer {
     width: 40%;
+    min-width: 366px;
     height: 100vh;
     background: var(--primary-bg-color);
     display: flex;
@@ -25,15 +26,13 @@
 }
 
 .authBlock {
-    width: 60%;
-    height: 55vh;
+    width: 366px;
     display: flex;
     flex-direction: column;
 }
 
 .registerBlock {
-    width: 60%;
-    height: 75vh;
+    width: 366px;
     display: flex;
     flex-direction: column;
 }
@@ -44,11 +43,10 @@
     font-weight: normal;
     color: var(--login-title-text);
     margin: 0;
-    margin-bottom: 30px;
+    margin-bottom: 32px;
 }
 
 .form {
-    height: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -58,19 +56,17 @@
 }
 
 .buttonContainer {
-    margin: 10px 0;
-    height: 10%;
+    margin: 0;
+    margin-bottom: 24px;
 }
 
 .authSign {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 10px 0;
 }
 
 .spanMember {
-    margin: 10px 0;
     font-size: 14px;
     line-height: 24px;
     color: var(--label-color);
@@ -81,31 +77,85 @@
     margin-left: 5px;
 }
 
-input[type='checkbox'] {
-    margin: 0;
-    margin-right: 10px;
-}
-
 .checkboxContainer {
-    height: 10%;
+    height: 48px;
     display: flex;
     flex-direction: column;
 }
 
-.checkboxBlock {
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-    align-items: center;
-}
+.customCheckbox, .checkboxError {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+  }
 
-.checkboxText {
+  .customCheckbox+label, .checkboxError+label {
+    display: inline-flex;
+    align-items: center;
+    user-select: none;
+    cursor: pointer;
+  }
+
+  .customCheckbox+label::before {
+    content: '';
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border: 1px solid #707070;
+    border-radius: 2px;
+    margin-right: 10px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 70%;
+  }
+
+  .checkboxError+label::before {
+    content: '';
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border: 1px solid #FF768E;
+    border-radius: 2px;
+    margin-right: 10px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 70%;
+  }
+
+  .customCheckbox:not(:disabled):not(:checked)+label:hover::before {
+    border-color:#E4163A;
+  }
+
+  .customCheckbox:not(:disabled):not(:checked)+label:hover::before + .checkboxError {
+    border-color:green;
+  }
+
+  .customCheckbox:not(:disabled):active+label::before {
+    background-color: #E4163A;
+    border-color: #E4163A;
+  }
+
+  .customCheckbox:checked+label::before {
+    border-color: #E4163A;
+    background-color: #E4163A;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+  }
+
+  .checkboxText {
     font-size: 14px;
     line-height: 24px;
     color: var(--label-color);
-}
+  }
 
-.errorMessage {
+  .spanError {
+      color: #FF768E;
+  }
+
+  .errorMessage {
     color: var(--logout-color);
     margin: 0;
     font-size: 12px;
@@ -118,32 +168,24 @@ input[type='checkbox'] {
 
 @media screen and (max-width: 768px) {
     .imageContainer {
-        width: 0;
+        display: none;
     }
     .authContainer {
         width: 100vh;
     }
-    .authBlock {
-        width: 75%;
-        height: 50vh;
-    }
-    .registerBlock {
-        width: 75%;
+    .authBlock, .registerBlock {
+        width: 327px;
     }
     .title {
-        margin: 0 auto;
-        margin-bottom: 32px;
-    }
-    .buttonContainer {
-        margin: 5% 0;
-    }
-    .authSign {
-        margin: 0;
+        margin: 0 auto 32px;
     }
 }
 
 @media screen and (max-width: 480px) {
-    .imageContainer {
+    .authBlock, .registerBlock {
+        width: 327px;
+    }
+    /* .imageContainer {
         width: 0;
     }
     .authContainer {
@@ -165,5 +207,5 @@ input[type='checkbox'] {
     }
     .authSign {
         margin: 0;
-    }
-}
+    } */
+} 
