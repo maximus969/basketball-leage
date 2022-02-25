@@ -7,10 +7,11 @@ export const ItemsNotFound: FC<ItemsNotFoundProps> = ({ item }) => {
     return (
         <div className={styles.itemsBlock}>
             <div className={styles.itemsContainer}>
-                {item === 'teams' ?
+                {item === 'teams' ? (
                     <NoTeamsIcon className={styles.img} />
-                    : <NoPlayersIcon className={styles.img} />
-                }
+                ) : (
+                    <NoPlayersIcon className={styles.img} />
+                )}
                 <div className={styles.textBlock}>
                     <h2 className={styles.firstText}>Empty here</h2>
                     <h3 className={styles.secondText}>

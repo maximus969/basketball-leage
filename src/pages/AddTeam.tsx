@@ -12,7 +12,6 @@ import { AppRootStateType } from '../core/redux/store'
 import addPhotoImage from '../assets/icon/add_a_photo_24px_rounded.svg'
 import { FC, useState } from 'react'
 
-
 export interface IFormInputs {
     name: string
     division: string

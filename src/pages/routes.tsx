@@ -11,7 +11,7 @@ import { UpdateTeam } from './UpdateTeam'
 import { Players } from './Players'
 import { PlayerInfo } from './PlayerInfo'
 import { AddPlayer } from './AddPlayer'
-import { UpdatePlayer } from './UpdatePlayer';
+import { UpdatePlayer } from './UpdatePlayer'
 import { PageNotFound } from './PageNotFound'
 
 export const PATH = {
@@ -25,7 +25,7 @@ export const PATH = {
     PLAYER_INFO: '/players/:id',
     ADD_PLAYER: '/players/add-new-player',
     UPDATE_PLAYER: '/players/:id/update-player',
-    PAGE_NOT_FOUND: '/page-not-found',
+    PAGE_NOT_FOUND: '/page-not-found'
 }
 
 export const ProjectRoutes = () => {

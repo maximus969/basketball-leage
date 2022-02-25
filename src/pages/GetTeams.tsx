@@ -69,7 +69,7 @@ export const Teams: FC = () => {
                                 name={item.name}
                                 imageUrl={item.imageUrl}
                                 key={item.id}
-                                item='team'
+                                item="team"
                             />
                         )
                     })}

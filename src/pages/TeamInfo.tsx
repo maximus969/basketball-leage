@@ -7,9 +7,10 @@ import { deleteTeam, getTeamInfo } from '../modules/teams/teamsThunk'
 import { AppRootStateType } from '../core/redux/store'
 import { ReactComponent as DeleteIcon } from '../assets/icon/delete_rounded.svg'
 import { ReactComponent as UpdateIcon } from '../assets/icon/create_rounded.svg'
-import { getPlayersTC } from '../modules/players/playersThunk'
+// import { getPlayersTC } from '../modules/players/playersThunk'
 import { PlayerDto } from '../api/dto/IPlayer'
 import { countAge } from '../utils/countAge'
+import { fetchPlayers } from '../modules/players/playersThunk'
 
 export const TeamInfo: FC = () => {
     const { id } = useParams()
@@ -36,7 +37,14 @@ export const TeamInfo: FC = () => {
 
     useEffect(() => {
         dispatch(getTeamInfo(Number(id)))
-        dispatch(getPlayersTC('', [Number(id)], 0, 0))
+        dispatch(
+            fetchPlayers({
+                name: '',
+                id: [Number(id)],
+                page: 0,
+                pageSize: 0
+            })
+        )
     }, [])
 
     const deleteTeamHandler = () => {
@@ -63,7 +71,9 @@ export const TeamInfo: FC = () => {
                                 onClick={deleteTeamHandler}
                                 className={styles.iconsStyles}
                             >
-                                <DeleteIcon className={`${styles.headerIcon} ${styles.deleteIcon}`} />
+                                <DeleteIcon
+                                    className={`${styles.headerIcon} ${styles.deleteIcon}`}
+                                />
                             </div>
                         </div>
                     </div>

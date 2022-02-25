@@ -12,11 +12,13 @@ import { Button } from '../ui/Button/Button'
 import { ItemsNotFound } from '../ui/ItemsNotFound/ItemsNotFound'
 import { Paginator } from '../ui/Paginator/Paginator'
 import { ReactSelect } from '../ui/ReactSelect/ReactSelect'
-import { getPlayersTC } from '../modules/players/playersThunk';
+import { MultiSelect } from '../ui/MultiSelect'
+import { fetchPlayers } from '../modules/players/playersThunk'
 
 export const Players: FC = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    const [multiSearch, setMultiSearch] = useState<number[]>([])
     const totalElementCount = useSelector<AppRootStateType, number>(
         (state) => state.players.players.count
     )
@@ -29,7 +31,14 @@ export const Players: FC = () => {
     const [searchPlayers, setSearchPlayers] = useState<string>('')
 
     useEffect(() => {
-        dispatch(getPlayersTC(searchPlayers, [], 1, pageSize))
+        dispatch(
+            fetchPlayers({
+                name: searchPlayers,
+                id: multiSearch,
+                page: 1,
+                pageSize
+            })
+        )
     }, [searchPlayers])
 
     const addPlayerHandler = () => {
@@ -39,18 +48,49 @@ export const Players: FC = () => {
         setSearchPlayers(e.currentTarget.value)
     }
     const startSearchingTeam = () => {
-        dispatch(getPlayersTC(searchPlayers, [], 1, pageSize))
+        dispatch(
+            fetchPlayers({
+                name: searchPlayers,
+                id: multiSearch,
+                page: 1,
+                pageSize
+            })
+        )
     }
 
     // Paginator + Selector
     const handlePageClick = (event: { selected: number }) => {
         const newCurrentPage = event.selected + 1
-        dispatch(getPlayersTC(searchPlayers, [], newCurrentPage, pageSize))
+        dispatch(
+            fetchPlayers({
+                name: searchPlayers,
+                id: multiSearch,
+                page: newCurrentPage,
+                pageSize
+            })
+        )
     }
 
     const onChangeOption = (value: number) => {
-        dispatch(getPlayersTC(searchPlayers, [], 1, value))
-
+        dispatch(
+            fetchPlayers({
+                name: searchPlayers,
+                id: multiSearch,
+                page: 1,
+                pageSize: value
+            })
+        )
+    }
+    const onChangeMultiOption = (data: number[]) => {
+        setMultiSearch(data)
+        dispatch(
+            fetchPlayers({
+                name: searchPlayers,
+                id: data,
+                page: 1,
+                pageSize
+            })
+        )
     }
 
     const Items = ({ currentItems }: { currentItems: PlayerDto[] }) => {
@@ -68,7 +108,7 @@ export const Players: FC = () => {
                                 name={item.name}
                                 imageUrl={item.avatarUrl}
                                 key={item.id}
-                                item='player'
+                                item="player"
                             />
                         )
                     })}
@@ -80,19 +120,26 @@ export const Players: FC = () => {
         <div className={wrapper.mainContent}>
             <div className={styles.mainBlock}>
                 <div className={styles.block}>
-                    <div className={styles.searchBlock}>
-                        <div className={styles.inputStyles}>
-                            <input
-                                className={styles.input}
-                                onChange={onSearchChange}
-                                placeholder="Search..."
-                            />
-                            <div
-                                className={styles.searchIcon}
-                                onClick={startSearchingTeam}
-                            >
-                                <img src={searchIcon} alt="icon" />
+                    <div
+                        className={`${styles.searchBlock} ${styles.searchPlayerBlock}`}
+                    >
+                        <div className={styles.searchStyles}>
+                            <div className={styles.inputStyles}>
+                                <input
+                                    className={styles.input}
+                                    onChange={onSearchChange}
+                                    placeholder="Search..."
+                                />
+                                <div
+                                    className={styles.searchIcon}
+                                    onClick={startSearchingTeam}
+                                >
+                                    <img src={searchIcon} alt="icon" />
+                                </div>
                             </div>
+                            <MultiSelect
+                                onChangeMultiOption={onChangeMultiOption}
+                            />
                         </div>
                         <div className={styles.buttonContainer}>
                             <Button

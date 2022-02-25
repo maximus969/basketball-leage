@@ -94,14 +94,25 @@ export const Registration: FC = () => {
 
                         <div className={styles.checkboxContainer}>
                             <input
-                                type="checkbox" id="checkbox"
+                                type="checkbox"
+                                id="checkbox"
                                 {...register('acceptTerms', {
                                     required: 'You must be accept by agreement'
                                 })}
-                                className={errors?.acceptTerms ? styles.checkboxError : styles.customCheckbox}
+                                className={
+                                    errors?.acceptTerms
+                                        ? styles.checkboxError
+                                        : styles.customCheckbox
+                                }
                             />
                             <label htmlFor="checkbox">
-                                <span className={`${styles.checkboxText} ${errors?.acceptTerms ? styles.spanError : ''}`}>
+                                <span
+                                    className={`${styles.checkboxText} ${
+                                        errors?.acceptTerms
+                                            ? styles.spanError
+                                            : ''
+                                    }`}
+                                >
                                     I accept the agreement
                                 </span>
                             </label>

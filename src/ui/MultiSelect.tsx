@@ -1,49 +1,36 @@
 import { FC, useEffect } from 'react'
-import Select, { StylesConfig } from 'react-select'
-import { Controller } from 'react-hook-form'
+import Select, { MultiValue, StylesConfig } from 'react-select'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchTeams } from '../modules/teams/teamsThunk'
 import { AppRootStateType } from '../core/redux/store'
 import { TeamDto } from '../api/dto/ITeam'
 
-type PositionType = {
+type MyOptionType = {
     label: string
-    value: string | number
+    value: number
 }
 
-const positions: PositionType[] = [
-    { value: 'CenterForward', label: 'CenterForward' },
-    { value: 'GuardForward', label: 'GuardForward' },
-    { value: 'Forward', label: 'Forward' },
-    { value: 'Center', label: 'Center' },
-    { value: 'Guard', label: 'Guard' }
-]
+type IsMulti = true
 
-type IsMulti = false
-
-export const PositionSelect: FC<PositionPropsType> = ({
-    name,
-    control,
-    rules,
-    defaultValue
-}) => {
+export const MultiSelect: FC<MultiSelectProps> = ({ onChangeMultiOption }) => {
     const dispatch = useDispatch()
     const teamsData = useSelector<AppRootStateType, TeamDto[]>(
         (state) => state.teams.teams.data
     )
     useEffect(() => {
-        if (name === 'team') {
-            dispatch(fetchTeams({ searchTeam: '', page: 0, pageSize: 0 }))
-        }
+        dispatch(fetchTeams({ searchTeam: '', page: 0, pageSize: 0 }))
     }, [])
 
     const teamsArray = teamsData.map((el) => {
         return { value: el.id, label: el.name }
     })
 
-    const finalOption = name === 'position' ? positions : teamsArray
+    const onChangeHandler = (data: MultiValue<MyOptionType>) => {
+        const idArray = data.map((el) => el.value)
+        onChangeMultiOption(idArray)
+    }
 
-    const customStyles: StylesConfig<PositionType, IsMulti> = {
+    const customStyles: StylesConfig<MyOptionType, IsMulti> = {
         option: (provided, state) => ({
             ...provided,
             borderBottom: '1px dotted pink',
@@ -58,12 +45,20 @@ export const PositionSelect: FC<PositionPropsType> = ({
                     ? '#C60E2E'
                     : undefined
         }),
+        placeholder: (provided, state) => ({
+            ...provided,
+            color: '#707070',
+            fontWeight: '500',
+            fontSize: '15px',
+            lineHeight: '24px',
+            marginLeft: '10px'
+        }),
         control: (provided, state) => ({
             ...provided,
             width: '366px',
             height: '40px',
             display: 'flex',
-            background: '#F6F6F6',
+            background: '#ffffff',
             border: '0.5px solid #d1d1d1',
             borderRadius: '4px',
             cursor: 'pointer',
@@ -73,10 +68,10 @@ export const PositionSelect: FC<PositionPropsType> = ({
             },
             '@media screen and (max-width: 768px)': {
                 ...provided,
-                width: '327px',
+                width: '100%',
                 height: '28px',
                 border: '0.5px solid #d1d1d1',
-                background: '#F6F6F6',
+                background: '#ffffff',
                 boxShadow: 'none',
                 '&:hover': {
                     border: '0.5px solid #d1d1d1'
@@ -88,40 +83,31 @@ export const PositionSelect: FC<PositionPropsType> = ({
             const transition = 'opacity 300ms'
 
             return { ...provided, opacity, transition }
-        }
+        },
+        multiValueLabel: (provided, state) => ({
+            ...provided,
+            color: '#ffffff'
+        }),
+        multiValue: (provided, state) => ({
+            ...provided,
+            background: '#E4163A',
+            borderRadius: '4px',
+            color: '#ffffff'
+        })
     }
 
     return (
-        <Controller
-            control={control}
-            name={name}
-            rules={rules}
-            defaultValue={
-                finalOption
-                    .filter((el) => el.value === defaultValue)
-                    .map((el) => el.value)[0]
-            }
-            render={({ field: { onChange, value, ref, name } }) => (
-                <Select
-                    ref={ref}
-                    placeholder={'Search...'}
-                    isClearable
-                    options={finalOption}
-                    defaultValue={finalOption.find(
-                        (c) => c.value === defaultValue
-                    )}
-                    value={finalOption.find((c) => c.value === value)}
-                    onChange={(val) => onChange(val?.value)}
-                    styles={customStyles}
-                />
-            )}
+        <Select
+            placeholder={'Search...'}
+            closeMenuOnSelect={false}
+            options={teamsArray}
+            onChange={onChangeHandler}
+            styles={customStyles}
+            isMulti={true}
         />
     )
 }
 
-type PositionPropsType = {
-    name: string
-    defaultValue?: string | number | undefined
-    control: any
-    rules: any
+type MultiSelectProps = {
+    onChangeMultiOption: (data: number[]) => void
 }

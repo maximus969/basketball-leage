@@ -4,7 +4,6 @@ import { TeamDto } from '../../api/dto/ITeam'
 import { NavigateFunction } from 'react-router-dom'
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
-
 export const fetchTeams = createAsyncThunk(
     'teams/fetchTeams',
     async function (
@@ -29,7 +28,6 @@ export const fetchTeams = createAsyncThunk(
         }
     }
 )
-
 
 export const addTeam = createAsyncThunk(
     'teams/addTeam',
@@ -56,7 +54,6 @@ export const addTeam = createAsyncThunk(
     }
 )
 
-
 export const getTeamInfo = createAsyncThunk(
     'teams/getTeamInfo',
     async function (id: number, { dispatch, rejectWithValue }) {
@@ -78,7 +75,6 @@ export const getTeamInfo = createAsyncThunk(
         }
     }
 )
-
 
 export const updateTeam = createAsyncThunk(
     'teams/updateTeam',
@@ -105,7 +101,6 @@ export const updateTeam = createAsyncThunk(
         }
     }
 )
-
 
 export const deleteTeam = createAsyncThunk(
     'teams/deleteTeam',

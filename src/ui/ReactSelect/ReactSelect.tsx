@@ -1,6 +1,6 @@
 import Select, { SingleValue, StylesConfig } from 'react-select'
-import styles from './ReactSelect.module.css'
-import { FC, useState } from 'react'
+import { FC } from 'react'
+import { useEffect } from 'react'
 
 type MyOptionType = {
     label: string
@@ -19,22 +19,19 @@ export const ReactSelect: FC<ReactSelectPropsType> = ({
     onChangeOption,
     pageSize
 }) => {
-    let index = options.findIndex((el) => el.value === pageSize)
-    typeof index === 'number' ? index : index = 0
-    const [deviceHeight, setDeviceHeight] = useState('')
+    const index = options.findIndex((el) => el.value === pageSize)
+
+    useEffect(() => {
+        if (index < 0) {
+            onChangeOption(6)
+        }
+    }, [index])
 
     const onChangeCallback = (e: SingleValue<MyOptionType>) => {
         if (e?.value && e.value !== pageSize) {
             onChangeOption(e.value)
         }
     }
-
-    window.addEventListener('resize', function () {
-        if (window.innerWidth > 768 && deviceHeight !== '40px')
-            setDeviceHeight('40px')
-        else if (window.innerWidth <= 768 && deviceHeight !== '28px')
-            setDeviceHeight('28px')
-    })
 
     const customStyles: StylesConfig<MyOptionType, IsMulti> = {
         option: (provided, state) => ({
@@ -71,7 +68,7 @@ export const ReactSelect: FC<ReactSelectPropsType> = ({
                 boxShadow: 'none',
                 '&:hover': {
                     border: '0.5px solid #d1d1d1'
-                },
+                }
             }
         }),
         singleValue: (provided, state) => {

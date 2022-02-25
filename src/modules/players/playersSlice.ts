@@ -1,5 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { PlayerDtoPageResult, PlayerTeamNameDto } from '../../api/dto/IPlayer'
+import {
+    deletePlayer,
+    fetchPlayers,
+    getPlayerInfo,
+    updatePlayer
+} from './playersThunk'
 
 const initialState = {
     players: {
@@ -31,7 +37,7 @@ const initialState = {
         avatarUrl: '',
         id: 0,
         teamName: ''
-    },
+    }
 }
 
 const slice = createSlice({
@@ -43,7 +49,23 @@ const slice = createSlice({
         },
         setPlayerData(state, action: PayloadAction<PlayerTeamNameDto>) {
             state.player = action.payload
-        },
+        }
+    },
+    extraReducers: (builder) => {
+        builder
+            .addCase(fetchPlayers.fulfilled, (state, action) => {
+                if (action && action.payload) {
+                    state.players = action.payload
+                }
+            })
+            .addCase(getPlayerInfo.fulfilled, (state, action) => {
+                if (action && action.payload) {
+                    state.player = action.payload
+                }
+            })
+            .addCase(deletePlayer.fulfilled, (state) => {
+                state.player = initialState.player
+            })
     }
 })
 

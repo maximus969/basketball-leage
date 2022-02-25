@@ -12,26 +12,28 @@ export const BoxPreview: FC<BoxPreviewPropsType> = ({
     return (
         <div className={styles.container} onClick={onClick}>
             <div className={`${styles.imgBlock} ${playerStyles}`}>
-                <img className={item === 'team' ?
-                    styles.imgTeam
-                    : styles.imgPlayer
-                }
-                    src={imageUrl} alt="" />
+                <img
+                    className={
+                        item === 'team' ? styles.imgTeam : styles.imgPlayer
+                    }
+                    src={imageUrl}
+                    alt=""
+                />
             </div>
             <div className={styles.textBlock}>
                 <div className={styles.textContainer}>
                     <h2 className={styles.title}>
                         {name}
-                        {item === 'player'
-                            ? <span className={styles.numberStyles}>{` #${date}`}</span>
-                            : ''
-                        }
+                        {item === 'player' ? (
+                            <span
+                                className={styles.numberStyles}
+                            >{` #${date}`}</span>
+                        ) : (
+                            ''
+                        )}
                     </h2>
                     <h3 className={styles.info}>
-                        {item === 'team' ?
-                            `Year of foundation: `
-                            : ''
-                        }
+                        {item === 'team' ? `Year of foundation: ` : ''}
                         {date}
                     </h3>
                 </div>

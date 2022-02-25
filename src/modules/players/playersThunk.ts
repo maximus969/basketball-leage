@@ -1,109 +1,154 @@
-import { Dispatch } from 'redux'
+import { createAsyncThunk } from '@reduxjs/toolkit'
 import { NewPlayerDto, PlayerDto, playersAPI } from '../../api/dto/IPlayer'
 import { setAppStatus } from '../app/appSlice'
-import { setPlayersData, setPlayerData } from './playersSlice'
+import { NavigateFunction } from 'react-router-dom'
 
-export const getPlayersTC =
-    (name: string, id: number[], page: number, pageSize: number) =>
-    (dispatch: Dispatch) => {
+export const fetchPlayers = createAsyncThunk(
+    'players/fetchPlayerss',
+    async function (
+        { name, id, page, pageSize }: FetchPlayersProps,
+        { dispatch, rejectWithValue }
+    ) {
         dispatch(setAppStatus({ status: true }))
-        playersAPI
-            .getPlayers(name, id, page, pageSize)
-            .then((res) => {
-                if (res.request.status === 200) {
-                    dispatch(setPlayersData(res.data))
-                }
-            })
-            .catch((error) => {
-                console.log(error.response)
-            })
-            .finally(() => {
-                dispatch(setAppStatus({ status: false }))
-            })
+        try {
+            const response = await playersAPI.getPlayers(
+                name,
+                id,
+                page,
+                pageSize
+            )
+            if (response.status !== 200) {
+                throw new Error('Server Error!')
+            }
+            return response.data
+        } catch (error) {
+            if (error instanceof Error) {
+                console.log('ERROR:', error.message)
+                return rejectWithValue(error.message)
+            }
+            console.log('ERROR', error)
+        } finally {
+            dispatch(setAppStatus({ status: false }))
+        }
     }
+)
 
-export const getPlayerInfoTC = (id: number) => (dispatch: Dispatch) => {
-    dispatch(setAppStatus({ status: true }))
-    playersAPI
-        .getPlayerInfo(id)
-        .then((res) => {
-            if (res.request.status === 200) {
-                dispatch(setPlayerData(res.data))
+export const getPlayerInfo = createAsyncThunk(
+    'players/getPlayerInfo',
+    async function (id: number, { dispatch, rejectWithValue }) {
+        dispatch(setAppStatus({ status: true }))
+        try {
+            const response = await playersAPI.getPlayerInfo(id)
+            if (response.status !== 200) {
+                throw new Error('Server Error!')
             }
-        })
-        .catch((error) => {
-            console.log(error.response)
-        })
-        .finally(() => {
+            return response.data
+        } catch (error) {
+            if (error instanceof Error) {
+                console.log('ERROR:', error.message)
+                return rejectWithValue(error.message)
+            }
+            console.log('ERROR', error)
+        } finally {
             dispatch(setAppStatus({ status: false }))
-        })
+        }
+    }
+)
+
+export const addPlayer = createAsyncThunk(
+    'players/addPlayer',
+    async function (
+        { data, navigate }: addPlayerProps,
+        { dispatch, rejectWithValue }
+    ) {
+        dispatch(setAppStatus({ status: true }))
+        try {
+            const response = await playersAPI.addPlayer(data)
+            if (response.status !== 200) {
+                throw new Error('Server Error!')
+            }
+            navigate(-1)
+        } catch (error) {
+            if (error instanceof Error) {
+                console.log('ERROR:', error.message)
+                return rejectWithValue(error.message)
+            }
+            console.log('ERROR', error)
+        } finally {
+            dispatch(setAppStatus({ status: false }))
+        }
+    }
+)
+
+export const updatePlayer = createAsyncThunk(
+    'players/updatePlayer',
+    async function (
+        { data, navigate }: updatePlayerProps,
+        { dispatch, rejectWithValue }
+    ) {
+        dispatch(setAppStatus({ status: true }))
+        try {
+            const response = await playersAPI.updatePlayer(data)
+            if (response.status !== 200) {
+                throw new Error('Server Error!')
+            }
+            navigate(-1)
+            return response.data
+        } catch (error) {
+            if (error instanceof Error) {
+                console.log('ERROR:', error.message)
+                return rejectWithValue(error.message)
+            }
+            console.log('ERROR', error)
+        } finally {
+            dispatch(setAppStatus({ status: false }))
+        }
+    }
+)
+
+export const deletePlayer = createAsyncThunk(
+    'players/deletePlayer',
+    async function (
+        { id, navigate }: deletePlayerProps,
+        { dispatch, rejectWithValue }
+    ) {
+        dispatch(setAppStatus({ status: true }))
+        try {
+            const response = await playersAPI.deletePlayer(id)
+            if (response.status !== 200) {
+                throw new Error('Server Error!')
+            }
+            navigate(-1)
+        } catch (error) {
+            if (error instanceof Error) {
+                console.log('ERROR:', error.message)
+                return rejectWithValue(error.message)
+            }
+            console.log('ERROR', error)
+        } finally {
+            dispatch(setAppStatus({ status: false }))
+        }
+    }
+)
+
+type FetchPlayersProps = {
+    name: string
+    id: number[]
+    page: number
+    pageSize: number
 }
 
-export const addPlayerTC = (data: NewPlayerDto) => (dispatch: Dispatch) => {
-    dispatch(setAppStatus({ status: true }))
-    playersAPI
-        .addPlayer(data)
-        .then((res) => {
-            if (res.request.status === 200) {
-                alert('success')
-            }
-        })
-        .catch((error) => {
-            console.log(error.response)
-        })
-        .finally(() => {
-            dispatch(setAppStatus({ status: false }))
-        })
+type addPlayerProps = {
+    data: NewPlayerDto
+    navigate: NavigateFunction
 }
 
-export const updatePlayerTC = (data: PlayerDto) => (dispatch: Dispatch) => {
-    dispatch(setAppStatus({ status: true }))
-    playersAPI
-        .updatePlayer(data)
-        .then((res) => {
-            if (res.request.status === 200) {
-                console.log(res.data)
-                dispatch(getPlayerInfoTC(res.data.id) as any)
-                alert('Success')
-            }
-        })
-        .catch((error) => {
-            console.log(error.response)
-        })
-        .finally(() => {
-            dispatch(setAppStatus({ status: false }))
-        })
+type updatePlayerProps = {
+    data: PlayerDto
+    navigate: NavigateFunction
 }
 
-export const deletePlayerTC = (id: number) => (dispatch: Dispatch) => {
-    dispatch(setAppStatus({ status: true }))
-    playersAPI
-        .deletePlayer(id)
-        .then((res) => {
-            if (res.request.status === 200) {
-                dispatch(
-                    setPlayerData({
-                        name: '',
-                        number: 0,
-                        position: '',
-                        team: 0,
-                        birthday: '',
-                        height: 0,
-                        weight: 0,
-                        avatarUrl: '',
-                        id: 0,
-                        teamName: ''
-                    })
-                )
-                alert('success')
-            }
-        })
-        .catch((error) => {
-            console.log(error.response.data.error)
-        })
-        .finally(() => {
-            dispatch(setAppStatus({ status: false }))
-        })
+type deletePlayerProps = {
+    id: number
+    navigate: NavigateFunction
 }
-
-
